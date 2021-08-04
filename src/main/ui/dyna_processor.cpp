@@ -28,11 +28,19 @@ namespace lsp
     {
         //---------------------------------------------------------------------
         // Plugin UI factory
-        static const meta::plugin_t *uis[] =
+        static const meta::plugin_t *plugin_uis[] =
         {
+            &meta::dyna_processor_mono,
+            &meta::dyna_processor_stereo,
+            &meta::dyna_processor_lr,
+            &meta::dyna_processor_ms,
+            &meta::sc_dyna_processor_mono,
+            &meta::sc_dyna_processor_stereo,
+            &meta::sc_dyna_processor_lr,
+            &meta::sc_dyna_processor_ms
         };
 
-        static ui::Factory factory(uis, 0);
+        static ui::Factory factory(plugin_uis, 8);
 
     } // namespace plugui
 } // namespace lsp
