@@ -37,8 +37,8 @@
 						<mesh id="isg_s" width="2" color="side_in" visibility=":ilv_s"/>
 						<mesh id="osg_m" width="2" color="mid" visibility=":olv_m"/>
 						<mesh id="osg_s" width="2" color="side" visibility=":olv_s"/>
-						<mesh id="ssg_m" width="2" color="sidechain_1" visibility=":slv_m"/>
-						<mesh id="ssg_s" width="2" color="sidechain_2" visibility=":slv_s"/>
+						<mesh id="scg_m" width="2" color="sidechain_1" visibility=":slv_m"/>
+						<mesh id="scg_s" width="2" color="sidechain_2" visibility=":slv_s"/>
 						<mesh id="evg_m" width="2" color="envelope_1" visibility=":elv_m"/>
 						<mesh id="evg_s" width="2" color="envelope_2" visibility=":elv_s"/>
 						<mesh id="grg_m" width="2" color="bright_blue" visibility=":grv_m"/>
@@ -84,6 +84,8 @@
 						<button id="pause" height="22" width="48" text="labels.pause" ui:inject="Button_green"/>
 						<button id="clear" height="22" width="48" text="labels.clear" ui:inject="Button_red"/>
 						<button id="msl" height="22" width="48" text="labels.ms_listen" ui:inject="Button_yellow"/>
+						<button id="cmv_m" height="22" width="48" text="labels.mid" ui:inject="Button_mid"/>
+						<button id="cmv_s" height="22" width="48" text="labels.side" ui:inject="Button_side"/>
 					</hbox>
 				</align>
 			</vbox>
@@ -129,7 +131,7 @@
 				</ledmeter>
 			</grid>
 
-			<group ui:inject="GraphGroup" ipadding="0" expand="true" fill="true" text="labels.graphs.compression">
+			<group ui:inject="GraphGroup" ipadding="0" expand="true" fill="true" text="labels.graphs.curve">
 				<!-- Curve graph -->
 				<graph width.min="246" height.min="246" expand="true" fill="true">
 					<origin hpos="-1" vpos="-1" visible="false"/>
@@ -148,6 +150,8 @@
 
 					<!-- Axes and boundaries -->
 					<marker v="1" ox="1" oy="0" dv="1" dx=":_a_width" dy=":_a_height" color="graph_alt_1" width="2" smooth="true"/>
+					<marker id="omk_m" ox="1" oy="0" dv="1" dx=":_a_width" dy=":_a_height" color="graph_alt_2" width="2" smooth="true" visibility=":cmv_m"/>
+					<marker id="omk_s" ox="1" oy="0" dv="1" dx=":_a_width" dy=":_a_height" color="graph_alt_2" width="2" smooth="true" visibility=":cmv_s"/>
 					<marker v="24 db" color="graph_alt_1" visibility="false"/>
 					<marker v="24 db" ox="1" oy="0" color="graph_alt_1" visibility="false"/>
 					<axis min="-72 db" max="24 db" color="graph_prim" angle="0.0" log="true" visibility="false"/>
@@ -282,19 +286,19 @@
 
 						<grid rows="11" cols="1" spacing="0">
 							<label text="labels.sc.preamp" pad.h="6" pad.v="4" vreduce="true"/>
-						<knob id="scp${ch}" scolor="${chc}"/>
-						<value id="scp${ch}" sline="true" width.min="48"/>
-						<hsep bg.color="bg" pad.v="2" vreduce="true"/>
-						<label text="labels.sc.reactivity" pad.h="6" pad.v="4" vreduce="true"/>
-						<knob id="scr${ch}" scolor="${chc}"/>
-						<value id="scr${ch}" sline="true"/>
-						<hsep bg.color="bg" pad.v="2" vreduce="true"/>
-						<label text="labels.sc.lookahead" pad.h="6" pad.v="4" vreduce="true"/>
-						<knob id="sla${ch}" scolor="${chc}"/>
-						<value id="sla${ch}" sline="true"/>
-					</grid>
-					<vsep bg.color="bg" pad.h="2" hreduce="true"/>
-					<vbox>
+							<knob id="scp${ch}" scolor="${chc}"/>
+							<value id="scp${ch}" sline="true" width.min="48"/>
+							<hsep bg.color="bg" pad.v="2" vreduce="true"/>
+							<label text="labels.sc.reactivity" pad.h="6" pad.v="4" vreduce="true"/>
+							<knob id="scr${ch}" scolor="${chc}"/>
+							<value id="scr${ch}" sline="true"/>
+							<hsep bg.color="bg" pad.v="2" vreduce="true"/>
+							<label text="labels.sc.lookahead" pad.h="6" pad.v="4" vreduce="true"/>
+							<knob id="sla${ch}" scolor="${chc}"/>
+							<value id="sla${ch}" sline="true"/>
+						</grid>
+						<vsep bg.color="bg" pad.h="2" hreduce="true"/>
+						<vbox>
 							<label text="labels.setup" pad.h="6" pad.t="4" fill="false" vreduce="true"/>
 
 							<vbox fill="false" spacing="1">
@@ -306,21 +310,20 @@
 								</ui:with>
 							</vbox>
 
-						<hsep bg.color="bg" pad.v="2" vreduce="true"/>
-						<label text="labels.flt.HPF" pad.h="6" pad.v="4" vreduce="true" bright="(:shpm${ch} igt 0) ? 1 : 0.75" bg.bright="(:shpm${ch} igt 0) ? 1 : :const_bg_darken"/>
-						<combo id="shpm${ch}" pad.h="6" fill="true" bright="(:shpm${ch} igt 0) ? 1 : 0.75" bg.bright="(:shpm${ch} igt 0) ? 1 : :const_bg_darken"/>
-						<knob id="shpf${ch}" pad.v="4" size="16" ssize="3" scolor="(:shpm${ch} igt 0) ? '${chc}' : '${chc}_inactive'" bg.bright="(:shpm${ch} igt 0) ? 1 : :const_bg_darken"/>
-						<value id="shpf${ch}" pad.b="4" sline="true" bright="(:shpm${ch} igt 0) ? 1 : 0.75" bg.bright="(:shpm${ch} igt 0) ? 1 : :const_bg_darken"/>
+							<hsep bg.color="bg" pad.v="2" vreduce="true"/>
+							<label text="labels.flt.HPF" pad.h="6" pad.v="4" vreduce="true" bright="(:shpm${ch} igt 0) ? 1 : 0.75" bg.bright="(:shpm${ch} igt 0) ? 1 : :const_bg_darken"/>
+							<combo id="shpm${ch}" pad.h="6" fill="true" bright="(:shpm${ch} igt 0) ? 1 : 0.75" bg.bright="(:shpm${ch} igt 0) ? 1 : :const_bg_darken"/>
+							<knob id="shpf${ch}" pad.v="4" size="16" ssize="3" scolor="(:shpm${ch} igt 0) ? '${chc}' : '${chc}_inactive'" bg.bright="(:shpm${ch} igt 0) ? 1 : :const_bg_darken"/>
+							<value id="shpf${ch}" pad.b="4" sline="true" bright="(:shpm${ch} igt 0) ? 1 : 0.75" bg.bright="(:shpm${ch} igt 0) ? 1 : :const_bg_darken"/>
 
-						<hsep bg.color="bg" pad.v="2" vreduce="true"/>
+							<hsep bg.color="bg" pad.v="2" vreduce="true"/>
 
-						<label text="labels.flt.LPF" pad.h="6" pad.v="4" vreduce="true" bright="(:slpm${ch} igt 0) ? 1 : 0.75" bg.bright="(:slpm${ch} igt 0) ? 1 : :const_bg_darken"/>
-						<combo id="slpm${ch}" pad.h="6" fill="true" bright="(:slpm${ch} igt 0) ? 1 : 0.75" bg.bright="(:slpm${ch} igt 0) ? 1 : :const_bg_darken"/>
-						<knob id="slpf${ch}" pad.v="4" size="16" ssize="3" scolor="(:slpm${ch} igt 0) ? '${chc}' : '${chc}_inactive'" bg.bright="(:slpm${ch} igt 0) ? 1 : :const_bg_darken"/>
-						<value id="slpf${ch}" pad.b="4" sline="true" bright="(:slpm${ch} igt 0) ? 1 : 0.75" bg.bright="(:slpm${ch} igt 0) ? 1 : :const_bg_darken"/>
-					</vbox>
-				</hbox>
-
+							<label text="labels.flt.LPF" pad.h="6" pad.v="4" vreduce="true" bright="(:slpm${ch} igt 0) ? 1 : 0.75" bg.bright="(:slpm${ch} igt 0) ? 1 : :const_bg_darken"/>
+							<combo id="slpm${ch}" pad.h="6" fill="true" bright="(:slpm${ch} igt 0) ? 1 : 0.75" bg.bright="(:slpm${ch} igt 0) ? 1 : :const_bg_darken"/>
+							<knob id="slpf${ch}" pad.v="4" size="16" ssize="3" scolor="(:slpm${ch} igt 0) ? '${chc}' : '${chc}_inactive'" bg.bright="(:slpm${ch} igt 0) ? 1 : :const_bg_darken"/>
+							<value id="slpf${ch}" pad.b="4" sline="true" bright="(:slpm${ch} igt 0) ? 1 : 0.75" bg.bright="(:slpm${ch} igt 0) ? 1 : :const_bg_darken"/>
+						</vbox>
+					</hbox>
 
 					<vsep bg.color="bg" pad.h="2" hreduce="true"/>
 
@@ -355,9 +358,9 @@
 								<cell rows="2" vreduce="true" pad.h="4" wmin="19"><label text="${chn}" text:id="${c}"/></cell>
 								<cell rows="2">
 									<vbox fill="false" pad="6" spacing="4">
-										<button id="pe${i}" width.min="43" fill="true" height="10" text="labels.threshold" ui:inject="Button_${chc}_6" />
-										<button id="ae${i}" width.min="43" fill="true" height="10" text="labels.attack" ui:inject="Button_magenta_6" />
-										<button id="re${i}" width.min="43" fill="true" height="10" text="labels.release" ui:inject="Button_green_6" />
+										<button id="pe${i}" width.min="43" fill="true" height="10" text="labels.threshold" ui:inject="Button_violet_6"/>
+										<button id="ae${i}" width.min="43" fill="true" height="10" text="labels.attack" ui:inject="Button_magenta_6"/>
+										<button id="re${i}" width.min="43" fill="true" height="10" text="labels.release" ui:inject="Button_green_6"/>
 									</vbox>
 								</cell>
 								<ui:with pad.h="6" pad.v="4" size="20">
@@ -398,18 +401,18 @@
 
 							<cell cols="3">
 								<grid rows="3" cols="5" expand="true">
-										<label text="labels.makeup"/>
-										<cell rows="3" bg.color="bg" pad.h="2" hreduce="true"><vsep/></cell>
-										<label text="labels.signal.dry" wmin="41"/>
-										<cell rows="3" bg.color="bg" pad.h="2" hreduce="true"><vsep/></cell>
-										<label text="labels.signal.wet" wmin="41"/>
-										<knob id="omk${ch}" size="20" scolor="${chc}"/>
-										<knob id="cdr${ch}" scolor="dry" size="20"/>
-										<knob id="cwt${ch}" scolor="wet" size="20"/>
-										<value id="omk${ch}"/>
-										<value id="cdr${ch}"/>
-										<value id="cwt${ch}"/>
-									</grid>
+									<label text="labels.makeup"/>
+									<cell rows="3" bg.color="bg" pad.h="2" hreduce="true"><vsep/></cell>
+									<label text="labels.signal.dry" wmin="41"/>
+									<cell rows="3" bg.color="bg" pad.h="2" hreduce="true"><vsep/></cell>
+									<label text="labels.signal.wet" wmin="41"/>
+									<knob id="omk${ch}" size="20" scolor="${chc}"/>
+									<knob id="cdr${ch}" scolor="dry" size="20"/>
+									<knob id="cwt${ch}" scolor="wet" size="20"/>
+									<value id="omk${ch}"/>
+									<value id="cdr${ch}"/>
+									<value id="cwt${ch}"/>
+								</grid>
 							</cell>
 
 							<cell rows="8"><vsep bg.color="bg" pad.h="2" hreduce="true"/></cell>
