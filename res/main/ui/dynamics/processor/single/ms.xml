@@ -84,8 +84,8 @@
 						<button id="pause" height="22" width="48" text="labels.pause" ui:inject="Button_green"/>
 						<button id="clear" height="22" width="48" text="labels.clear" ui:inject="Button_red"/>
 						<button id="msl" height="22" width="48" text="labels.ms_listen" ui:inject="Button_yellow"/>
-						<button id="cmv_m" height="22" width="48" text="labels.mid" ui:inject="Button_mid"/>
-						<button id="cmv_s" height="22" width="48" text="labels.side" ui:inject="Button_side"/>
+						<button id="cmv_m" height="22" width="48" text="labels.chan.mid" ui:inject="Button_mid"/>
+						<button id="cmv_s" height="22" width="48" text="labels.chan.side" ui:inject="Button_side"/>
 					</hbox>
 				</align>
 			</vbox>
