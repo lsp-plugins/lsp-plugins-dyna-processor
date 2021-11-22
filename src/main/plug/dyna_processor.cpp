@@ -108,9 +108,9 @@ namespace lsp
         {
         }
 
-        void dyna_processor::init(plug::IWrapper *wrapper)
+        void dyna_processor::init(plug::IWrapper *wrapper, plug::IPort **ports)
         {
-            plug::Module::init(wrapper);
+            plug::Module::init(wrapper, ports);
             size_t channels = (nMode == DYNA_MONO) ? 1 : 2;
 
             // Allocate channels
@@ -224,16 +224,16 @@ namespace lsp
             lsp_trace("Binding input ports");
             for (size_t i=0; i<channels; ++i)
             {
-                TRACE_PORT(vPorts[port_id]);
-                vChannels[i].pIn        =   vPorts[port_id++];
+                TRACE_PORT(ports[port_id]);
+                vChannels[i].pIn        =   ports[port_id++];
             }
 
             // Input ports
             lsp_trace("Binding output ports");
             for (size_t i=0; i<channels; ++i)
             {
-                TRACE_PORT(vPorts[port_id]);
-                vChannels[i].pOut       =   vPorts[port_id++];
+                TRACE_PORT(ports[port_id]);
+                vChannels[i].pOut       =   ports[port_id++];
             }
 
             // Input ports
@@ -242,33 +242,33 @@ namespace lsp
                 lsp_trace("Binding sidechain ports");
                 for (size_t i=0; i<channels; ++i)
                 {
-                    TRACE_PORT(vPorts[port_id]);
-                    vChannels[i].pSC        =   vPorts[port_id++];
+                    TRACE_PORT(ports[port_id]);
+                    vChannels[i].pSC        =   ports[port_id++];
                 }
             }
 
             // Common ports
             lsp_trace("Binding common ports");
-            TRACE_PORT(vPorts[port_id]);
-            pBypass                 =   vPorts[port_id++];
-            TRACE_PORT(vPorts[port_id]);
-            pInGain                 =   vPorts[port_id++];
-            TRACE_PORT(vPorts[port_id]);
-            pOutGain                =   vPorts[port_id++];
-            TRACE_PORT(vPorts[port_id]);
-            pPause                  =   vPorts[port_id++];
-            TRACE_PORT(vPorts[port_id]);
-            pClear                  =   vPorts[port_id++];
+            TRACE_PORT(ports[port_id]);
+            pBypass                 =   ports[port_id++];
+            TRACE_PORT(ports[port_id]);
+            pInGain                 =   ports[port_id++];
+            TRACE_PORT(ports[port_id]);
+            pOutGain                =   ports[port_id++];
+            TRACE_PORT(ports[port_id]);
+            pPause                  =   ports[port_id++];
+            TRACE_PORT(ports[port_id]);
+            pClear                  =   ports[port_id++];
             if ((nMode == DYNA_LR) || (nMode == DYNA_MS))
             {
                 // Skip processor selector
-                TRACE_PORT(vPorts[port_id]);
+                TRACE_PORT(ports[port_id]);
                 port_id++;
 
                 if (nMode == DYNA_MS)
                 {
-                    TRACE_PORT(vPorts[port_id]);
-                    pMSListen               =   vPorts[port_id++];
+                    TRACE_PORT(ports[port_id]);
+                    pMSListen               =   ports[port_id++];
                 }
             }
 
@@ -295,31 +295,31 @@ namespace lsp
                 }
                 else
                 {
-                    TRACE_PORT(vPorts[port_id]);
-                    c->pScType          =   vPorts[port_id++];
-                    TRACE_PORT(vPorts[port_id]);
-                    c->pScMode          =   vPorts[port_id++];
-                    TRACE_PORT(vPorts[port_id]);
-                    c->pScLookahead     =   vPorts[port_id++];
-                    TRACE_PORT(vPorts[port_id]);
-                    c->pScListen        =   vPorts[port_id++];
+                    TRACE_PORT(ports[port_id]);
+                    c->pScType          =   ports[port_id++];
+                    TRACE_PORT(ports[port_id]);
+                    c->pScMode          =   ports[port_id++];
+                    TRACE_PORT(ports[port_id]);
+                    c->pScLookahead     =   ports[port_id++];
+                    TRACE_PORT(ports[port_id]);
+                    c->pScListen        =   ports[port_id++];
                     if (nMode != DYNA_MONO)
                     {
-                        TRACE_PORT(vPorts[port_id]);
-                        c->pScSource        =   vPorts[port_id++];
+                        TRACE_PORT(ports[port_id]);
+                        c->pScSource        =   ports[port_id++];
                     }
-                    TRACE_PORT(vPorts[port_id]);
-                    c->pScReactivity    =   vPorts[port_id++];
-                    TRACE_PORT(vPorts[port_id]);
-                    c->pScPreamp        =   vPorts[port_id++];
-                    TRACE_PORT(vPorts[port_id]);
-                    c->pScHpfMode       =   vPorts[port_id++];
-                    TRACE_PORT(vPorts[port_id]);
-                    c->pScHpfFreq       =   vPorts[port_id++];
-                    TRACE_PORT(vPorts[port_id]);
-                    c->pScLpfMode       =   vPorts[port_id++];
-                    TRACE_PORT(vPorts[port_id]);
-                    c->pScLpfFreq       =   vPorts[port_id++];
+                    TRACE_PORT(ports[port_id]);
+                    c->pScReactivity    =   ports[port_id++];
+                    TRACE_PORT(ports[port_id]);
+                    c->pScPreamp        =   ports[port_id++];
+                    TRACE_PORT(ports[port_id]);
+                    c->pScHpfMode       =   ports[port_id++];
+                    TRACE_PORT(ports[port_id]);
+                    c->pScHpfFreq       =   ports[port_id++];
+                    TRACE_PORT(ports[port_id]);
+                    c->pScLpfMode       =   ports[port_id++];
+                    TRACE_PORT(ports[port_id]);
+                    c->pScLpfFreq       =   ports[port_id++];
                 }
             }
 
@@ -358,74 +358,74 @@ namespace lsp
                 }
                 else
                 {
-                    TRACE_PORT(vPorts[port_id]);
-                    c->pAttackTime[0]   =   vPorts[port_id++];
-                    TRACE_PORT(vPorts[port_id]);
-                    c->pReleaseTime[0]  =   vPorts[port_id++];
+                    TRACE_PORT(ports[port_id]);
+                    c->pAttackTime[0]   =   ports[port_id++];
+                    TRACE_PORT(ports[port_id]);
+                    c->pReleaseTime[0]  =   ports[port_id++];
 
                     for (size_t j=0; j<meta::dyna_processor_metadata::DOTS; ++j)
                     {
-                        TRACE_PORT(vPorts[port_id]);
-                        c->pDotOn[j]        = vPorts[port_id++];
-                        TRACE_PORT(vPorts[port_id]);
-                        c->pThreshold[j]    = vPorts[port_id++];
-                        TRACE_PORT(vPorts[port_id]);
-                        c->pGain[j]         = vPorts[port_id++];
-                        TRACE_PORT(vPorts[port_id]);
-                        c->pKnee[j]         = vPorts[port_id++];
-                        TRACE_PORT(vPorts[port_id]);
-                        c->pAttackOn[j]     = vPorts[port_id++];
-                        TRACE_PORT(vPorts[port_id]);
-                        c->pAttackLvl[j]    = vPorts[port_id++];
-                        TRACE_PORT(vPorts[port_id]);
-                        c->pAttackTime[j+1] = vPorts[port_id++];
-                        TRACE_PORT(vPorts[port_id]);
-                        c->pReleaseOn[j]    = vPorts[port_id++];
-                        TRACE_PORT(vPorts[port_id]);
-                        c->pReleaseLvl[j]   = vPorts[port_id++];
-                        TRACE_PORT(vPorts[port_id]);
-                        c->pReleaseTime[j+1]= vPorts[port_id++];
+                        TRACE_PORT(ports[port_id]);
+                        c->pDotOn[j]        = ports[port_id++];
+                        TRACE_PORT(ports[port_id]);
+                        c->pThreshold[j]    = ports[port_id++];
+                        TRACE_PORT(ports[port_id]);
+                        c->pGain[j]         = ports[port_id++];
+                        TRACE_PORT(ports[port_id]);
+                        c->pKnee[j]         = ports[port_id++];
+                        TRACE_PORT(ports[port_id]);
+                        c->pAttackOn[j]     = ports[port_id++];
+                        TRACE_PORT(ports[port_id]);
+                        c->pAttackLvl[j]    = ports[port_id++];
+                        TRACE_PORT(ports[port_id]);
+                        c->pAttackTime[j+1] = ports[port_id++];
+                        TRACE_PORT(ports[port_id]);
+                        c->pReleaseOn[j]    = ports[port_id++];
+                        TRACE_PORT(ports[port_id]);
+                        c->pReleaseLvl[j]   = ports[port_id++];
+                        TRACE_PORT(ports[port_id]);
+                        c->pReleaseTime[j+1]= ports[port_id++];
                     }
 
-                    TRACE_PORT(vPorts[port_id]);
-                    c->pLowRatio        =   vPorts[port_id++];
-                    TRACE_PORT(vPorts[port_id]);
-                    c->pHighRatio       =   vPorts[port_id++];
-                    TRACE_PORT(vPorts[port_id]);
-                    c->pMakeup          =   vPorts[port_id++];
-                    TRACE_PORT(vPorts[port_id]);
-                    c->pDryGain         =   vPorts[port_id++];
-                    TRACE_PORT(vPorts[port_id]);
-                    c->pWetGain         =   vPorts[port_id++];
+                    TRACE_PORT(ports[port_id]);
+                    c->pLowRatio        =   ports[port_id++];
+                    TRACE_PORT(ports[port_id]);
+                    c->pHighRatio       =   ports[port_id++];
+                    TRACE_PORT(ports[port_id]);
+                    c->pMakeup          =   ports[port_id++];
+                    TRACE_PORT(ports[port_id]);
+                    c->pDryGain         =   ports[port_id++];
+                    TRACE_PORT(ports[port_id]);
+                    c->pWetGain         =   ports[port_id++];
 
                     // Skip meters visibility controls
-                    TRACE_PORT(vPorts[port_id]);
+                    TRACE_PORT(ports[port_id]);
                     port_id++;
-                    TRACE_PORT(vPorts[port_id]);
+                    TRACE_PORT(ports[port_id]);
                     port_id++;
-                    TRACE_PORT(vPorts[port_id]);
+                    TRACE_PORT(ports[port_id]);
                     port_id++;
-                    TRACE_PORT(vPorts[port_id]);
+                    TRACE_PORT(ports[port_id]);
                     port_id++;
 
-                    TRACE_PORT(vPorts[port_id]);
-                    c->pModel           =   vPorts[port_id++];
-                    TRACE_PORT(vPorts[port_id]);
-                    c->pCurve           =   vPorts[port_id++];
-                    TRACE_PORT(vPorts[port_id]);
-                    c->pGraph[G_SC]     =   vPorts[port_id++];
-                    TRACE_PORT(vPorts[port_id]);
-                    c->pGraph[G_ENV]    =   vPorts[port_id++];
-                    TRACE_PORT(vPorts[port_id]);
-                    c->pGraph[G_GAIN]   =   vPorts[port_id++];
-                    TRACE_PORT(vPorts[port_id]);
-                    c->pMeter[M_SC]     =   vPorts[port_id++];
-                    TRACE_PORT(vPorts[port_id]);
-                    c->pMeter[M_CURVE]  =   vPorts[port_id++];
-                    TRACE_PORT(vPorts[port_id]);
-                    c->pMeter[M_ENV]    =   vPorts[port_id++];
-                    TRACE_PORT(vPorts[port_id]);
-                    c->pMeter[M_GAIN]   =   vPorts[port_id++];
+                    TRACE_PORT(ports[port_id]);
+                    c->pModel           =   ports[port_id++];
+                    TRACE_PORT(ports[port_id]);
+                    c->pCurve           =   ports[port_id++];
+                    TRACE_PORT(ports[port_id]);
+                    c->pGraph[G_SC]     =   ports[port_id++];
+                    TRACE_PORT(ports[port_id]);
+                    c->pGraph[G_ENV]    =   ports[port_id++];
+                    TRACE_PORT(ports[port_id]);
+                    c->pGraph[G_GAIN]   =   ports[port_id++];
+                    TRACE_PORT(ports[port_id]);
+                    c->pMeter[M_SC]     =   ports[port_id++];
+                    TRACE_PORT(ports[port_id]);
+                    c->pMeter[M_CURVE]  =   ports[port_id++];
+                    TRACE_PORT(ports[port_id]);
+                    c->pMeter[M_ENV]    =   ports[port_id++];
+                    TRACE_PORT(ports[port_id]);
+                    c->pMeter[M_GAIN]   =   ports[port_id++];
                 }
             }
 
@@ -436,20 +436,20 @@ namespace lsp
                 channel_t *c = &vChannels[i];
 
                 // Skip meters visibility controls
-                TRACE_PORT(vPorts[port_id]);
+                TRACE_PORT(ports[port_id]);
                 port_id++;
-                TRACE_PORT(vPorts[port_id]);
+                TRACE_PORT(ports[port_id]);
                 port_id++;
 
                 // Bind ports
-                TRACE_PORT(vPorts[port_id]);
-                c->pGraph[G_IN]     =   vPorts[port_id++];
-                TRACE_PORT(vPorts[port_id]);
-                c->pGraph[G_OUT]    =   vPorts[port_id++];
-                TRACE_PORT(vPorts[port_id]);
-                c->pMeter[M_IN]     =   vPorts[port_id++];
-                TRACE_PORT(vPorts[port_id]);
-                c->pMeter[M_OUT]    =   vPorts[port_id++];
+                TRACE_PORT(ports[port_id]);
+                c->pGraph[G_IN]     =   ports[port_id++];
+                TRACE_PORT(ports[port_id]);
+                c->pGraph[G_OUT]    =   ports[port_id++];
+                TRACE_PORT(ports[port_id]);
+                c->pMeter[M_IN]     =   ports[port_id++];
+                TRACE_PORT(ports[port_id]);
+                c->pMeter[M_OUT]    =   ports[port_id++];
             }
 
             // Initialize curve (logarithmic) in range of -72 .. +24 db
