@@ -18,13 +18,6 @@
 # along with lsp-plugins-dyna-processor.  If not, see <https://www.gnu.org/licenses/>.
 #
 
-# Package version
-ARTIFACT_ID                 = LSP_PLUGINS_DYNA_PROCESSOR
-ARTIFACT_NAME               = lsp-plugins-dyna-processor
-ARTIFACT_TYPE               = plug
-ARTIFACT_DESC               = LSP Dynamic Processor Plugin Series
-ARTIFACT_HEADERS            = lsp-plug.in
-ARTIFACT_VERSION            = 1.0.3-devel
-
-
-
+# Variables that describe dependencies
+PLUGIN_DEPENDENCIES     = LSP_PLUGINS_DYNA_PROCESSOR
+PLUGIN_PACKAGE_NAME     = lsp-plugins
