@@ -294,6 +294,15 @@ namespace lsp
             PORTS_END
         };
 
+        const meta::bundle_t dyna_processor_bundle =
+        {
+            "dyna_processor",
+            "Dynamic Processor",
+            B_DYNAMICS,
+            "rvEhP_PRtzk",
+            "This plugin performs dynamic processing of input signal. Flexible\nsidechain-control configuration provided. There are possible different\nvariants of dynamic processor to build: compressor, limiter, gate,\nexpander, some kind of transient designer and many others due to\npossibility of flexible dynamic curve configuration. Also dynamic\nrange can be split into sub-ranges that may have their individual\nattack and release timings."
+        };
+
         // Dynamic Processor
         const meta::plugin_t  dyna_processor_mono =
         {
@@ -313,7 +322,8 @@ namespace lsp
             dyna_processor_mono_ports,
             "dynamics/processor/single/mono.xml",
             NULL,
-            mono_plugin_port_groups
+            mono_plugin_port_groups,
+            &dyna_processor_bundle
         };
 
         const meta::plugin_t  dyna_processor_stereo =
@@ -334,7 +344,8 @@ namespace lsp
             dyna_processor_stereo_ports,
             "dynamics/processor/single/stereo.xml",
             NULL,
-            stereo_plugin_port_groups
+            stereo_plugin_port_groups,
+            &dyna_processor_bundle
         };
 
         const meta::plugin_t  dyna_processor_lr =
@@ -355,7 +366,8 @@ namespace lsp
             dyna_processor_lr_ports,
             "dynamics/processor/single/lr.xml",
             NULL,
-            stereo_plugin_port_groups
+            stereo_plugin_port_groups,
+            &dyna_processor_bundle
         };
 
         const meta::plugin_t  dyna_processor_ms =
@@ -376,7 +388,8 @@ namespace lsp
             dyna_processor_ms_ports,
             "dynamics/processor/single/ms.xml",
             NULL,
-            stereo_plugin_port_groups
+            stereo_plugin_port_groups,
+            &dyna_processor_bundle
         };
 
         // Sidechain compressor
@@ -398,7 +411,8 @@ namespace lsp
             sc_dyna_processor_mono_ports,
             "dynamics/processor/single/mono.xml",
             NULL,
-            mono_plugin_sidechain_port_groups
+            mono_plugin_sidechain_port_groups,
+            &dyna_processor_bundle
         };
 
         const meta::plugin_t  sc_dyna_processor_stereo =
@@ -419,7 +433,8 @@ namespace lsp
             sc_dyna_processor_stereo_ports,
             "dynamics/processor/single/stereo.xml",
             NULL,
-            stereo_plugin_sidechain_port_groups
+            stereo_plugin_sidechain_port_groups,
+            &dyna_processor_bundle
         };
 
         const meta::plugin_t  sc_dyna_processor_lr =
@@ -440,7 +455,8 @@ namespace lsp
             sc_dyna_processor_lr_ports,
             "dynamics/processor/single/lr.xml",
             NULL,
-            stereo_plugin_sidechain_port_groups
+            stereo_plugin_sidechain_port_groups,
+            &dyna_processor_bundle
         };
 
         const meta::plugin_t  sc_dyna_processor_ms =
@@ -461,7 +477,8 @@ namespace lsp
             sc_dyna_processor_ms_ports,
             "dynamics/processor/single/ms.xml",
             NULL,
-            stereo_plugin_sidechain_port_groups
+            stereo_plugin_sidechain_port_groups,
+            &dyna_processor_bundle
         };
     } // namespace meta
 } // namespace lsp
