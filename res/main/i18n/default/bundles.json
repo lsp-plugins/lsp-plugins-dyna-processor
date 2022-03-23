@@ -1,0 +1,7 @@
+{
+	"dyna_processor": {
+		"name": "Dynamic Processor",
+		"description": "This plugin performs dynamic processing of input signal. Flexible\nsidechain-control configuration provided. There are possible different\nvariants of dynamic processor to build: compressor, limiter, gate,\nexpander, some kind of transient designer and many others due to\npossibility of flexible dynamic curve configuration. Also dynamic\nrange can be split into sub-ranges that may have their individual\nattack and release timings."
+	}
+}
+
