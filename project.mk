@@ -24,7 +24,7 @@ ARTIFACT_NAME               = lsp-plugins-dyna-processor
 ARTIFACT_TYPE               = plug
 ARTIFACT_DESC               = LSP Dynamic Processor Plugin Series
 ARTIFACT_HEADERS            = lsp-plug.in
-ARTIFACT_VERSION            = 1.0.4
+ARTIFACT_VERSION            = 1.0.5-devel
 
 
 
