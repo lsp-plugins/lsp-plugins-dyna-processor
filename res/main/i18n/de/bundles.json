@@ -1,0 +1,7 @@
+{
+	"dyna_processor": {
+		"name": "Dynamic Processor",
+		"description": "Dieses Plugin verarbeitet dynamisch das Eingangssignal. Die Sidechain\n kann flexibel konfiguriert werden. Verschiedene Varianten der \ndynamischen Verarbeitung sind: Kompressor, Limiter, Gate,\nExpander, eine Art Transient-Gestalter und, dank vieler \nMöglichkeiten der Kurvengestaltung, eine Menge mehr. Die dynamische\nBandbreite kann sogar in Sub-Bänder gespalten werden, die ihre jeweils eigenen \nAttack- und Releasezeiten zugewiesen bekommen können."
+	}
+}
+
