@@ -60,6 +60,8 @@ namespace lsp
             { "Side",           "sidechain.side"            },
             { "Left",           "sidechain.left"            },
             { "Right",          "sidechain.right"           },
+            { "Min",            "sidechain.min"             },
+            { "Max",            "sidechain.max"             },
             { NULL, NULL }
         };
 
