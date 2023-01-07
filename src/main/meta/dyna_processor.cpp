@@ -40,10 +40,13 @@ namespace lsp
     {
         //-------------------------------------------------------------------------
         // Dynamic Processor
-        static const int dyna_processor_classes[] =
+        static const int plugin_classes[] =
         {
             C_DYNAMICS, -1
         };
+
+        static const int clap_features_mono[]       = { CF_AUDIO_EFFECT, CF_MONO, -1 };
+        static const int clap_features_stereo[]     = { CF_AUDIO_EFFECT, CF_STEREO, -1 };
 
         static const port_item_t dyna_proc_sc_modes[] =
         {
@@ -318,8 +321,10 @@ namespace lsp
             "lqpm",
             LSP_LADSPA_DYNAMIC_PROCESSOR_BASE + 0,
             LSP_LADSPA_URI("dyna_processor_mono"),
+            LSP_CLAP_URI("dyna_processor_mono"),
             LSP_PLUGINS_DYNA_PROCESSOR_VERSION,
-            dyna_processor_classes,
+            plugin_classes,
+            clap_features_mono,
             E_INLINE_DISPLAY | E_DUMP_STATE,
             dyna_processor_mono_ports,
             "dynamics/processor/single/mono.xml",
@@ -340,8 +345,10 @@ namespace lsp
             "aat9",
             LSP_LADSPA_DYNAMIC_PROCESSOR_BASE + 1,
             LSP_LADSPA_URI("dyna_processor_stereo"),
+            LSP_CLAP_URI("dyna_processor_stereo"),
             LSP_PLUGINS_DYNA_PROCESSOR_VERSION,
-            dyna_processor_classes,
+            plugin_classes,
+            clap_features_stereo,
             E_INLINE_DISPLAY | E_DUMP_STATE,
             dyna_processor_stereo_ports,
             "dynamics/processor/single/stereo.xml",
@@ -362,8 +369,10 @@ namespace lsp
             "hl9g",
             LSP_LADSPA_DYNAMIC_PROCESSOR_BASE + 2,
             LSP_LADSPA_URI("dyna_processor_lr"),
+            LSP_CLAP_URI("dyna_processor_lr"),
             LSP_PLUGINS_DYNA_PROCESSOR_VERSION,
-            dyna_processor_classes,
+            plugin_classes,
+            clap_features_stereo,
             E_INLINE_DISPLAY | E_DUMP_STATE,
             dyna_processor_lr_ports,
             "dynamics/processor/single/lr.xml",
@@ -384,8 +393,10 @@ namespace lsp
             "uvrg",
             LSP_LADSPA_DYNAMIC_PROCESSOR_BASE + 3,
             LSP_LADSPA_URI("dyna_processor_ms"),
+            LSP_CLAP_URI("dyna_processor_ms"),
             LSP_PLUGINS_DYNA_PROCESSOR_VERSION,
-            dyna_processor_classes,
+            plugin_classes,
+            clap_features_stereo,
             E_INLINE_DISPLAY | E_DUMP_STATE,
             dyna_processor_ms_ports,
             "dynamics/processor/single/ms.xml",
@@ -407,8 +418,10 @@ namespace lsp
             "apkx",
             LSP_LADSPA_DYNAMIC_PROCESSOR_BASE + 4,
             LSP_LADSPA_URI("sc_dyna_processor_mono"),
+            LSP_CLAP_URI("sc_dyna_processor_mono"),
             LSP_PLUGINS_DYNA_PROCESSOR_VERSION,
-            dyna_processor_classes,
+            plugin_classes,
+            clap_features_mono,
             E_INLINE_DISPLAY | E_DUMP_STATE,
             sc_dyna_processor_mono_ports,
             "dynamics/processor/single/mono.xml",
@@ -429,8 +442,10 @@ namespace lsp
             "fqne",
             LSP_LADSPA_DYNAMIC_PROCESSOR_BASE + 5,
             LSP_LADSPA_URI("sc_dyna_processor_stereo"),
+            LSP_CLAP_URI("sc_dyna_processor_stereo"),
             LSP_PLUGINS_DYNA_PROCESSOR_VERSION,
-            dyna_processor_classes,
+            plugin_classes,
+            clap_features_stereo,
             E_INLINE_DISPLAY | E_DUMP_STATE,
             sc_dyna_processor_stereo_ports,
             "dynamics/processor/single/stereo.xml",
@@ -451,8 +466,10 @@ namespace lsp
             "sxmi",
             LSP_LADSPA_DYNAMIC_PROCESSOR_BASE + 6,
             LSP_LADSPA_URI("sc_dyna_processor_lr"),
+            LSP_CLAP_URI("sc_dyna_processor_lr"),
             LSP_PLUGINS_DYNA_PROCESSOR_VERSION,
-            dyna_processor_classes,
+            plugin_classes,
+            clap_features_stereo,
             E_INLINE_DISPLAY | E_DUMP_STATE,
             sc_dyna_processor_lr_ports,
             "dynamics/processor/single/lr.xml",
@@ -473,8 +490,10 @@ namespace lsp
             "fcj9",
             LSP_LADSPA_DYNAMIC_PROCESSOR_BASE + 7,
             LSP_LADSPA_URI("sc_dyna_processor_ms"),
+            LSP_CLAP_URI("sc_dyna_processor_ms"),
             LSP_PLUGINS_DYNA_PROCESSOR_VERSION,
-            dyna_processor_classes,
+            plugin_classes,
+            clap_features_stereo,
             E_INLINE_DISPLAY | E_DUMP_STATE,
             sc_dyna_processor_ms_ports,
             "dynamics/processor/single/ms.xml",
@@ -482,5 +501,5 @@ namespace lsp
             stereo_plugin_sidechain_port_groups,
             &dyna_processor_bundle
         };
-    } // namespace meta
-} // namespace lsp
+    } /* namespace meta */
+} /* namespace lsp */
