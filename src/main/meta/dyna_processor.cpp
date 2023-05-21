@@ -25,7 +25,7 @@
 
 #define LSP_PLUGINS_DYNA_PROCESSOR_VERSION_MAJOR       1
 #define LSP_PLUGINS_DYNA_PROCESSOR_VERSION_MINOR       0
-#define LSP_PLUGINS_DYNA_PROCESSOR_VERSION_MICRO       12
+#define LSP_PLUGINS_DYNA_PROCESSOR_VERSION_MICRO       13
 
 #define LSP_PLUGINS_DYNA_PROCESSOR_VERSION  \
     LSP_MODULE_VERSION( \
@@ -39,7 +39,7 @@ namespace lsp
     namespace meta
     {
         //-------------------------------------------------------------------------
-        // Dynamic Processor
+        // Dynamics Processor
         static const int plugin_classes[] =
         {
             C_DYNAMICS, -1
@@ -302,17 +302,17 @@ namespace lsp
         const meta::bundle_t dyna_processor_bundle =
         {
             "dyna_processor",
-            "Dynamic Processor",
+            "Dynamics Processor",
             B_DYNAMICS,
             "rvEhP_PRtzk",
-            "This plugin performs dynamic processing of input signal. Flexible\nsidechain-control configuration provided. There are possible different\nvariants of dynamic processor to build: compressor, limiter, gate,\nexpander, some kind of transient designer and many others due to\npossibility of flexible dynamic curve configuration. Also dynamic\nrange can be split into sub-ranges that may have their individual\nattack and release timings."
+            "This plugin performs dynamics processing of input signal. Flexible\nsidechain-control configuration provided. There are possible different\nvariants of dynamics processor to build: compressor, limiter, gate,\nexpander, some kind of transient designer and many others due to\npossibility of flexible dynamic curve configuration. Also dynamic\nrange can be split into sub-ranges that may have their individual\nattack and release timings."
         };
 
-        // Dynamic Processor
+        // Dynamics Processor
         const meta::plugin_t  dyna_processor_mono =
         {
             "Dynamikprozessor Mono",
-            "Dynamic Processor Mono",
+            "Dynamics Processor Mono",
             "DP1M",
             &developers::v_sadovnikov,
             "dyna_processor_mono",
@@ -336,7 +336,7 @@ namespace lsp
         const meta::plugin_t  dyna_processor_stereo =
         {
             "Dynamikprozessor Stereo",
-            "Dynamic Processor Stereo",
+            "Dynamics Processor Stereo",
             "DP1S",
             &developers::v_sadovnikov,
             "dyna_processor_stereo",
@@ -360,7 +360,7 @@ namespace lsp
         const meta::plugin_t  dyna_processor_lr =
         {
             "Dynamikprozessor LeftRight",
-            "Dynamic Processor LeftRight",
+            "Dynamics Processor LeftRight",
             "DP1LR",
             &developers::v_sadovnikov,
             "dyna_processor_lr",
@@ -384,7 +384,7 @@ namespace lsp
         const meta::plugin_t  dyna_processor_ms =
         {
             "Dynamikprozessor MidSide",
-            "Dynamic Processor MidSide",
+            "Dynamics Processor MidSide",
             "DP1MS",
             &developers::v_sadovnikov,
             "dyna_processor_ms",
@@ -409,7 +409,7 @@ namespace lsp
         const meta::plugin_t  sc_dyna_processor_mono =
         {
             "Sidechain-Dynamikprozessor Mono",
-            "Sidechain Dynamic Processor Mono",
+            "Sidechain Dynamics Processor Mono",
             "SCDP1M",
             &developers::v_sadovnikov,
             "sc_dyna_processor_mono",
@@ -433,7 +433,7 @@ namespace lsp
         const meta::plugin_t  sc_dyna_processor_stereo =
         {
             "Sidechain-Dynamikprozessor Stereo",
-            "Sidechain Dynamic Processor Stereo",
+            "Sidechain Dynamics Processor Stereo",
             "SCDP1S",
             &developers::v_sadovnikov,
             "sc_dyna_processor_stereo",
@@ -457,7 +457,7 @@ namespace lsp
         const meta::plugin_t  sc_dyna_processor_lr =
         {
             "Sidechain-Dynamikprozessor LeftRight",
-            "Sidechain Dynamic Processor LeftRight",
+            "Sidechain Dynamics Processor LeftRight",
             "SCDP1LR",
             &developers::v_sadovnikov,
             "sc_dyna_processor_lr",
@@ -481,7 +481,7 @@ namespace lsp
         const meta::plugin_t  sc_dyna_processor_ms =
         {
             "Sidechain-Dynamikprozessor MidSide",
-            "Sidechain Dynamic Processor MidSide",
+            "Sidechain Dynamics Processor MidSide",
             "SCDP1MS",
             &developers::v_sadovnikov,
             "sc_dyna_processor_ms",
