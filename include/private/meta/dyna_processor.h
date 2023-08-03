@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2021 Linux Studio Plugins Project <https://lsp-plug.in/>
- *           (C) 2021 Vladimir Sadovnikov <sadko4u@gmail.com>
+ * Copyright (C) 2023 Linux Studio Plugins Project <https://lsp-plug.in/>
+ *           (C) 2023 Vladimir Sadovnikov <sadko4u@gmail.com>
  *
  * This file is part of lsp-plugins-dyna-processor
  * Created on: 3 авг. 2021 г.
@@ -84,6 +84,7 @@ namespace lsp
 
             static constexpr size_t SC_MODE_DFL             = 1;
             static constexpr size_t SC_SOURCE_DFL           = 0;
+            static constexpr size_t SC_SPLIT_SOURCE_DFL     = 0;
             static constexpr size_t SC_TYPE_DFL             = 0;
 
             static constexpr float  HPF_MIN                 = 10.0f;
@@ -116,8 +117,8 @@ namespace lsp
         extern const meta::plugin_t sc_dyna_processor_lr;
         extern const meta::plugin_t sc_dyna_processor_ms;
 
-    } // namespace meta
-} // namespace lsp
+    } /* namespace meta */
+} /* namespace lsp */
 
 
 #endif /* PRIVATE_META_DYNA_PROCESSOR_H_ */

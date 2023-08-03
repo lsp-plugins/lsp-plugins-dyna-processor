@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2021 Linux Studio Plugins Project <https://lsp-plug.in/>
- *           (C) 2021 Vladimir Sadovnikov <sadko4u@gmail.com>
+ * Copyright (C) 2023 Linux Studio Plugins Project <https://lsp-plug.in/>
+ *           (C) 2023 Vladimir Sadovnikov <sadko4u@gmail.com>
  *
  * This file is part of lsp-plugins-dyna-processor
  * Created on: 3 авг. 2021 г.
@@ -68,6 +68,17 @@ namespace lsp
             { NULL, NULL }
         };
 
+        static const port_item_t dyna_proc_sc_split_sources[] =
+        {
+            { "Left/Right",     "sidechain.left_right"      },
+            { "Right/Left",     "sidechain.right_left"      },
+            { "Mid/Side",       "sidechain.mid_side"        },
+            { "Side/Mid",       "sidechain.side_mid"        },
+            { "Min",            "sidechain.min"             },
+            { "Max",            "sidechain.max"             },
+            { NULL, NULL }
+        };
+
         static const port_item_t dyna_proc_sc_type[] =
         {
             { "Feed-forward",   "sidechain.feed_forward"    },
@@ -122,6 +133,10 @@ namespace lsp
             COMBO("psel", "Processor selector", 0, dyna_proc_sel_ms), \
             SWITCH("msl", "Mid/Side listen", 0.0f)
 
+        #define DYNA_PROC_SPLIT_COMMON \
+            SWITCH("ssplit", "Stereo split", 0.0f), \
+            COMBO("sscs", "Split sidechain source", dyna_processor_metadata::SC_SPLIT_SOURCE_DFL, dyna_proc_sc_split_sources)
+
         #define DYNA_PROC_SC_MONO_CHANNEL(sct) \
             COMBO("sct", "Sidechain type", dyna_processor_metadata::SC_TYPE_DFL, sct), \
             COMBO("scm", "Sidechain mode", dyna_processor_metadata::SC_MODE_DFL, dyna_proc_sc_modes), \
@@ -172,24 +187,24 @@ namespace lsp
             AMP_GAIN10("cdr" id, "Dry gain" label, GAIN_AMP_M_INF_DB),     \
             AMP_GAIN10("cwt" id, "Wet gain" label, GAIN_AMP_0_DB), \
             SWITCH("cmv" id, "Curve modelling visibility" label, 1.0f), \
+            MESH("cmg" id, "Curve modelling graph" label, 2, dyna_processor_metadata::CURVE_MESH_SIZE), \
+            MESH("ccg" id, "Curve graph" label, 2, dyna_processor_metadata::CURVE_MESH_SIZE)
+
+        #define DYNA_PROC_AUDIO_METER(id, label) \
             SWITCH("slv" id, "Sidechain level visibility" label, 1.0f), \
             SWITCH("elv" id, "Envelope level visibility" label, 1.0f), \
             SWITCH("grv" id, "Gain reduction visibility" label, 1.0f), \
-            MESH("cmg" id, "Curve modelling graph" label, 2, dyna_processor_metadata::CURVE_MESH_SIZE), \
-            MESH("ccg" id, "Curve graph" label, 2, dyna_processor_metadata::CURVE_MESH_SIZE), \
+            SWITCH("ilv" id, "Input level visibility" label, 1.0f), \
+            SWITCH("olv" id, "Output level visibility" label, 1.0f), \
             MESH("scg" id, "Sidechain graph" label, 2, dyna_processor_metadata::TIME_MESH_SIZE), \
             MESH("evg" id, "Envelope graph" label, 2, dyna_processor_metadata::TIME_MESH_SIZE), \
             MESH("grg" id, "Gain reduciton" label, 2, dyna_processor_metadata::TIME_MESH_SIZE), \
+            MESH("isg" id, "Input signal graph" label, 2, dyna_processor_metadata::TIME_MESH_SIZE), \
+            MESH("osg" id, "Output signal graph" label, 2, dyna_processor_metadata::TIME_MESH_SIZE), \
             METER_OUT_GAIN("slm" id, "Sidechain level meter" label, GAIN_AMP_P_36_DB), \
             METER_OUT_GAIN("clm" id, "Curve level meter" label, GAIN_AMP_P_36_DB), \
             METER_OUT_GAIN("elm" id, "Envelope level meter" label, GAIN_AMP_P_36_DB), \
-            METER_GAIN_DFL("rlm" id, "Reduction level meter" label, GAIN_AMP_P_60_DB, GAIN_AMP_0_DB)
-
-        #define DYNA_PROC_AUDIO_METER(id, label) \
-            SWITCH("ilv" id, "Input level visibility" label, 1.0f), \
-            SWITCH("olv" id, "Output level visibility" label, 1.0f), \
-            MESH("isg" id, "Input signal graph" label, 2, dyna_processor_metadata::TIME_MESH_SIZE), \
-            MESH("osg" id, "Output signal graph" label, 2, dyna_processor_metadata::TIME_MESH_SIZE), \
+            METER_GAIN_DFL("rlm" id, "Reduction level meter" label, GAIN_AMP_P_60_DB, GAIN_AMP_0_DB), \
             METER_GAIN("ilm" id, "Input level meter" label, GAIN_AMP_P_36_DB), \
             METER_GAIN("olm" id, "Output level meter" label, GAIN_AMP_P_36_DB)
 
@@ -208,6 +223,7 @@ namespace lsp
         {
             PORTS_STEREO_PLUGIN,
             DYNA_PROC_COMMON,
+            DYNA_PROC_SPLIT_COMMON,
             DYNA_PROC_SC_STEREO_CHANNEL("", "", dyna_proc_sc_type),
             DYNA_PROC_CHANNEL("", ""),
             DYNA_PROC_AUDIO_METER("_l", " Left"),
@@ -261,6 +277,7 @@ namespace lsp
             PORTS_STEREO_PLUGIN,
             PORTS_STEREO_SIDECHAIN,
             DYNA_PROC_COMMON,
+            DYNA_PROC_SPLIT_COMMON,
             DYNA_PROC_SC_STEREO_CHANNEL("", "", dyna_proc_extsc_type),
             DYNA_PROC_CHANNEL("", ""),
             DYNA_PROC_AUDIO_METER("_l", " Left"),
