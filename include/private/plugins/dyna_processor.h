@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2021 Linux Studio Plugins Project <https://lsp-plug.in/>
- *           (C) 2021 Vladimir Sadovnikov <sadko4u@gmail.com>
+ * Copyright (C) 2023 Linux Studio Plugins Project <https://lsp-plug.in/>
+ *           (C) 2023 Vladimir Sadovnikov <sadko4u@gmail.com>
  *
  * This file is part of lsp-plugins-dyna-processor
  * Created on: 3 авг. 2021 г.
@@ -166,6 +166,7 @@ namespace lsp
                 bool                    bPause;         // Pause button
                 bool                    bClear;         // Clear button
                 bool                    bMSListen;      // Mid/Side listen
+                bool                    bStereoSplit;   // Stereo split
                 float                   fInGain;        // Input gain
                 bool                    bUISync;
                 core::IDBuffer         *pIDisplay;      // Inline display buffer
@@ -176,8 +177,13 @@ namespace lsp
                 plug::IPort            *pPause;         // Pause gain
                 plug::IPort            *pClear;         // Cleanup gain
                 plug::IPort            *pMSListen;      // Mid/Side listen
+                plug::IPort            *pStereoSplit;   // Stereo split mode
+                plug::IPort            *pScSpSource;    // Sidechain source for stereo split mode
 
                 uint8_t                *pData;          // Allocated data
+
+            protected:
+                static dspu::sidechain_source_t     decode_sidechain_source(int source, bool split, size_t channel);
 
             protected:
                 float               process_feedback(channel_t *c, size_t i, size_t channels);
@@ -185,22 +191,22 @@ namespace lsp
 
             public:
                 dyna_processor(const meta::plugin_t *metadata, bool sc, size_t mode);
-                virtual ~dyna_processor();
+                virtual ~dyna_processor() override;
+
+                virtual void        init(plug::IWrapper *wrapper, plug::IPort **ports) override;
+                virtual void        destroy() override;
 
             public:
-                virtual void        init(plug::IWrapper *wrapper, plug::IPort **ports);
-                virtual void        destroy();
+                virtual void        update_settings() override;
+                virtual void        update_sample_rate(long sr) override;
+                virtual void        ui_activated() override;
 
-                virtual void        update_settings();
-                virtual void        update_sample_rate(long sr);
-                virtual void        ui_activated();
+                virtual void        process(size_t samples) override;
+                virtual bool        inline_display(plug::ICanvas *cv, size_t width, size_t height) override;
 
-                virtual void        process(size_t samples);
-                virtual bool        inline_display(plug::ICanvas *cv, size_t width, size_t height);
-
-                virtual void        dump(dspu::IStateDumper *v) const;
+                virtual void        dump(dspu::IStateDumper *v) const override;
         };
-    } // namespace plugins
-} // namespace lsp
+    } /* namespace plugins */
+} /* namespace lsp */
 
 #endif /* PRIVATE_PLUGINS_DYNA_PROCESSOR_H_ */
