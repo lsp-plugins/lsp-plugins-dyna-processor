@@ -188,6 +188,7 @@ namespace lsp
             protected:
                 float               process_feedback(channel_t *c, size_t i, size_t channels);
                 void                process_non_feedback(channel_t *c, float **in, size_t samples);
+                void                do_destroy();
 
             public:
                 dyna_processor(const meta::plugin_t *metadata, bool sc, size_t mode);
