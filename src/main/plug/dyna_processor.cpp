@@ -115,6 +115,7 @@ namespace lsp
 
         dyna_processor::~dyna_processor()
         {
+            do_destroy();
         }
 
         void dyna_processor::init(plug::IWrapper *wrapper, plug::IPort **ports)
@@ -422,6 +423,12 @@ namespace lsp
         }
 
         void dyna_processor::destroy()
+        {
+            Module::destroy();
+            do_destroy();
+        }
+
+        void dyna_processor::do_destroy()
         {
             if (vChannels != NULL)
             {
