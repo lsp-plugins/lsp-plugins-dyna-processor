@@ -332,19 +332,17 @@
 					<grid rows="1" cols="3" spacing="0" hexpand="true" bg.color="bg_schema">
 						<!-- Processors controls -->
 						<grid rows="13" cols="13" spacing="0" bg.color="bg_schema">
-							<ui:with pad.h="6" pad.v="4">
-								<label text="labels.specials.num" reduce="true"/>
-								<cell rows="13"><vsep bg.color="bg" pad.h="2" hreduce="true"/></cell>
-								<label text="labels.enable" reduce="true"/>
-								<cell rows="13"><vsep bg.color="bg" pad.h="2" hreduce="true"/></cell>
-								<label text="labels.thresh_old:db"/>
-								<label text="labels.gain:db"/>
-								<label text="labels.knee_:db"/>
-								<cell rows="13"><vsep bg.color="bg" pad.h="2" hreduce="true"/></cell>
-								<cell cols="2"><label text="labels.attack:db_ms"/></cell>
-								<cell rows="13"><vsep bg.color="bg" pad.h="2" hreduce="true"/></cell>
-								<cell cols="2"><label text="labels.release:db_ms"/></cell>
-							</ui:with>
+							<label text="labels.specials.num" pad.h="6" pad.v="4" reduce="true"/>
+							<cell rows="13"><vsep bg.color="bg" pad.h="2" hreduce="true"/></cell>
+							<label text="labels.enable" pad.h="6" pad.v="4" reduce="true"/>
+							<cell rows="13"><vsep bg.color="bg" pad.h="2" hreduce="true"/></cell>
+							<label text="labels.thresh_old:db" pad.h="6" pad.v="4"/>
+							<label text="labels.gain:db" pad.h="6" pad.v="4"/>
+							<label text="labels.knee_:db" pad.h="6" pad.v="4"/>
+							<cell rows="13"><vsep bg.color="bg" pad.h="2" hreduce="true"/></cell>
+							<cell cols="2"><label text="labels.attack:db_ms" pad.h="6" pad.v="4"/></cell>
+							<cell rows="13"><vsep bg.color="bg" pad.h="2" hreduce="true"/></cell>
+							<cell cols="2"><label text="labels.release:db_ms" pad.h="6" pad.v="4"/></cell>
 
 							<ui:for id="c" first="0" last="3">
 								<ui:set id="i" value="${c}${ch}"/>
