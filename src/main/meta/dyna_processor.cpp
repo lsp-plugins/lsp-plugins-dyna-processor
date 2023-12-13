@@ -330,6 +330,7 @@ namespace lsp
         {
             "Dynamikprozessor Mono",
             "Dynamics Processor Mono",
+            "Dynamics Processor Mono",
             "DP1M",
             &developers::v_sadovnikov,
             "dyna_processor_mono",
@@ -353,6 +354,7 @@ namespace lsp
         const meta::plugin_t  dyna_processor_stereo =
         {
             "Dynamikprozessor Stereo",
+            "Dynamics Processor Stereo",
             "Dynamics Processor Stereo",
             "DP1S",
             &developers::v_sadovnikov,
@@ -378,6 +380,7 @@ namespace lsp
         {
             "Dynamikprozessor LeftRight",
             "Dynamics Processor LeftRight",
+            "Dynamics Processor L/R",
             "DP1LR",
             &developers::v_sadovnikov,
             "dyna_processor_lr",
@@ -402,6 +405,7 @@ namespace lsp
         {
             "Dynamikprozessor MidSide",
             "Dynamics Processor MidSide",
+            "Dynamics Processor M/S",
             "DP1MS",
             &developers::v_sadovnikov,
             "dyna_processor_ms",
@@ -427,6 +431,7 @@ namespace lsp
         {
             "Sidechain-Dynamikprozessor Mono",
             "Sidechain Dynamics Processor Mono",
+            "SC Dynamics Processor Mono",
             "SCDP1M",
             &developers::v_sadovnikov,
             "sc_dyna_processor_mono",
@@ -451,6 +456,7 @@ namespace lsp
         {
             "Sidechain-Dynamikprozessor Stereo",
             "Sidechain Dynamics Processor Stereo",
+            "SC Dynamics Processor Stereo",
             "SCDP1S",
             &developers::v_sadovnikov,
             "sc_dyna_processor_stereo",
@@ -475,6 +481,7 @@ namespace lsp
         {
             "Sidechain-Dynamikprozessor LeftRight",
             "Sidechain Dynamics Processor LeftRight",
+            "SC Dynamics Processor L/R",
             "SCDP1LR",
             &developers::v_sadovnikov,
             "sc_dyna_processor_lr",
@@ -499,6 +506,7 @@ namespace lsp
         {
             "Sidechain-Dynamikprozessor MidSide",
             "Sidechain Dynamics Processor MidSide",
+            "SC Dynamics Processor M/S",
             "SCDP1MS",
             &developers::v_sadovnikov,
             "sc_dyna_processor_ms",
