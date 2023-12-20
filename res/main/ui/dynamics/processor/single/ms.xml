@@ -52,14 +52,6 @@
 						<axis min="0" max="5" angle="1.0" log="false" color="graph_prim" visibility="false"/>
 						<axis min="-72 db" max="24 db" angle="0.5" log="true" color="graph_prim" visibility="false"/>
 
-						<!-- Markers -->
-						<ui:attributes ox="1" oy="0">
-							<marker id="al_m" color="attack_1"/>
-							<marker id="al_s" color="attack_2"/>
-							<marker id="rl_m" color="release_1"/>
-							<marker id="rl_s" color="release_2"/>
-						</ui:attributes>
-
 						<!-- Text -->
 						<text x="5" y="-72 db" text="graph.units.s" halign="1" valign="1" color="graph_prim"/>
 						<ui:for id="t" first="0" last="4" step="1">
@@ -168,29 +160,25 @@
 					<mesh id="ccg_s" width="3" color="side" smooth="true" visibility=":cmv_s"/>
 
 					<!-- Markers -->
-					<marker id="al_m" color="attack_1" basis="0" parallel="1"/>
-					<marker id="al_s" color="attack_2" basis="0" parallel="1"/>
-					<marker id="rl_m" color="release_1" basis="0" parallel="1"/>
-					<marker id="rl_s" color="release_2" basis="0" parallel="1"/>
-					<ui:for id="i" first="0" last="3">
-						<marker id="al${i}_m" width="2" color="attack" smooth="true" visibility=":cmv_m and :ae${i}_m"/>
+					<ui:for id="i" first="0" count="4">
+						<marker id="al${i}_m" editable="true" width="2" pointer="hsize" color="attack" hcolor="attack" smooth="true" visibility=":cmv_m and :ae${i}_m"/>
 						<text x=":al${i}_m" y="24 db" text="graph.values.idM_id" text:id="${i}" color="attack" halign="-1" valign="-1" visibility=":cmv_m and :ae${i}_m"/>
-						<marker id="al${i}_s" width="2" color="attack" smooth="true" visibility=":cmv_s and :ae${i}_s"/>
+						<marker id="al${i}_s" editable="true" width="2" pointer="hsize" color="attack" hcolor="attack" smooth="true" visibility=":cmv_s and :ae${i}_s"/>
 						<text x=":al${i}_s" y="24 db" text="graph.values.idS_ide" text:id="${i}" color="attack" halign="1" valign="-1" visibility=":cmv_s and :ae${i}_s"/>
 					</ui:for>
-					<ui:for id="i" first="0" last="3">
-						<marker id="rl${i}_m" width="2" color="release" smooth="true" visibility=":cmv_m and :re${i}_m"/>
+					<ui:for id="i" first="0" count="4">
+						<marker id="rl${i}_m" editable="true" width="2" pointer="hsize" color="release" hcolor="release" smooth="true" visibility=":cmv_m and :re${i}_m"/>
 						<text x=":rl${i}_m" y="-72 db" text="graph.values.idM_id" text:id="${i}" color="release" halign="-1" valign="1" visibility=":cmv_m and :re${i}_m"/>
-						<marker id="rl${i}_s" width="2" basis="0" color="release" parallel="1" smooth="true" visibility=":cmv_s and :re${i}_s"/>
+						<marker id="rl${i}_s" editable="true" width="2" pointer="hsize" basis="0" color="release" hcolor="release" parallel="1" smooth="true" visibility=":cmv_s and :re${i}_s"/>
 						<text x=":rl${i}_s" y="-72 db" text="graph.values.idS_ide" text:id="${i}" color="release" halign="1" valign="1" visibility=":cmv_s and :re${i}_s"/>
 					</ui:for>
 
 					<!-- Dots -->
-					<ui:for id="i" first="0" last="3">
+					<ui:for id="i" first="0" count="4">
 						<dot x.id="tl${i}_m" y.id="gl${i}_m" z.id="kn${i}_m" x.editable="true" y.editable="true" z.editable="true" color="mid" hover.color="mid" bcolor="mid" hover.bcolor="mid" pointer="drag" visibility=":cmv_m and :pe${i}_m"/>
 						<dot x.id="tl${i}_s" y.id="gl${i}_s" z.id="kn${i}_s" x.editable="true" y.editable="true" z.editable="true" color="side" hover.color="side" bcolor="side" hover.bcolor="side" pointer="drag" visibility=":cmv_s and :pe${i}_s"/>
 					</ui:for>
-					<ui:for id="i" first="0" last="3">
+					<ui:for id="i" first="0" count="4">
 						<text x=":tl${i}_m" y=":gl${i}_m" text="graph.values.idM_id" text:id="${i}" color="mid" halign="-1" valign="1" visibility=":cmv_m and :pe${i}_m"/>
 						<text x=":tl${i}_s" y=":gl${i}_s" text="graph.values.idS_ide" text:id="${i}" color="side" halign="1" valign="-1" visibility=":cmv_s and :pe${i}_s"/>
 					</ui:for>

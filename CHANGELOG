@@ -4,6 +4,7 @@
 
 === 1.0.20 ===
 * Updated build scripts and dependencies.
+* * Threshold markers are now editable.
 
 === 1.0.19 ===
 * Updated build scripts and dependencies.
