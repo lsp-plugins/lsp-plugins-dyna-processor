@@ -47,12 +47,6 @@
 						<axis min="0" max="5" angle="1.0" log="false" color="graph_prim" visibility="false"/>
 						<axis min="-72 db" max="24 db" angle="0.5" log="true" color="graph_prim" visibility="false"/>
 
-						<!-- Markers -->
-						<ui:attributes ox="1" oy="0">
-							<marker id="al" color="attack_1"/>
-							<marker id="rl" color="release_1"/>
-						</ui:attributes>
-
 						<!-- Text -->
 						<text x="5" y="-72 db" text="graph.units.s" halign="1" valign="1" color="graph_prim"/>
 						<ui:for id="t" first="0" last="4" step="1">
@@ -140,20 +134,20 @@
 					<mesh id="ccg" width="3" color="graph_mesh" smooth="true"/>
 
 					<!-- Markers -->
-					<ui:for id="i" first="0" last="3">
-						<marker id="al${i}" width="2" color="attack" smooth="true" visibility=":cmv and :ae${i}"/>
+					<ui:for id="i" first="0" count="4">
+						<marker id="al${i}" editable="true" width="2" pointer="hsize" color="attack" hcolor="attack" smooth="true" visibility=":cmv and :ae${i}"/>
 						<text x=":al${i}" y="24 db" text="${i}" color="attack" halign="-1" valign="-1" visibility=":cmv and :ae${i}"/>
 					</ui:for>
-					<ui:for id="i" first="0" last="3">
-						<marker id="rl${i}" width="2" color="release" smooth="true" visibility=":cmv and :re${i}"/>
+					<ui:for id="i" first="0" count="4">
+						<marker id="rl${i}" editable="true" width="2" pointer="hsize" color="release" hcolor="release" smooth="true" visibility=":cmv and :re${i}"/>
 						<text x=":rl${i}" y="-72 db" text="${i}" color="release" halign="-1" valign="1" visibility=":cmv and :re${i}"/>
 					</ui:for>
 
 					<!-- Dots -->
-					<ui:for id="i" first="0" last="3">
+					<ui:for id="i" first="0" count="4">
 						<dot x.id="tl${i}" y.id="gl${i}" z.id="kn${i}" x.editable="true" y.editable="true" z.editable="true" color="graph_mesh" hover.color="graph_mesh" bcolor="graph_mesh" hover.bcolor="graph_mesh" pointer="drag" visibility=":pe${i}"/>
 					</ui:for>
-					<ui:for id="i" first="0" last="3">
+					<ui:for id="i" first="0" count="4">
 						<text x=":tl${i}" y=":gl${i}" text="${i}" color="graph_mesh" halign="-1" valign="1" visibility=":pe${i}"/>
 					</ui:for>
 
