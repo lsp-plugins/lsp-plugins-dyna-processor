@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2023 Linux Studio Plugins Project <https://lsp-plug.in/>
- *           (C) 2023 Vladimir Sadovnikov <sadko4u@gmail.com>
+ * Copyright (C) 2024 Linux Studio Plugins Project <https://lsp-plug.in/>
+ *           (C) 2024 Vladimir Sadovnikov <sadko4u@gmail.com>
  *
  * This file is part of lsp-plugins-dyna-processor
  * Created on: 3 авг. 2021 г.
@@ -147,12 +147,15 @@ namespace lsp
                     plug::IPort            *pReleaseOn[meta::dyna_processor_metadata::DOTS];     // Release enable
                     plug::IPort            *pReleaseLvl[meta::dyna_processor_metadata::DOTS];    // Release levels
                     plug::IPort            *pReleaseTime[meta::dyna_processor_metadata::RANGES]; // Release time
+                    plug::IPort            *pHold;              // Hold time
                     plug::IPort            *pLowRatio;          // Low Ratio
                     plug::IPort            *pHighRatio;         // High Ratio
                     plug::IPort            *pMakeup;            // Overall Makeup gain
 
+                    plug::IPort            *pDryWetOn;          // Dry/Wet balance enable
                     plug::IPort            *pDryGain;           // Dry gain
                     plug::IPort            *pWetGain;           // Wet gain
+                    plug::IPort            *pDryWet;            // Dry/Wet balance
                     plug::IPort            *pCurve;             // Curve graph
                     plug::IPort            *pModel;             // Curve model
                 } channel_t;

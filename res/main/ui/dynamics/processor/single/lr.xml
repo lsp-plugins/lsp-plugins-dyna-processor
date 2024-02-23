@@ -371,31 +371,39 @@
 						<cell rows="11" bg.color="bg" pad.h="2" hreduce="true"><vsep/></cell>
 
 						<!-- ratio attack release makeup dry wet -->
-						<grid rows="9" cols="3" transpose="true" spacing="0" bg.color="bg_schema">
+						<grid rows="9" cols="5" transpose="true" spacing="0" bg.color="bg_schema">
 							<ui:with pad.h="6" pad.v="4">
 								<label text="labels.ratio_low" width.min="53"/>
 								<knob id="llr${ch}" size="20" scolor="${chc}"/>
 								<value id="llr${ch}"/>
+								
 								<hsep bg.color="bg" pad.v="2" vreduce="true"/>
+								
 								<label text="labels.attack"/>
 								<knob id="atd${ch}" size="20" scolor="attack"/>
 								<value id="atd${ch}"/>
 								<hsep bg.color="bg" pad.v="2" vreduce="true"/>
 							</ui:with>
 
-							<cell cols="3">
-								<grid rows="3" cols="5" expand="true">
+							<cell cols="5">
+								<grid rows="3" cols="7" expand="true">
 									<label text="labels.makeup"/>
 									<cell rows="3" bg.color="bg" pad.h="2" hreduce="true"><vsep/></cell>
 									<label text="labels.signal.dry" wmin="41"/>
 									<cell rows="3" bg.color="bg" pad.h="2" hreduce="true"><vsep/></cell>
 									<label text="labels.signal.wet" wmin="41"/>
+									<cell rows="3" bg.color="bg" pad.h="2" hreduce="true"><vsep/></cell>
+									<button id="dwe${ch}" text="labels.signal.drywet" />
+									
 									<knob id="omk${ch}" size="20" scolor="${chc}"/>
 									<knob id="cdr${ch}" scolor="dry" size="20"/>
 									<knob id="cwt${ch}" scolor="wet" size="20"/>
+									<knob id="cdw${ch}" size="20" scolor="${chc}"/>
+									
 									<value id="omk${ch}"/>
 									<value id="cdr${ch}"/>
 									<value id="cwt${ch}"/>
+									<value id="cdw${ch}"/>
 								</grid>
 							</cell>
 
@@ -404,10 +412,24 @@
 								<label text="labels.ratio_high"/>
 								<knob id="hlr${ch}" size="20" scolor="${chc}"/>
 								<value id="hlr${ch}"/>
+								
 								<hsep bg.color="bg" pad.v="2" vreduce="true"/>
+								
 								<label text="labels.release"/>
 								<knob id="rtd${ch}" size="20" scolor="release"/>
 								<value id="rtd${ch}"/>
+								<hsep bg.color="bg" pad.v="2" vreduce="true"/>
+							</ui:with>
+							
+							<cell rows="8"><vsep bg.color="bg" pad.h="2" hreduce="true"/></cell>
+							<ui:with pad.h="6" pad.v="4">
+								<cell rows="3"><void/></cell>
+								
+								<hsep bg.color="bg" pad.v="2" vreduce="true"/>
+								
+								<label text="labels.hold"/>
+								<knob id="hold${ch}" size="20" />
+								<value id="hold${ch}"/>
 								<hsep bg.color="bg" pad.v="2" vreduce="true"/>
 							</ui:with>
 						</grid>
