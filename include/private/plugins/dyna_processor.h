@@ -152,7 +152,6 @@ namespace lsp
                     plug::IPort            *pHighRatio;         // High Ratio
                     plug::IPort            *pMakeup;            // Overall Makeup gain
 
-                    plug::IPort            *pDryWetOn;          // Dry/Wet balance enable
                     plug::IPort            *pDryGain;           // Dry gain
                     plug::IPort            *pWetGain;           // Wet gain
                     plug::IPort            *pDryWet;            // Dry/Wet balance

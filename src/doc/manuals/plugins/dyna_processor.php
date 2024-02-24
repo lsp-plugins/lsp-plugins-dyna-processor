@@ -96,7 +96,7 @@ keeping the same settings for the left and right channels.</p>
 	<li><b>Makeup</b> - additional amplification gain after dynamic processing stage.</li>
 	<li><b>Dry</b> - the amount of dry (unprocessed) signal.</li>
 	<li><b>Wet</b> - the amount of wet (processed) signal.</li>
-	<li><b>Mix Dry/Wet</b> - the switch that enables dry/wet balance and control knob that controls this balance instead of separate dry and wet balance.</li>
+	<li><b>Dry/Wet</b> - the knob that controls this balance between mixed dry and wet signal (see <b>Dry</b> and <b>Wet</b>) and the dry (unprocessed) signal.</li>
 	<li><b>Ranges</b> - allows to configure up to four additional knees, attack and release ranges:</li>
 	<ul>
 		<li><b>Thr</b> - Knob that enables additional knee.</li>

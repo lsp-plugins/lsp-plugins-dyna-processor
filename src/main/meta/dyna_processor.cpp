@@ -185,7 +185,6 @@ namespace lsp
             LOG_CONTROL("llr" id, "Low-level ratio" label, U_NONE, dyna_processor_metadata::RATIO), \
             LOG_CONTROL("hlr" id, "High-level ratio" label, U_NONE, dyna_processor_metadata::RATIO), \
             LOG_CONTROL("omk" id, "Overall makeup gain" label, U_GAIN_AMP, dyna_processor_metadata::MAKEUP), \
-            SWITCH("dwe" id, "Dry/Wet balance enable", 0), \
             AMP_GAIN10("cdr" id, "Dry gain" label, GAIN_AMP_M_INF_DB),     \
             AMP_GAIN10("cwt" id, "Wet gain" label, GAIN_AMP_0_DB), \
             PERCENTS("cdw" id, "Dry/Wet balance" label, 100.0f, 0.1f), \
