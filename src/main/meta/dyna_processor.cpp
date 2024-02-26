@@ -200,8 +200,8 @@ namespace lsp
             SWITCH("olv" id, "Output level visibility" label, 1.0f), \
             MESH("scg" id, "Sidechain graph" label, 2, dyna_processor_metadata::TIME_MESH_SIZE), \
             MESH("evg" id, "Envelope graph" label, 2, dyna_processor_metadata::TIME_MESH_SIZE), \
-            MESH("grg" id, "Gain reduciton" label, 2, dyna_processor_metadata::TIME_MESH_SIZE), \
-            MESH("isg" id, "Input signal graph" label, 2, dyna_processor_metadata::TIME_MESH_SIZE), \
+            MESH("grg" id, "Gain reduciton" label, 2, dyna_processor_metadata::TIME_MESH_SIZE + 4), \
+            MESH("isg" id, "Input signal graph" label, 2, dyna_processor_metadata::TIME_MESH_SIZE + 2), \
             MESH("osg" id, "Output signal graph" label, 2, dyna_processor_metadata::TIME_MESH_SIZE), \
             METER_OUT_GAIN("slm" id, "Sidechain level meter" label, GAIN_AMP_P_36_DB), \
             METER_OUT_GAIN("clm" id, "Curve level meter" label, GAIN_AMP_P_36_DB), \
