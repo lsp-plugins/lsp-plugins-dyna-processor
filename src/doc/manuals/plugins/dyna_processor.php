@@ -92,9 +92,11 @@ keeping the same settings for the left and right channels.</p>
 	<li><b>Ratio high</b> - compression/expansion ratio after the highest-threshold knee.</li>
 	<li><b>Attack</b> - default attack time used on the whole dynamics range.</li>
 	<li><b>Release</b> - default release time used on the whole dynamics range.</li>
+	<li><b>Hold</b> - the time period the envelope holds it's maximum value before starting the release.</li>
 	<li><b>Makeup</b> - additional amplification gain after dynamic processing stage.</li>
 	<li><b>Dry</b> - the amount of dry (unprocessed) signal.</li>
 	<li><b>Wet</b> - the amount of wet (processed) signal.</li>
+	<li><b>Dry/Wet</b> - the knob that controls this balance between mixed dry and wet signal (see <b>Dry</b> and <b>Wet</b>) and the dry (unprocessed) signal.</li>
 	<li><b>Ranges</b> - allows to configure up to four additional knees, attack and release ranges:</li>
 	<ul>
 		<li><b>Thr</b> - Knob that enables additional knee.</li>

@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2023 Linux Studio Plugins Project <https://lsp-plug.in/>
- *           (C) 2023 Vladimir Sadovnikov <sadko4u@gmail.com>
+ * Copyright (C) 2024 Linux Studio Plugins Project <https://lsp-plug.in/>
+ *           (C) 2024 Vladimir Sadovnikov <sadko4u@gmail.com>
  *
  * This file is part of lsp-plugins-dyna-processor
  * Created on: 3 авг. 2021 г.
@@ -25,7 +25,7 @@
 
 #define LSP_PLUGINS_DYNA_PROCESSOR_VERSION_MAJOR       1
 #define LSP_PLUGINS_DYNA_PROCESSOR_VERSION_MINOR       0
-#define LSP_PLUGINS_DYNA_PROCESSOR_VERSION_MICRO       20
+#define LSP_PLUGINS_DYNA_PROCESSOR_VERSION_MICRO       21
 
 #define LSP_PLUGINS_DYNA_PROCESSOR_VERSION  \
     LSP_MODULE_VERSION( \
@@ -181,11 +181,13 @@ namespace lsp
             DYNA_POINT(1, 0.0f, id, label, GAIN_AMP_M_24_DB), \
             DYNA_POINT(2, 0.0f, id, label, GAIN_AMP_M_36_DB), \
             DYNA_POINT(3, 0.0f, id, label, GAIN_AMP_M_48_DB), \
+            CONTROL("hold" id, "Hold time" label, U_MSEC, dyna_processor_metadata::HOLD_TIME), \
             LOG_CONTROL("llr" id, "Low-level ratio" label, U_NONE, dyna_processor_metadata::RATIO), \
             LOG_CONTROL("hlr" id, "High-level ratio" label, U_NONE, dyna_processor_metadata::RATIO), \
             LOG_CONTROL("omk" id, "Overall makeup gain" label, U_GAIN_AMP, dyna_processor_metadata::MAKEUP), \
             AMP_GAIN10("cdr" id, "Dry gain" label, GAIN_AMP_M_INF_DB),     \
             AMP_GAIN10("cwt" id, "Wet gain" label, GAIN_AMP_0_DB), \
+            PERCENTS("cdw" id, "Dry/Wet balance" label, 100.0f, 0.1f), \
             SWITCH("cmv" id, "Curve modelling visibility" label, 1.0f), \
             MESH("cmg" id, "Curve modelling graph" label, 2, dyna_processor_metadata::CURVE_MESH_SIZE), \
             MESH("ccg" id, "Curve graph" label, 2, dyna_processor_metadata::CURVE_MESH_SIZE)
@@ -198,8 +200,8 @@ namespace lsp
             SWITCH("olv" id, "Output level visibility" label, 1.0f), \
             MESH("scg" id, "Sidechain graph" label, 2, dyna_processor_metadata::TIME_MESH_SIZE), \
             MESH("evg" id, "Envelope graph" label, 2, dyna_processor_metadata::TIME_MESH_SIZE), \
-            MESH("grg" id, "Gain reduciton" label, 2, dyna_processor_metadata::TIME_MESH_SIZE), \
-            MESH("isg" id, "Input signal graph" label, 2, dyna_processor_metadata::TIME_MESH_SIZE), \
+            MESH("grg" id, "Gain reduciton" label, 2, dyna_processor_metadata::TIME_MESH_SIZE + 4), \
+            MESH("isg" id, "Input signal graph" label, 2, dyna_processor_metadata::TIME_MESH_SIZE + 2), \
             MESH("osg" id, "Output signal graph" label, 2, dyna_processor_metadata::TIME_MESH_SIZE), \
             METER_OUT_GAIN("slm" id, "Sidechain level meter" label, GAIN_AMP_P_36_DB), \
             METER_OUT_GAIN("clm" id, "Curve level meter" label, GAIN_AMP_P_36_DB), \
@@ -337,6 +339,8 @@ namespace lsp
             LSP_LV2_URI("dyna_processor_mono"),
             LSP_LV2UI_URI("dyna_processor_mono"),
             "lqpm",
+            LSP_VST3_UID("dp1m    lqpm"),
+            LSP_VST3UI_UID("dp1m    lqpm"),
             LSP_LADSPA_DYNAMIC_PROCESSOR_BASE + 0,
             LSP_LADSPA_URI("dyna_processor_mono"),
             LSP_CLAP_URI("dyna_processor_mono"),
@@ -362,6 +366,8 @@ namespace lsp
             LSP_LV2_URI("dyna_processor_stereo"),
             LSP_LV2UI_URI("dyna_processor_stereo"),
             "aat9",
+            LSP_VST3_UID("dp1s    aat9"),
+            LSP_VST3UI_UID("dp1s    aat9"),
             LSP_LADSPA_DYNAMIC_PROCESSOR_BASE + 1,
             LSP_LADSPA_URI("dyna_processor_stereo"),
             LSP_CLAP_URI("dyna_processor_stereo"),
@@ -387,6 +393,8 @@ namespace lsp
             LSP_LV2_URI("dyna_processor_lr"),
             LSP_LV2UI_URI("dyna_processor_lr"),
             "hl9g",
+            LSP_VST3_UID("dp1lr   hl9g"),
+            LSP_VST3UI_UID("dp1lr   hl9g"),
             LSP_LADSPA_DYNAMIC_PROCESSOR_BASE + 2,
             LSP_LADSPA_URI("dyna_processor_lr"),
             LSP_CLAP_URI("dyna_processor_lr"),
@@ -412,6 +420,8 @@ namespace lsp
             LSP_LV2_URI("dyna_processor_ms"),
             LSP_LV2UI_URI("dyna_processor_ms"),
             "uvrg",
+            LSP_VST3_UID("dp1ms   uvrg"),
+            LSP_VST3UI_UID("dp1ms   uvrg"),
             LSP_LADSPA_DYNAMIC_PROCESSOR_BASE + 3,
             LSP_LADSPA_URI("dyna_processor_ms"),
             LSP_CLAP_URI("dyna_processor_ms"),
@@ -438,6 +448,8 @@ namespace lsp
             LSP_LV2_URI("sc_dyna_processor_mono"),
             LSP_LV2UI_URI("sc_dyna_processor_mono"),
             "apkx",
+            LSP_VST3_UID("scdp1m  apkx"),
+            LSP_VST3UI_UID("scdp1m  apkx"),
             LSP_LADSPA_DYNAMIC_PROCESSOR_BASE + 4,
             LSP_LADSPA_URI("sc_dyna_processor_mono"),
             LSP_CLAP_URI("sc_dyna_processor_mono"),
@@ -463,6 +475,8 @@ namespace lsp
             LSP_LV2_URI("sc_dyna_processor_stereo"),
             LSP_LV2UI_URI("sc_dyna_processor_stereo"),
             "fqne",
+            LSP_VST3_UID("scdp1s  fqne"),
+            LSP_VST3UI_UID("scdp1s  fqne"),
             LSP_LADSPA_DYNAMIC_PROCESSOR_BASE + 5,
             LSP_LADSPA_URI("sc_dyna_processor_stereo"),
             LSP_CLAP_URI("sc_dyna_processor_stereo"),
@@ -488,6 +502,8 @@ namespace lsp
             LSP_LV2_URI("sc_dyna_processor_lr"),
             LSP_LV2UI_URI("sc_dyna_processor_lr"),
             "sxmi",
+            LSP_VST3_UID("scdp1lr sxmi"),
+            LSP_VST3UI_UID("scdp1lr sxmi"),
             LSP_LADSPA_DYNAMIC_PROCESSOR_BASE + 6,
             LSP_LADSPA_URI("sc_dyna_processor_lr"),
             LSP_CLAP_URI("sc_dyna_processor_lr"),
@@ -513,6 +529,8 @@ namespace lsp
             LSP_LV2_URI("sc_dyna_processor_ms"),
             LSP_LV2UI_URI("sc_dyna_processor_ms"),
             "fcj9",
+            LSP_VST3_UID("scdp1ms fcj9"),
+            LSP_VST3UI_UID("scdp1ms fcj9"),
             LSP_LADSPA_DYNAMIC_PROCESSOR_BASE + 7,
             LSP_LADSPA_URI("sc_dyna_processor_ms"),
             LSP_CLAP_URI("sc_dyna_processor_ms"),
