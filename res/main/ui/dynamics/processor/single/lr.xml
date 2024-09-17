@@ -77,6 +77,7 @@
 					<button id="cmv_l" height="22" width="48" text="labels.left" pad.v="4" ui:inject="Button_left"/>
 					<button id="cmv_r" height="22" width="48" text="labels.right" pad.v="4" ui:inject="Button_right"/>
 					<void hexpand="true"/>
+					<shmlink id="link" />
 				</hbox>
 			</vbox>
 

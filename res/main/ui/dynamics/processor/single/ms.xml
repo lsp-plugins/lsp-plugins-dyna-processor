@@ -77,6 +77,7 @@
 					<button id="cmv_m" height="22" width="48" text="labels.chan.mid" pad.v="4" ui:inject="Button_mid"/>
 					<button id="cmv_s" height="22" width="48" text="labels.chan.side" pad.v="4" ui:inject="Button_side"/>
 					<void hexpand="true"/>
+					<shmlink id="link" />
 					<vsep pad.h="2" bg.color="bg" reduce="true"/>
 					<button id="msl" height="22" width="48" text="labels.ms_listen" pad.v="4" ui:inject="Button_yellow"/>
 				</hbox>
