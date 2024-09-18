@@ -979,7 +979,10 @@ namespace lsp
 
                     in_buf[i]          += to_process;
                     out_buf[i]         += to_process;
-                    sc_buf[i]          += to_process;
+                    if (sc_buf[i] != NULL)
+                        sc_buf[i]          += to_process;
+                    if (shm_buf[i] != NULL)
+                        shm_buf[i]         += to_process;
                 }
 
                 left       -= to_process;
