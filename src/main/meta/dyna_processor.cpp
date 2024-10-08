@@ -25,7 +25,7 @@
 
 #define LSP_PLUGINS_DYNA_PROCESSOR_VERSION_MAJOR       1
 #define LSP_PLUGINS_DYNA_PROCESSOR_VERSION_MINOR       0
-#define LSP_PLUGINS_DYNA_PROCESSOR_VERSION_MICRO       24
+#define LSP_PLUGINS_DYNA_PROCESSOR_VERSION_MICRO       25
 
 #define LSP_PLUGINS_DYNA_PROCESSOR_VERSION  \
     LSP_MODULE_VERSION( \
@@ -83,6 +83,7 @@ namespace lsp
         {
             { "Feed-forward",   "sidechain.feed_forward"    },
             { "Feed-back",      "sidechain.feed_back"       },
+            { "Link",           "sidechain.link" },
             { NULL, NULL }
         };
 
@@ -91,6 +92,7 @@ namespace lsp
             { "Feed-forward",   "sidechain.feed_forward"    },
             { "Feed-back",      "sidechain.feed_back"       },
             { "External",       "sidechain.external"        },
+            { "Link",           "sidechain.link" },
             { NULL, NULL }
         };
 
@@ -136,6 +138,12 @@ namespace lsp
         #define DYNA_PROC_SPLIT_COMMON \
             SWITCH("ssplit", "Stereo split", 0.0f), \
             COMBO("sscs", "Split sidechain source", dyna_processor_metadata::SC_SPLIT_SOURCE_DFL, dyna_proc_sc_split_sources)
+
+        #define DYNA_PROC_SHM_LINK_MONO \
+            OPT_RETURN_MONO("link", "shml", "Side-chain shared memory link")
+
+        #define DYNA_PROC_SHM_LINK_STEREO \
+            OPT_RETURN_STEREO("link", "shml_", "Side-chain shared memory link")
 
         #define DYNA_PROC_SC_MONO_CHANNEL(sct) \
             COMBO("sct", "Sidechain type", dyna_processor_metadata::SC_TYPE_DFL, sct), \
@@ -213,6 +221,7 @@ namespace lsp
         static const port_t dyna_processor_mono_ports[] =
         {
             PORTS_MONO_PLUGIN,
+            DYNA_PROC_SHM_LINK_MONO,
             DYNA_PROC_COMMON,
             DYNA_PROC_SC_MONO_CHANNEL(dyna_proc_sc_type),
             DYNA_PROC_CHANNEL("", ""),
@@ -224,6 +233,7 @@ namespace lsp
         static const port_t dyna_processor_stereo_ports[] =
         {
             PORTS_STEREO_PLUGIN,
+            DYNA_PROC_SHM_LINK_STEREO,
             DYNA_PROC_COMMON,
             DYNA_PROC_SPLIT_COMMON,
             DYNA_PROC_SC_STEREO_CHANNEL("", "", dyna_proc_sc_type),
@@ -237,6 +247,7 @@ namespace lsp
         static const port_t dyna_processor_lr_ports[] =
         {
             PORTS_STEREO_PLUGIN,
+            DYNA_PROC_SHM_LINK_STEREO,
             DYNA_PROC_LR_COMMON,
             DYNA_PROC_SC_STEREO_CHANNEL("_l", " Left", dyna_proc_sc_type),
             DYNA_PROC_SC_STEREO_CHANNEL("_r", " Right", dyna_proc_sc_type),
@@ -251,6 +262,7 @@ namespace lsp
         static const port_t dyna_processor_ms_ports[] =
         {
             PORTS_STEREO_PLUGIN,
+            DYNA_PROC_SHM_LINK_STEREO,
             DYNA_PROC_MS_COMMON,
             DYNA_PROC_SC_STEREO_CHANNEL("_m", " Mid", dyna_proc_sc_type),
             DYNA_PROC_SC_STEREO_CHANNEL("_s", " Side", dyna_proc_sc_type),
@@ -266,6 +278,7 @@ namespace lsp
         {
             PORTS_MONO_PLUGIN,
             PORTS_MONO_SIDECHAIN,
+            DYNA_PROC_SHM_LINK_MONO,
             DYNA_PROC_COMMON,
             DYNA_PROC_SC_MONO_CHANNEL(dyna_proc_extsc_type),
             DYNA_PROC_CHANNEL("", ""),
@@ -278,6 +291,7 @@ namespace lsp
         {
             PORTS_STEREO_PLUGIN,
             PORTS_STEREO_SIDECHAIN,
+            DYNA_PROC_SHM_LINK_STEREO,
             DYNA_PROC_COMMON,
             DYNA_PROC_SPLIT_COMMON,
             DYNA_PROC_SC_STEREO_CHANNEL("", "", dyna_proc_extsc_type),
@@ -292,6 +306,7 @@ namespace lsp
         {
             PORTS_STEREO_PLUGIN,
             PORTS_STEREO_SIDECHAIN,
+            DYNA_PROC_SHM_LINK_STEREO,
             DYNA_PROC_LR_COMMON,
             DYNA_PROC_SC_STEREO_CHANNEL("_l", " Left", dyna_proc_extsc_type),
             DYNA_PROC_SC_STEREO_CHANNEL("_r", " Right", dyna_proc_extsc_type),
@@ -307,6 +322,7 @@ namespace lsp
         {
             PORTS_STEREO_PLUGIN,
             PORTS_STEREO_SIDECHAIN,
+            DYNA_PROC_SHM_LINK_STEREO,
             DYNA_PROC_MS_COMMON,
             DYNA_PROC_SC_STEREO_CHANNEL("_m", " Mid", dyna_proc_extsc_type),
             DYNA_PROC_SC_STEREO_CHANNEL("_s", " Side", dyna_proc_extsc_type),

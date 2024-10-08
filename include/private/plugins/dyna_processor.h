@@ -57,7 +57,8 @@ namespace lsp
                 {
                     SCT_FEED_FORWARD,
                     SCT_FEED_BACK,
-                    SCT_EXTERNAL
+                    SCT_EXTERNAL,
+                    SCT_LINK,
                 };
 
                 enum sc_graph_t
@@ -109,8 +110,8 @@ namespace lsp
                     float                  *vEnv;               // Envelope data
                     float                  *vGain;              // Gain reduction data
                     bool                    bScListen;          // Listen sidechain
-                    size_t                  nSync;              // Synchronization flags
-                    size_t                  nScType;            // Sidechain mode
+                    uint32_t                nSync;              // Synchronization flags
+                    uint32_t                nScType;            // Sidechain mode
                     float                   fMakeup;            // Makeup gain
                     float                   fFeedback;          // Feedback
                     float                   fDryGain;           // Dry gain
@@ -121,6 +122,7 @@ namespace lsp
                     plug::IPort            *pIn;                // Input port
                     plug::IPort            *pOut;               // Output port
                     plug::IPort            *pSC;                // Sidechain port
+                    plug::IPort            *pShmIn;             // Shared memory link input port
 
                     plug::IPort            *pGraph[G_TOTAL];    // History graphs
                     plug::IPort            *pMeter[M_TOTAL];    // Meters
@@ -165,6 +167,7 @@ namespace lsp
                 channel_t              *vChannels;      // Audio channels
                 float                  *vCurve;         // Dynamic curve
                 float                  *vTime;          // Time points buffer
+                float                  *vEmptyBuffer;   // Empty buffer
                 bool                    bPause;         // Pause button
                 bool                    bClear;         // Clear button
                 bool                    bMSListen;      // Mid/Side listen
@@ -186,11 +189,14 @@ namespace lsp
 
             protected:
                 static dspu::sidechain_source_t     decode_sidechain_source(int source, bool split, size_t channel);
+                static inline bool                  use_sidechain(const channel_t & c);
 
             protected:
+                inline float       *select_buffer(const channel_t & c, float *in, float *sc, float *shm);
                 float               process_feedback(channel_t *c, size_t i, size_t channels);
                 void                process_non_feedback(channel_t *c, float **in, size_t samples);
                 void                do_destroy();
+                uint32_t            decode_sidechain_type(uint32_t sc) const;
 
             public:
                 dyna_processor(const meta::plugin_t *metadata, bool sc, size_t mode);

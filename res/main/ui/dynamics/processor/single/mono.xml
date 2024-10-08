@@ -71,6 +71,8 @@
 					<button id="clear" height="22" width="48" text="labels.clear" pad.v="4" ui:inject="Button_red"/>
 					<button id="cmv" size="16" width="48" text="labels.model" pad.v="4" ui:inject="Button_yellow"/>
 					<void hexpand="true" />
+					<vsep pad.h="2" bg.color="bg" reduce="true"/>
+					<shmlink id="link" pad.l="2"/>
 				</hbox>
 			</vbox>
 

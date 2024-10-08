@@ -47,6 +47,7 @@ keeping the same settings for the left and right channels.</p>
 	<li><b>Env<?= $sm ?></b> - enables drawing of envelope graph and corresponding level meter.</li>
 	<li><b>In<?= $sm ?></b> - enables drawing of input signal graph and corresponding level meter.</li>
 	<li><b>Out<?= $sm ?></b> - enables drawing of output signal graph and corresponding level meter.</li>
+	<li><b>Link</b> - the name of the shared memory link to pass sidechain signal.</li>
 	<?php if (($m == 'ms') || ($m == 'lr')) { ?>
 	<li><b>Processor</b> - selects the corresponding channel for configuration.</li>
 	<?php } ?>
@@ -56,13 +57,12 @@ keeping the same settings for the left and right channels.</p>
 	<li><b>Listen</b> - allows to listen the signal processed by sidechain<?php if (($m == 'ms') || ($m == 'lr')) { ?> for the selected processor<?php } ?>.</li>
 	<li><b>Type</b> - set of combo boxes that allow to control type, position and source of sidechain. Available types are:</li>
 	<ul>
-		<?php if ($tt) { ?>
-			<li><b>Feed-forward</b> - sidechain input is connected to processor's input. More aggressive compression.</li>
-			<li><b>Feed-back</b> - sidechain input is connected to processor's output. Vintage-style more accurate compression.</li>
-			<?php if ($sc) { ?>
-				<li><b>External</b> - sidechain signal is taken from additional (external) sidechain inputs of plugin.</li>
-			<?php }?>
+		<li><b>Feed-forward</b> - sidechain input is connected to processor's input. More aggressive compression.</li>
+		<li><b>Feed-back</b> - sidechain input is connected to processor's output. Vintage-style more accurate compression.</li>
+		<?php if ($sc) { ?>
+			<li><b>External</b> - sidechain signal is taken from additional (external) sidechain inputs of plugin.</li>
 		<?php }?>
+		<li><b>Link</b> - sidechain input is passed by shared memory link.</li>		
 		<li><b>Peak</b> - peak mode.</li>
 		<li><b>RMS</b> - Root Mean Square (SMA) of the input signal.</li>
 		<li><b>LPF</b> - input signal processed by recursive 1-pole Low-Pass Filter (LPF).</li>
