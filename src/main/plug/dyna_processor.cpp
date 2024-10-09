@@ -37,48 +37,51 @@ namespace lsp
     {
         //-------------------------------------------------------------------------
         // Plugin factory
-        typedef struct plugin_settings_t
+        inline namespace
         {
-            const meta::plugin_t   *metadata;
-            bool                    sc;
-            uint8_t                 mode;
-        } plugin_settings_t;
+            typedef struct plugin_settings_t
+            {
+                const meta::plugin_t   *metadata;
+                bool                    sc;
+                uint8_t                 mode;
+            } plugin_settings_t;
 
-        static const meta::plugin_t *plugins[] =
-        {
-            &meta::dyna_processor_mono,
-            &meta::dyna_processor_stereo,
-            &meta::dyna_processor_lr,
-            &meta::dyna_processor_ms,
-            &meta::sc_dyna_processor_mono,
-            &meta::sc_dyna_processor_stereo,
-            &meta::sc_dyna_processor_lr,
-            &meta::sc_dyna_processor_ms
-        };
+            static const meta::plugin_t *plugins[] =
+            {
+                &meta::dyna_processor_mono,
+                &meta::dyna_processor_stereo,
+                &meta::dyna_processor_lr,
+                &meta::dyna_processor_ms,
+                &meta::sc_dyna_processor_mono,
+                &meta::sc_dyna_processor_stereo,
+                &meta::sc_dyna_processor_lr,
+                &meta::sc_dyna_processor_ms
+            };
 
-        static const plugin_settings_t plugin_settings[] =
-        {
-            { &meta::dyna_processor_mono,       false, dyna_processor::DYNA_MONO        },
-            { &meta::dyna_processor_stereo,     false, dyna_processor::DYNA_STEREO      },
-            { &meta::dyna_processor_lr,         false, dyna_processor::DYNA_LR          },
-            { &meta::dyna_processor_ms,         false, dyna_processor::DYNA_MS          },
-            { &meta::sc_dyna_processor_mono,    true,  dyna_processor::DYNA_MONO        },
-            { &meta::sc_dyna_processor_stereo,  true,  dyna_processor::DYNA_STEREO      },
-            { &meta::sc_dyna_processor_lr,      true,  dyna_processor::DYNA_LR          },
-            { &meta::sc_dyna_processor_ms,      true,  dyna_processor::DYNA_MS          },
+            static const plugin_settings_t plugin_settings[] =
+            {
+                { &meta::dyna_processor_mono,       false, dyna_processor::DYNA_MONO        },
+                { &meta::dyna_processor_stereo,     false, dyna_processor::DYNA_STEREO      },
+                { &meta::dyna_processor_lr,         false, dyna_processor::DYNA_LR          },
+                { &meta::dyna_processor_ms,         false, dyna_processor::DYNA_MS          },
+                { &meta::sc_dyna_processor_mono,    true,  dyna_processor::DYNA_MONO        },
+                { &meta::sc_dyna_processor_stereo,  true,  dyna_processor::DYNA_STEREO      },
+                { &meta::sc_dyna_processor_lr,      true,  dyna_processor::DYNA_LR          },
+                { &meta::sc_dyna_processor_ms,      true,  dyna_processor::DYNA_MS          },
 
-            { NULL, 0, false }
-        };
+                { NULL, 0, false }
+            };
 
-        static plug::Module *plugin_factory(const meta::plugin_t *meta)
-        {
-            for (const plugin_settings_t *s = plugin_settings; s->metadata != NULL; ++s)
-                if (s->metadata == meta)
-                    return new dyna_processor(s->metadata, s->sc, s->mode);
-            return NULL;
-        }
+            static plug::Module *plugin_factory(const meta::plugin_t *meta)
+            {
+                for (const plugin_settings_t *s = plugin_settings; s->metadata != NULL; ++s)
+                    if (s->metadata == meta)
+                        return new dyna_processor(s->metadata, s->sc, s->mode);
+                return NULL;
+            }
 
-        static plug::Factory factory(plugin_factory, plugins, 8);
+            static plug::Factory factory(plugin_factory, plugins, 8);
+        } /* inline namespace */
 
         //-------------------------------------------------------------------------
         dyna_processor::dyna_processor(const meta::plugin_t *metadata, bool sc, size_t mode): plug::Module(metadata)
