@@ -493,7 +493,7 @@ namespace lsp
                 for (size_t j=0; j<G_TOTAL; ++j)
                     c->sGraph[j].init(meta::dyna_processor_metadata::TIME_MESH_SIZE, samples_per_dot);
                 c->sGraph[G_GAIN].fill(1.0f);
-                c->sGraph[G_GAIN].set_method(dspu::MM_MINIMUM);
+                c->sGraph[G_GAIN].set_method(dspu::MM_ABS_MINIMUM);
             }
         }
 
