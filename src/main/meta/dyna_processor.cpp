@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2024 Linux Studio Plugins Project <https://lsp-plug.in/>
- *           (C) 2024 Vladimir Sadovnikov <sadko4u@gmail.com>
+ * Copyright (C) 2025 Linux Studio Plugins Project <https://lsp-plug.in/>
+ *           (C) 2025 Vladimir Sadovnikov <sadko4u@gmail.com>
  *
  * This file is part of lsp-plugins-dyna-processor
  * Created on: 3 авг. 2021 г.
@@ -89,9 +89,9 @@ namespace lsp
 
         static const port_item_t dyna_proc_extsc_type[] =
         {
+            { "External",       "sidechain.external"        },
             { "Feed-forward",   "sidechain.feed_forward"    },
             { "Feed-back",      "sidechain.feed_back"       },
-            { "External",       "sidechain.external"        },
             { "Link",           "sidechain.link" },
             { NULL, NULL }
         };
@@ -123,6 +123,8 @@ namespace lsp
             BYPASS,             \
             IN_GAIN,            \
             OUT_GAIN,           \
+            SWITCH("showmx", "Show mix overlay", 0.0f), \
+            SWITCH("showsc", "Show sidechain overlay", 0.0f), \
             SWITCH("pause", "Pause graph analysis", 0.0f), \
             TRIGGER("clear", "Clear graph analysis")
 
@@ -368,7 +370,7 @@ namespace lsp
             clap_features_mono,
             E_INLINE_DISPLAY | E_DUMP_STATE,
             dyna_processor_mono_ports,
-            "dynamics/processor/single/mono.xml",
+            "dynamics/processor/single/dyna_processor.xml",
             NULL,
             mono_plugin_port_groups,
             &dyna_processor_bundle
@@ -398,7 +400,7 @@ namespace lsp
             clap_features_stereo,
             E_INLINE_DISPLAY | E_DUMP_STATE,
             dyna_processor_stereo_ports,
-            "dynamics/processor/single/stereo.xml",
+            "dynamics/processor/single/dyna_processor.xml",
             NULL,
             stereo_plugin_port_groups,
             &dyna_processor_bundle
@@ -428,7 +430,7 @@ namespace lsp
             clap_features_stereo,
             E_INLINE_DISPLAY | E_DUMP_STATE,
             dyna_processor_lr_ports,
-            "dynamics/processor/single/lr.xml",
+            "dynamics/processor/single/dyna_processor.xml",
             NULL,
             stereo_plugin_port_groups,
             &dyna_processor_bundle
@@ -458,7 +460,7 @@ namespace lsp
             clap_features_stereo,
             E_INLINE_DISPLAY | E_DUMP_STATE,
             dyna_processor_ms_ports,
-            "dynamics/processor/single/ms.xml",
+            "dynamics/processor/single/dyna_processor.xml",
             NULL,
             stereo_plugin_port_groups,
             &dyna_processor_bundle
@@ -489,7 +491,7 @@ namespace lsp
             clap_features_mono,
             E_INLINE_DISPLAY | E_DUMP_STATE,
             sc_dyna_processor_mono_ports,
-            "dynamics/processor/single/mono.xml",
+            "dynamics/processor/single/dyna_processor.xml",
             NULL,
             mono_plugin_sidechain_port_groups,
             &dyna_processor_bundle
@@ -519,7 +521,7 @@ namespace lsp
             clap_features_stereo,
             E_INLINE_DISPLAY | E_DUMP_STATE,
             sc_dyna_processor_stereo_ports,
-            "dynamics/processor/single/stereo.xml",
+            "dynamics/processor/single/dyna_processor.xml",
             NULL,
             stereo_plugin_sidechain_port_groups,
             &dyna_processor_bundle
@@ -549,7 +551,7 @@ namespace lsp
             clap_features_stereo,
             E_INLINE_DISPLAY | E_DUMP_STATE,
             sc_dyna_processor_lr_ports,
-            "dynamics/processor/single/lr.xml",
+            "dynamics/processor/single/dyna_processor.xml",
             NULL,
             stereo_plugin_sidechain_port_groups,
             &dyna_processor_bundle
@@ -579,7 +581,7 @@ namespace lsp
             clap_features_stereo,
             E_INLINE_DISPLAY | E_DUMP_STATE,
             sc_dyna_processor_ms_ports,
-            "dynamics/processor/single/ms.xml",
+            "dynamics/processor/single/dyna_processor.xml",
             NULL,
             stereo_plugin_sidechain_port_groups,
             &dyna_processor_bundle
