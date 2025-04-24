@@ -48,11 +48,46 @@ keeping the same settings for the left and right channels.</p>
 	<li><b>In<?= $sm ?></b> - enables drawing of input signal graph and corresponding level meter.</li>
 	<li><b>Out<?= $sm ?></b> - enables drawing of output signal graph and corresponding level meter.</li>
 	<li><b>Link</b> - the name of the shared memory link to pass sidechain signal.</li>
+	<li><b>Sidechain</b> - shows the sidechain control overlay.</li>
+	<li><b>Mix</b> - shows the Dry/Wet control overlay.</li>
 	<?php if (($m == 'ms') || ($m == 'lr')) { ?>
 	<li><b>Processor</b> - selects the corresponding channel for configuration.</li>
 	<?php } ?>
 </ul>
+
 <p><b>'Processor' section:</b></p>
+<ul>
+	<li><b>Ratio low</b> - compression/expansion ratio below the lowest-threshold knee.</li>
+	<li><b>Ratio high</b> - compression/expansion ratio after the highest-threshold knee.</li>
+	<li><b>Attack</b> - default attack time used on the whole dynamics range.</li>
+	<li><b>Release</b> - default release time used on the whole dynamics range.</li>
+	<li><b>Hold</b> - the time period the envelope holds it's maximum value before starting the release.</li>
+	<li><b>Makeup</b> - additional amplification gain after dynamic processing stage.</li>
+	<li><b>Ranges</b> - allows to configure up to four additional knees, attack and release ranges:</li>
+	<ul>
+		<li><b>Thr</b> - Knob that enables additional knee.</li>
+		<li><b>Att</b> - Knob that enables additional attack range.</li>
+		<li><b>Rel</b> - Knob that enables additional release range.</li>
+		<li><b>Thresh</b> - Threshold of the additional knee, works only if corresponding <b>Thr</b> button is turned on.</li>
+		<li><b>Gain</b> - Gain of the additional knee, works only if corresponding <b>Thr</b> button is turned on.</li>
+		<li><b>Knee</b> - Softness of the knee, works only if corresponding <b>Thr</b> button is turned on.</li>
+		<li><b>Attack</b> - Pair of knobs that allows to adjust the attack threshold and attack time of the additional
+			attack range. The new attack time is applied if the envelope is <b>over</b> the specified threshold. Otherwise
+			the attack time of previous range or default attack time (if there is no previous range) will be applied.
+		</li>
+		<li><b>Release</b> - Pair of knobs that allows to adjust the release threshold and release time of the additional
+			release range. The new release time is applied if the envelope is <b>over</b> the specified threshold. Otherwise
+			the release time of previous range or default release time (if there is no previous range) will be applied.
+		</li>
+	</ul>
+</ul>
+<p><b>'Signal' section:</b></p>
+<ul>
+	<li><b>Input</b> - overall input gain.</li>
+	<li><b>Output</b> - overall output gain.</li>
+</ul>
+
+<p><b>Sidechain control overlay:</b></p>
 <ul>
 	<li><b>Listen</b> - allows to listen the signal processed by sidechain<?php if (($m == 'ms') || ($m == 'lr')) { ?> for the selected processor<?php } ?>.</li>
 	<li><b>Type</b> - set of combo boxes that allow to control type, position and source of sidechain. Available types are:</li>
@@ -87,36 +122,11 @@ keeping the same settings for the left and right channels.</p>
 	<li><b>Lookahead</b> - look-ahead time of the sidechain relative to the input signal.</li>
 	<li><b>LPF</b> - allows to set up slope and cut-off frequency for the low-pass filter applied to sidechain signal.</li>
 	<li><b>HPF</b> - allows to set up slope and cut-off frequency for the high-pass filter applied to sidechain signal.</li>
-	<li><b>Mode</b> - compression mode: <b>Upward (Up)</b> or <b>Downward (Down)</b>.</li>
-	<li><b>Ratio low</b> - compression/expansion ratio below the lowest-threshold knee.</li>
-	<li><b>Ratio high</b> - compression/expansion ratio after the highest-threshold knee.</li>
-	<li><b>Attack</b> - default attack time used on the whole dynamics range.</li>
-	<li><b>Release</b> - default release time used on the whole dynamics range.</li>
-	<li><b>Hold</b> - the time period the envelope holds it's maximum value before starting the release.</li>
-	<li><b>Makeup</b> - additional amplification gain after dynamic processing stage.</li>
-	<li><b>Dry</b> - the amount of dry (unprocessed) signal.</li>
-	<li><b>Wet</b> - the amount of wet (processed) signal.</li>
-	<li><b>Dry/Wet</b> - the knob that controls this balance between mixed dry and wet signal (see <b>Dry</b> and <b>Wet</b>) and the dry (unprocessed) signal.</li>
-	<li><b>Ranges</b> - allows to configure up to four additional knees, attack and release ranges:</li>
-	<ul>
-		<li><b>Thr</b> - Knob that enables additional knee.</li>
-		<li><b>Att</b> - Knob that enables additional attack range.</li>
-		<li><b>Rel</b> - Knob that enables additional release range.</li>
-		<li><b>Thresh</b> - Threshold of the additional knee, works only if corresponding <b>Thr</b> button is turned on.</li>
-		<li><b>Gain</b> - Gain of the additional knee, works only if corresponding <b>Thr</b> button is turned on.</li>
-		<li><b>Knee</b> - Softness of the knee, works only if corresponding <b>Thr</b> button is turned on.</li>
-		<li><b>Attack</b> - Pair of knobs that allows to adjust the attack threshold and attack time of the additional
-			attack range. The new attack time is applied if the envelope is <b>over</b> the specified threshold. Otherwise
-			the attack time of previous range or default attack time (if there is no previous range) will be applied.
-		</li>
-		<li><b>Release</b> - Pair of knobs that allows to adjust the release threshold and release time of the additional
-			release range. The new release time is applied if the envelope is <b>over</b> the specified threshold. Otherwise
-			the release time of previous range or default release time (if there is no previous range) will be applied.
-		</li>
-	</ul>
 </ul>
-<p><b>'Signal' section:</b></p>
+<p><b>Dry/Wet mix control overlay:</b></p>
 <ul>
-	<li><b>Input</b> - overall input gain.</li>
-	<li><b>Output</b> - overall output gain.</li>
+	<li><b>Mix Dry</b> - the amount of dry (unprocessed) signal.</li>
+	<li><b>Mix Wet</b> - the amount of wet (processed) signal.</li>
+	<li><b>Mix Dry/Wet</b> - the knob that controls this balance between mixed dry and wet signal (see <b>Mix Dry</b> and <b>Mix Wet</b>) and the dry (unprocessed) signal.</li>
 </ul>
+
