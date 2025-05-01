@@ -174,14 +174,14 @@ namespace lsp
 
         #define DYNA_POINT(idx, on, id, label, level) \
             SWITCH("pe" #idx id, "Point enable " #idx label, on), \
-            LOG_CONTROL_DFL("tl" #idx id, "Threshold " #idx label, U_GAIN_AMP, dyna_processor_metadata::THRESHOLD, level), \
-            LOG_CONTROL_DFL("gl" #idx id, "Gain " #idx label, U_GAIN_AMP, dyna_processor_metadata::THRESHOLD, level), \
+            LOG_CONTROL_DFL("tl" #idx id, "Threshold " #idx label, "Thresh " #idx label, U_GAIN_AMP, dyna_processor_metadata::THRESHOLD, level), \
+            LOG_CONTROL_DFL("gl" #idx id, "Gain " #idx label, "Gain " #idx label, U_GAIN_AMP, dyna_processor_metadata::THRESHOLD, level), \
             LOG_CONTROL("kn" #idx id, "Knee " #idx label, U_GAIN_AMP, dyna_processor_metadata::KNEE), \
             SWITCH("ae" #idx id, "Attack enable " #idx label, 0.0f), \
-            LOG_CONTROL_DFL("al" #idx id, "Attack level " #idx label, U_GAIN_AMP, dyna_processor_metadata::ATTACK_LVL, level), \
+            LOG_CONTROL_DFL("al" #idx id, "Attack level " #idx label, "Att lvl " #idx label, U_GAIN_AMP, dyna_processor_metadata::ATTACK_LVL, level), \
             LOG_CONTROL("at" #idx id, "Attack time " #idx label, U_MSEC, dyna_processor_metadata::ATTACK_TIME), \
             SWITCH("re" #idx id, "Release enable " #idx label, 0.0f), \
-            LOG_CONTROL_DFL("rl" #idx id, "Relative level " #idx label, U_GAIN_AMP, dyna_processor_metadata::RELEASE_LVL, level), \
+            LOG_CONTROL_DFL("rl" #idx id, "Release level " #idx label, "Rel lvl " #idx label, U_GAIN_AMP, dyna_processor_metadata::RELEASE_LVL, level), \
             LOG_CONTROL("rt" #idx id, "Release time " #idx label, U_MSEC, dyna_processor_metadata::RELEASE_TIME)
 
         #define DYNA_PROC_CHANNEL(id, label) \
@@ -202,7 +202,7 @@ namespace lsp
             MESH("cmg" id, "Curve modelling graph" label, 2, dyna_processor_metadata::CURVE_MESH_SIZE), \
             MESH("ccg" id, "Curve graph" label, 2, dyna_processor_metadata::CURVE_MESH_SIZE)
 
-        #define DYNA_PROC_AUDIO_METER(id, label) \
+        #define DYNA_PROC_AUDIO_METER(id, label, alias) \
             SWITCH("slv" id, "Sidechain level visibility" label, 1.0f), \
             SWITCH("elv" id, "Envelope level visibility" label, 1.0f), \
             SWITCH("grv" id, "Gain reduction visibility" label, 1.0f), \
@@ -227,7 +227,7 @@ namespace lsp
             DYNA_PROC_COMMON,
             DYNA_PROC_SC_MONO_CHANNEL(dyna_proc_sc_type),
             DYNA_PROC_CHANNEL("", ""),
-            DYNA_PROC_AUDIO_METER("", ""),
+            DYNA_PROC_AUDIO_METER("", "", ""),
 
             PORTS_END
         };
@@ -240,8 +240,8 @@ namespace lsp
             DYNA_PROC_SPLIT_COMMON,
             DYNA_PROC_SC_STEREO_CHANNEL("", "", dyna_proc_sc_type),
             DYNA_PROC_CHANNEL("", ""),
-            DYNA_PROC_AUDIO_METER("_l", " Left"),
-            DYNA_PROC_AUDIO_METER("_r", " Right"),
+            DYNA_PROC_AUDIO_METER("_l", " Left", " L"),
+            DYNA_PROC_AUDIO_METER("_r", " Right", " R"),
 
             PORTS_END
         };
@@ -255,8 +255,8 @@ namespace lsp
             DYNA_PROC_SC_STEREO_CHANNEL("_r", " Right", dyna_proc_sc_type),
             DYNA_PROC_CHANNEL("_l", " Left"),
             DYNA_PROC_CHANNEL("_r", " Right"),
-            DYNA_PROC_AUDIO_METER("_l", " Left"),
-            DYNA_PROC_AUDIO_METER("_r", " Right"),
+            DYNA_PROC_AUDIO_METER("_l", " Left", " L"),
+            DYNA_PROC_AUDIO_METER("_r", " Right", " R"),
 
             PORTS_END
         };
@@ -270,8 +270,8 @@ namespace lsp
             DYNA_PROC_SC_STEREO_CHANNEL("_s", " Side", dyna_proc_sc_type),
             DYNA_PROC_CHANNEL("_m", " Mid"),
             DYNA_PROC_CHANNEL("_s", " Side"),
-            DYNA_PROC_AUDIO_METER("_m", " Mid"),
-            DYNA_PROC_AUDIO_METER("_s", " Side"),
+            DYNA_PROC_AUDIO_METER("_m", " Mid", " M"),
+            DYNA_PROC_AUDIO_METER("_s", " Side", " S"),
 
             PORTS_END
         };
@@ -284,7 +284,7 @@ namespace lsp
             DYNA_PROC_COMMON,
             DYNA_PROC_SC_MONO_CHANNEL(dyna_proc_extsc_type),
             DYNA_PROC_CHANNEL("", ""),
-            DYNA_PROC_AUDIO_METER("", ""),
+            DYNA_PROC_AUDIO_METER("", "", ""),
 
             PORTS_END
         };
@@ -298,8 +298,8 @@ namespace lsp
             DYNA_PROC_SPLIT_COMMON,
             DYNA_PROC_SC_STEREO_CHANNEL("", "", dyna_proc_extsc_type),
             DYNA_PROC_CHANNEL("", ""),
-            DYNA_PROC_AUDIO_METER("_l", " Left"),
-            DYNA_PROC_AUDIO_METER("_r", " Right"),
+            DYNA_PROC_AUDIO_METER("_l", " Left", " L"),
+            DYNA_PROC_AUDIO_METER("_r", " Right", " R"),
 
             PORTS_END
         };
@@ -314,8 +314,8 @@ namespace lsp
             DYNA_PROC_SC_STEREO_CHANNEL("_r", " Right", dyna_proc_extsc_type),
             DYNA_PROC_CHANNEL("_l", " Left"),
             DYNA_PROC_CHANNEL("_r", " Right"),
-            DYNA_PROC_AUDIO_METER("_l", " Left"),
-            DYNA_PROC_AUDIO_METER("_r", " Right"),
+            DYNA_PROC_AUDIO_METER("_l", " Left", " L"),
+            DYNA_PROC_AUDIO_METER("_r", " Right", " R"),
 
             PORTS_END
         };
@@ -330,8 +330,8 @@ namespace lsp
             DYNA_PROC_SC_STEREO_CHANNEL("_s", " Side", dyna_proc_extsc_type),
             DYNA_PROC_CHANNEL("_m", " Mid"),
             DYNA_PROC_CHANNEL("_s", " Side"),
-            DYNA_PROC_AUDIO_METER("_m", " Mid"),
-            DYNA_PROC_AUDIO_METER("_s", " Side"),
+            DYNA_PROC_AUDIO_METER("_m", " Mid", " M"),
+            DYNA_PROC_AUDIO_METER("_s", " Side", " S"),
 
             PORTS_END
         };
