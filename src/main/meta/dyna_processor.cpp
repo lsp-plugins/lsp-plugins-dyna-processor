@@ -152,49 +152,49 @@ namespace lsp
             COMBO("scm", "Sidechain mode", dyna_processor_metadata::SC_MODE_DFL, dyna_proc_sc_modes), \
             CONTROL("sla", "Sidechain lookahead", U_MSEC, dyna_processor_metadata::LOOKAHEAD), \
             SWITCH("scl", "Sidechain listen", 0.0f), \
-            LOG_CONTROL("scr", "Sidechain reactivity", U_MSEC, dyna_processor_metadata::REACTIVITY), \
+            LOG_CONTROL("scr", "Sidechain reactivity", "SC react", U_MSEC, dyna_processor_metadata::REACTIVITY), \
             AMP_GAIN100("scp", "Sidechain preamp", GAIN_AMP_0_DB), \
             COMBO("shpm", "High-pass filter mode", 0, dyna_proc_filter_slope),      \
-            LOG_CONTROL("shpf", "High-pass filter frequency", U_HZ, dyna_processor_metadata::HPF),   \
+            LOG_CONTROL("shpf", "High-pass filter frequency", "HPF freq", U_HZ, dyna_processor_metadata::HPF),   \
             COMBO("slpm", "Low-pass filter mode", 0, dyna_proc_filter_slope),      \
-            LOG_CONTROL("slpf", "Low-pass filter frequency", U_HZ, dyna_processor_metadata::LPF)
+            LOG_CONTROL("slpf", "Low-pass filter frequency", "LPF freq", U_HZ, dyna_processor_metadata::LPF)
 
-        #define DYNA_PROC_SC_STEREO_CHANNEL(id, label, sct) \
+        #define DYNA_PROC_SC_STEREO_CHANNEL(id, label, alias, sct) \
             COMBO("sct" id, "Sidechain type" label, dyna_processor_metadata::SC_TYPE_DFL, sct), \
             COMBO("scm" id, "Sidechain mode" label, dyna_processor_metadata::SC_MODE_DFL, dyna_proc_sc_modes), \
             CONTROL("sla" id, "Sidechain lookahead" label, U_MSEC, dyna_processor_metadata::LOOKAHEAD), \
             SWITCH("scl" id, "Sidechain listen" label, 0.0f), \
             COMBO("scs" id, "Sidechain source" label, dyna_processor_metadata::SC_SOURCE_DFL, dyna_proc_sc_sources), \
-            LOG_CONTROL("scr" id, "Sidechain reactivity" label, U_MSEC, dyna_processor_metadata::REACTIVITY), \
+            LOG_CONTROL("scr" id, "Sidechain reactivity" label, "SC react" alias, U_MSEC, dyna_processor_metadata::REACTIVITY), \
             AMP_GAIN100("scp" id, "Sidechain preamp" label, GAIN_AMP_0_DB), \
             COMBO("shpm" id, "High-pass filter mode" label, 0, dyna_proc_filter_slope),      \
-            LOG_CONTROL("shpf" id, "High-pass filter frequency" label, U_HZ, dyna_processor_metadata::HPF),   \
+            LOG_CONTROL("shpf" id, "High-pass filter frequency" label, "HPF freq" alias, U_HZ, dyna_processor_metadata::HPF),   \
             COMBO("slpm" id, "Low-pass filter mode" label, 0, dyna_proc_filter_slope),      \
-            LOG_CONTROL("slpf" id, "Low-pass filter frequency" label, U_HZ, dyna_processor_metadata::LPF)
+            LOG_CONTROL("slpf" id, "Low-pass filter frequency" label, "LPF freq" alias, U_HZ, dyna_processor_metadata::LPF)
 
-        #define DYNA_POINT(idx, on, id, label, level) \
+        #define DYNA_POINT(idx, on, id, label, alias, level) \
             SWITCH("pe" #idx id, "Point enable " #idx label, on), \
-            LOG_CONTROL_DFL("tl" #idx id, "Threshold " #idx label, "Thresh " #idx label, U_GAIN_AMP, dyna_processor_metadata::THRESHOLD, level), \
-            LOG_CONTROL_DFL("gl" #idx id, "Gain " #idx label, "Gain " #idx label, U_GAIN_AMP, dyna_processor_metadata::THRESHOLD, level), \
-            LOG_CONTROL("kn" #idx id, "Knee " #idx label, U_GAIN_AMP, dyna_processor_metadata::KNEE), \
+            LOG_CONTROL_DFL("tl" #idx id, "Threshold " #idx label, "Thresh " #idx alias, U_GAIN_AMP, dyna_processor_metadata::THRESHOLD, level), \
+            LOG_CONTROL_DFL("gl" #idx id, "Gain " #idx label, "Gain " #idx alias, U_GAIN_AMP, dyna_processor_metadata::THRESHOLD, level), \
+            LOG_CONTROL("kn" #idx id, "Knee " #idx label, "Knee " #idx alias, U_GAIN_AMP, dyna_processor_metadata::KNEE), \
             SWITCH("ae" #idx id, "Attack enable " #idx label, 0.0f), \
-            LOG_CONTROL_DFL("al" #idx id, "Attack level " #idx label, "Att lvl " #idx label, U_GAIN_AMP, dyna_processor_metadata::ATTACK_LVL, level), \
-            LOG_CONTROL("at" #idx id, "Attack time " #idx label, U_MSEC, dyna_processor_metadata::ATTACK_TIME), \
+            LOG_CONTROL_DFL("al" #idx id, "Attack level " #idx label, "Att lvl " #idx alias, U_GAIN_AMP, dyna_processor_metadata::ATTACK_LVL, level), \
+            LOG_CONTROL("at" #idx id, "Attack time " #idx label, "Att time " #idx alias, U_MSEC, dyna_processor_metadata::ATTACK_TIME), \
             SWITCH("re" #idx id, "Release enable " #idx label, 0.0f), \
             LOG_CONTROL_DFL("rl" #idx id, "Release level " #idx label, "Rel lvl " #idx label, U_GAIN_AMP, dyna_processor_metadata::RELEASE_LVL, level), \
-            LOG_CONTROL("rt" #idx id, "Release time " #idx label, U_MSEC, dyna_processor_metadata::RELEASE_TIME)
+            LOG_CONTROL("rt" #idx id, "Release time " #idx label, "Rel time " #idx alias, U_MSEC, dyna_processor_metadata::RELEASE_TIME)
 
-        #define DYNA_PROC_CHANNEL(id, label) \
-            LOG_CONTROL("atd" id, "Attack time default" label, U_MSEC, dyna_processor_metadata::ATTACK_TIME), \
-            LOG_CONTROL("rtd" id, "Release time default" label, U_MSEC, dyna_processor_metadata::RELEASE_TIME), \
-            DYNA_POINT(0, 1.0f, id, label, GAIN_AMP_M_12_DB), \
-            DYNA_POINT(1, 0.0f, id, label, GAIN_AMP_M_24_DB), \
-            DYNA_POINT(2, 0.0f, id, label, GAIN_AMP_M_36_DB), \
-            DYNA_POINT(3, 0.0f, id, label, GAIN_AMP_M_48_DB), \
+        #define DYNA_PROC_CHANNEL(id, label, alias) \
+            LOG_CONTROL("atd" id, "Attack time default" label, "Att time dfl" alias, U_MSEC, dyna_processor_metadata::ATTACK_TIME), \
+            LOG_CONTROL("rtd" id, "Release time default" label, "Rel time dfl" alias, U_MSEC, dyna_processor_metadata::RELEASE_TIME), \
+            DYNA_POINT(0, 1.0f, id, label, alias, GAIN_AMP_M_12_DB), \
+            DYNA_POINT(1, 0.0f, id, label, alias, GAIN_AMP_M_24_DB), \
+            DYNA_POINT(2, 0.0f, id, label, alias, GAIN_AMP_M_36_DB), \
+            DYNA_POINT(3, 0.0f, id, label, alias, GAIN_AMP_M_48_DB), \
             CONTROL("hold" id, "Hold time" label, U_MSEC, dyna_processor_metadata::HOLD_TIME), \
-            LOG_CONTROL("llr" id, "Low-level ratio" label, U_NONE, dyna_processor_metadata::RATIO), \
-            LOG_CONTROL("hlr" id, "High-level ratio" label, U_NONE, dyna_processor_metadata::RATIO), \
-            LOG_CONTROL("omk" id, "Overall makeup gain" label, U_GAIN_AMP, dyna_processor_metadata::MAKEUP), \
+            LOG_CONTROL("llr" id, "Low-level ratio" label, "Low ratio" alias, U_NONE, dyna_processor_metadata::RATIO), \
+            LOG_CONTROL("hlr" id, "High-level ratio" label, "High ratio" alias, U_NONE, dyna_processor_metadata::RATIO), \
+            LOG_CONTROL("omk" id, "Overall makeup gain" label, "Makeup" alias, U_GAIN_AMP, dyna_processor_metadata::MAKEUP), \
             AMP_GAIN10("cdr" id, "Dry gain" label, GAIN_AMP_M_INF_DB),     \
             AMP_GAIN10("cwt" id, "Wet gain" label, GAIN_AMP_0_DB), \
             PERCENTS("cdw" id, "Dry/Wet balance" label, 100.0f, 0.1f), \
@@ -226,7 +226,7 @@ namespace lsp
             DYNA_PROC_SHM_LINK_MONO,
             DYNA_PROC_COMMON,
             DYNA_PROC_SC_MONO_CHANNEL(dyna_proc_sc_type),
-            DYNA_PROC_CHANNEL("", ""),
+            DYNA_PROC_CHANNEL("", "", ""),
             DYNA_PROC_AUDIO_METER("", "", ""),
 
             PORTS_END
@@ -238,8 +238,8 @@ namespace lsp
             DYNA_PROC_SHM_LINK_STEREO,
             DYNA_PROC_COMMON,
             DYNA_PROC_SPLIT_COMMON,
-            DYNA_PROC_SC_STEREO_CHANNEL("", "", dyna_proc_sc_type),
-            DYNA_PROC_CHANNEL("", ""),
+            DYNA_PROC_SC_STEREO_CHANNEL("", "", "", dyna_proc_sc_type),
+            DYNA_PROC_CHANNEL("", "", ""),
             DYNA_PROC_AUDIO_METER("_l", " Left", " L"),
             DYNA_PROC_AUDIO_METER("_r", " Right", " R"),
 
@@ -251,10 +251,10 @@ namespace lsp
             PORTS_STEREO_PLUGIN,
             DYNA_PROC_SHM_LINK_STEREO,
             DYNA_PROC_LR_COMMON,
-            DYNA_PROC_SC_STEREO_CHANNEL("_l", " Left", dyna_proc_sc_type),
-            DYNA_PROC_SC_STEREO_CHANNEL("_r", " Right", dyna_proc_sc_type),
-            DYNA_PROC_CHANNEL("_l", " Left"),
-            DYNA_PROC_CHANNEL("_r", " Right"),
+            DYNA_PROC_SC_STEREO_CHANNEL("_l", " Left", " L", dyna_proc_sc_type),
+            DYNA_PROC_SC_STEREO_CHANNEL("_r", " Right", " R", dyna_proc_sc_type),
+            DYNA_PROC_CHANNEL("_l", " Left", " L"),
+            DYNA_PROC_CHANNEL("_r", " Right", " R"),
             DYNA_PROC_AUDIO_METER("_l", " Left", " L"),
             DYNA_PROC_AUDIO_METER("_r", " Right", " R"),
 
@@ -266,10 +266,10 @@ namespace lsp
             PORTS_STEREO_PLUGIN,
             DYNA_PROC_SHM_LINK_STEREO,
             DYNA_PROC_MS_COMMON,
-            DYNA_PROC_SC_STEREO_CHANNEL("_m", " Mid", dyna_proc_sc_type),
-            DYNA_PROC_SC_STEREO_CHANNEL("_s", " Side", dyna_proc_sc_type),
-            DYNA_PROC_CHANNEL("_m", " Mid"),
-            DYNA_PROC_CHANNEL("_s", " Side"),
+            DYNA_PROC_SC_STEREO_CHANNEL("_m", " Mid", " M", dyna_proc_sc_type),
+            DYNA_PROC_SC_STEREO_CHANNEL("_s", " Side", " S", dyna_proc_sc_type),
+            DYNA_PROC_CHANNEL("_m", " Mid", " M"),
+            DYNA_PROC_CHANNEL("_s", " Side", " S"),
             DYNA_PROC_AUDIO_METER("_m", " Mid", " M"),
             DYNA_PROC_AUDIO_METER("_s", " Side", " S"),
 
@@ -283,7 +283,7 @@ namespace lsp
             DYNA_PROC_SHM_LINK_MONO,
             DYNA_PROC_COMMON,
             DYNA_PROC_SC_MONO_CHANNEL(dyna_proc_extsc_type),
-            DYNA_PROC_CHANNEL("", ""),
+            DYNA_PROC_CHANNEL("", "", ""),
             DYNA_PROC_AUDIO_METER("", "", ""),
 
             PORTS_END
@@ -296,8 +296,8 @@ namespace lsp
             DYNA_PROC_SHM_LINK_STEREO,
             DYNA_PROC_COMMON,
             DYNA_PROC_SPLIT_COMMON,
-            DYNA_PROC_SC_STEREO_CHANNEL("", "", dyna_proc_extsc_type),
-            DYNA_PROC_CHANNEL("", ""),
+            DYNA_PROC_SC_STEREO_CHANNEL("", "", "", dyna_proc_extsc_type),
+            DYNA_PROC_CHANNEL("", "", ""),
             DYNA_PROC_AUDIO_METER("_l", " Left", " L"),
             DYNA_PROC_AUDIO_METER("_r", " Right", " R"),
 
@@ -310,10 +310,10 @@ namespace lsp
             PORTS_STEREO_SIDECHAIN,
             DYNA_PROC_SHM_LINK_STEREO,
             DYNA_PROC_LR_COMMON,
-            DYNA_PROC_SC_STEREO_CHANNEL("_l", " Left", dyna_proc_extsc_type),
-            DYNA_PROC_SC_STEREO_CHANNEL("_r", " Right", dyna_proc_extsc_type),
-            DYNA_PROC_CHANNEL("_l", " Left"),
-            DYNA_PROC_CHANNEL("_r", " Right"),
+            DYNA_PROC_SC_STEREO_CHANNEL("_l", " Left", " L", dyna_proc_extsc_type),
+            DYNA_PROC_SC_STEREO_CHANNEL("_r", " Right", " R", dyna_proc_extsc_type),
+            DYNA_PROC_CHANNEL("_l", " Left", " L"),
+            DYNA_PROC_CHANNEL("_r", " Right", " R"),
             DYNA_PROC_AUDIO_METER("_l", " Left", " L"),
             DYNA_PROC_AUDIO_METER("_r", " Right", " R"),
 
@@ -326,10 +326,10 @@ namespace lsp
             PORTS_STEREO_SIDECHAIN,
             DYNA_PROC_SHM_LINK_STEREO,
             DYNA_PROC_MS_COMMON,
-            DYNA_PROC_SC_STEREO_CHANNEL("_m", " Mid", dyna_proc_extsc_type),
-            DYNA_PROC_SC_STEREO_CHANNEL("_s", " Side", dyna_proc_extsc_type),
-            DYNA_PROC_CHANNEL("_m", " Mid"),
-            DYNA_PROC_CHANNEL("_s", " Side"),
+            DYNA_PROC_SC_STEREO_CHANNEL("_m", " Mid", " M", dyna_proc_extsc_type),
+            DYNA_PROC_SC_STEREO_CHANNEL("_s", " Side", " S", dyna_proc_extsc_type),
+            DYNA_PROC_CHANNEL("_m", " Mid", " M"),
+            DYNA_PROC_CHANNEL("_s", " Side", " S"),
             DYNA_PROC_AUDIO_METER("_m", " Mid", " M"),
             DYNA_PROC_AUDIO_METER("_s", " Side", " S"),
 
