@@ -123,23 +123,23 @@ namespace lsp
             BYPASS,             \
             IN_GAIN,            \
             OUT_GAIN,           \
-            SWITCH("showmx", "Show mix overlay", 0.0f), \
-            SWITCH("showsc", "Show sidechain overlay", 0.0f), \
-            SWITCH("pause", "Pause graph analysis", 0.0f), \
-            TRIGGER("clear", "Clear graph analysis")
+            SWITCH("showmx", "Show mix overlay", "Show mix bar", 0.0f), \
+            SWITCH("showsc", "Show sidechain overlay", "Show SC bar", 0.0f), \
+            SWITCH("pause", "Pause graph analysis", "Pause", 0.0f), \
+            TRIGGER("clear", "Clear graph analysis", "Clear")
 
         #define DYNA_PROC_LR_COMMON  \
             DYNA_PROC_COMMON,        \
-            COMBO("psel", "Processor selector", 0, dyna_proc_sel_lr)
+            COMBO("psel", "Processor selector", "Proc selector", 0, dyna_proc_sel_lr)
 
         #define DYNA_PROC_MS_COMMON  \
             DYNA_PROC_COMMON,        \
-            COMBO("psel", "Processor selector", 0, dyna_proc_sel_ms), \
-            SWITCH("msl", "Mid/Side listen", 0.0f)
+            COMBO("psel", "Processor selector", "Proc selector", 0, dyna_proc_sel_ms), \
+            SWITCH("msl", "Mid/Side listen", "M/S listen", 0.0f)
 
         #define DYNA_PROC_SPLIT_COMMON \
-            SWITCH("ssplit", "Stereo split", 0.0f), \
-            COMBO("sscs", "Split sidechain source", dyna_processor_metadata::SC_SPLIT_SOURCE_DFL, dyna_proc_sc_split_sources)
+            SWITCH("ssplit", "Stereo split", "Stereo split", 0.0f), \
+            COMBO("sscs", "Split sidechain source", "Split SC source", dyna_processor_metadata::SC_SPLIT_SOURCE_DFL, dyna_proc_sc_split_sources)
 
         #define DYNA_PROC_SHM_LINK_MONO \
             OPT_RETURN_MONO("link", "shml", "Side-chain shared memory link")
@@ -148,39 +148,39 @@ namespace lsp
             OPT_RETURN_STEREO("link", "shml_", "Side-chain shared memory link")
 
         #define DYNA_PROC_SC_MONO_CHANNEL(sct) \
-            COMBO("sct", "Sidechain type", dyna_processor_metadata::SC_TYPE_DFL, sct), \
-            COMBO("scm", "Sidechain mode", dyna_processor_metadata::SC_MODE_DFL, dyna_proc_sc_modes), \
+            COMBO("sct", "Sidechain type", "SC type", dyna_processor_metadata::SC_TYPE_DFL, sct), \
+            COMBO("scm", "Sidechain mode", "SC mode", dyna_processor_metadata::SC_MODE_DFL, dyna_proc_sc_modes), \
             CONTROL("sla", "Sidechain lookahead", U_MSEC, dyna_processor_metadata::LOOKAHEAD), \
-            SWITCH("scl", "Sidechain listen", 0.0f), \
+            SWITCH("scl", "Sidechain listen", "SC listen", 0.0f), \
             LOG_CONTROL("scr", "Sidechain reactivity", "SC react", U_MSEC, dyna_processor_metadata::REACTIVITY), \
             AMP_GAIN100("scp", "Sidechain preamp", GAIN_AMP_0_DB), \
-            COMBO("shpm", "High-pass filter mode", 0, dyna_proc_filter_slope),      \
+            COMBO("shpm", "High-pass filter mode", "HPF mode", 0, dyna_proc_filter_slope),      \
             LOG_CONTROL("shpf", "High-pass filter frequency", "HPF freq", U_HZ, dyna_processor_metadata::HPF),   \
-            COMBO("slpm", "Low-pass filter mode", 0, dyna_proc_filter_slope),      \
+            COMBO("slpm", "Low-pass filter mode", "LPF mode", 0, dyna_proc_filter_slope),      \
             LOG_CONTROL("slpf", "Low-pass filter frequency", "LPF freq", U_HZ, dyna_processor_metadata::LPF)
 
         #define DYNA_PROC_SC_STEREO_CHANNEL(id, label, alias, sct) \
-            COMBO("sct" id, "Sidechain type" label, dyna_processor_metadata::SC_TYPE_DFL, sct), \
-            COMBO("scm" id, "Sidechain mode" label, dyna_processor_metadata::SC_MODE_DFL, dyna_proc_sc_modes), \
+            COMBO("sct" id, "Sidechain type" label, "SC type" alias, dyna_processor_metadata::SC_TYPE_DFL, sct), \
+            COMBO("scm" id, "Sidechain mode" label, "SC mode" alias, dyna_processor_metadata::SC_MODE_DFL, dyna_proc_sc_modes), \
             CONTROL("sla" id, "Sidechain lookahead" label, U_MSEC, dyna_processor_metadata::LOOKAHEAD), \
-            SWITCH("scl" id, "Sidechain listen" label, 0.0f), \
-            COMBO("scs" id, "Sidechain source" label, dyna_processor_metadata::SC_SOURCE_DFL, dyna_proc_sc_sources), \
+            SWITCH("scl" id, "Sidechain listen" label, "SC listen" alias, 0.0f), \
+            COMBO("scs" id, "Sidechain source" label, "SC source" alias, dyna_processor_metadata::SC_SOURCE_DFL, dyna_proc_sc_sources), \
             LOG_CONTROL("scr" id, "Sidechain reactivity" label, "SC react" alias, U_MSEC, dyna_processor_metadata::REACTIVITY), \
             AMP_GAIN100("scp" id, "Sidechain preamp" label, GAIN_AMP_0_DB), \
-            COMBO("shpm" id, "High-pass filter mode" label, 0, dyna_proc_filter_slope),      \
+            COMBO("shpm" id, "High-pass filter mode" label, "HPF mode" alias, 0, dyna_proc_filter_slope),      \
             LOG_CONTROL("shpf" id, "High-pass filter frequency" label, "HPF freq" alias, U_HZ, dyna_processor_metadata::HPF),   \
-            COMBO("slpm" id, "Low-pass filter mode" label, 0, dyna_proc_filter_slope),      \
+            COMBO("slpm" id, "Low-pass filter mode" label, "LPF mode" alias, 0, dyna_proc_filter_slope),      \
             LOG_CONTROL("slpf" id, "Low-pass filter frequency" label, "LPF freq" alias, U_HZ, dyna_processor_metadata::LPF)
 
         #define DYNA_POINT(idx, on, id, label, alias, level) \
-            SWITCH("pe" #idx id, "Point enable " #idx label, on), \
+            SWITCH("pe" #idx id, "Point enable " #idx label, "Point on" #idx alias, on), \
             LOG_CONTROL_DFL("tl" #idx id, "Threshold " #idx label, "Thresh " #idx alias, U_GAIN_AMP, dyna_processor_metadata::THRESHOLD, level), \
             LOG_CONTROL_DFL("gl" #idx id, "Gain " #idx label, "Gain " #idx alias, U_GAIN_AMP, dyna_processor_metadata::THRESHOLD, level), \
             LOG_CONTROL("kn" #idx id, "Knee " #idx label, "Knee " #idx alias, U_GAIN_AMP, dyna_processor_metadata::KNEE), \
-            SWITCH("ae" #idx id, "Attack enable " #idx label, 0.0f), \
+            SWITCH("ae" #idx id, "Attack enable " #idx label, "Att on" #idx alias, 0.0f), \
             LOG_CONTROL_DFL("al" #idx id, "Attack level " #idx label, "Att lvl " #idx alias, U_GAIN_AMP, dyna_processor_metadata::ATTACK_LVL, level), \
             LOG_CONTROL("at" #idx id, "Attack time " #idx label, "Att time " #idx alias, U_MSEC, dyna_processor_metadata::ATTACK_TIME), \
-            SWITCH("re" #idx id, "Release enable " #idx label, 0.0f), \
+            SWITCH("re" #idx id, "Release enable " #idx label, "Rel on" #idx alias, 0.0f), \
             LOG_CONTROL_DFL("rl" #idx id, "Release level " #idx label, "Rel lvl " #idx label, U_GAIN_AMP, dyna_processor_metadata::RELEASE_LVL, level), \
             LOG_CONTROL("rt" #idx id, "Release time " #idx label, "Rel time " #idx alias, U_MSEC, dyna_processor_metadata::RELEASE_TIME)
 
@@ -198,16 +198,16 @@ namespace lsp
             AMP_GAIN10("cdr" id, "Dry gain" label, GAIN_AMP_M_INF_DB),     \
             AMP_GAIN10("cwt" id, "Wet gain" label, GAIN_AMP_0_DB), \
             PERCENTS("cdw" id, "Dry/Wet balance" label, 100.0f, 0.1f), \
-            SWITCH("cmv" id, "Curve modelling visibility" label, 1.0f), \
+            SWITCH("cmv" id, "Curve modelling visibility" label, "Show curve" alias, 1.0f), \
             MESH("cmg" id, "Curve modelling graph" label, 2, dyna_processor_metadata::CURVE_MESH_SIZE), \
             MESH("ccg" id, "Curve graph" label, 2, dyna_processor_metadata::CURVE_MESH_SIZE)
 
         #define DYNA_PROC_AUDIO_METER(id, label, alias) \
-            SWITCH("slv" id, "Sidechain level visibility" label, 1.0f), \
-            SWITCH("elv" id, "Envelope level visibility" label, 1.0f), \
-            SWITCH("grv" id, "Gain reduction visibility" label, 1.0f), \
-            SWITCH("ilv" id, "Input level visibility" label, 1.0f), \
-            SWITCH("olv" id, "Output level visibility" label, 1.0f), \
+            SWITCH("slv" id, "Sidechain level visibility" label, "Show SC" alias, 1.0f), \
+            SWITCH("elv" id, "Envelope level visibility" label, "Show Env" alias, 1.0f), \
+            SWITCH("grv" id, "Gain reduction visibility" label, "Show Gain" alias, 1.0f), \
+            SWITCH("ilv" id, "Input level visibility" label, "Show In" alias, 1.0f), \
+            SWITCH("olv" id, "Output level visibility" label, "Show Out" alias, 1.0f), \
             MESH("scg" id, "Sidechain graph" label, 2, dyna_processor_metadata::TIME_MESH_SIZE), \
             MESH("evg" id, "Envelope graph" label, 2, dyna_processor_metadata::TIME_MESH_SIZE), \
             MESH("grg" id, "Gain reduciton" label, 2, dyna_processor_metadata::TIME_MESH_SIZE + 4), \
