@@ -150,7 +150,7 @@ namespace lsp
         #define DYNA_PROC_SC_MONO_CHANNEL(sct) \
             COMBO("sct", "Sidechain type", "SC type", dyna_processor_metadata::SC_TYPE_DFL, sct), \
             COMBO("scm", "Sidechain mode", "SC mode", dyna_processor_metadata::SC_MODE_DFL, dyna_proc_sc_modes), \
-            CONTROL("sla", "Sidechain lookahead", U_MSEC, dyna_processor_metadata::LOOKAHEAD), \
+            CONTROL("sla", "Sidechain lookahead", "SC look", U_MSEC, dyna_processor_metadata::LOOKAHEAD), \
             SWITCH("scl", "Sidechain listen", "SC listen", 0.0f), \
             LOG_CONTROL("scr", "Sidechain reactivity", "SC react", U_MSEC, dyna_processor_metadata::REACTIVITY), \
             AMP_GAIN100("scp", "Sidechain preamp", GAIN_AMP_0_DB), \
@@ -162,7 +162,7 @@ namespace lsp
         #define DYNA_PROC_SC_STEREO_CHANNEL(id, label, alias, sct) \
             COMBO("sct" id, "Sidechain type" label, "SC type" alias, dyna_processor_metadata::SC_TYPE_DFL, sct), \
             COMBO("scm" id, "Sidechain mode" label, "SC mode" alias, dyna_processor_metadata::SC_MODE_DFL, dyna_proc_sc_modes), \
-            CONTROL("sla" id, "Sidechain lookahead" label, U_MSEC, dyna_processor_metadata::LOOKAHEAD), \
+            CONTROL("sla" id, "Sidechain lookahead" label, "SC look" alias, U_MSEC, dyna_processor_metadata::LOOKAHEAD), \
             SWITCH("scl" id, "Sidechain listen" label, "SC listen" alias, 0.0f), \
             COMBO("scs" id, "Sidechain source" label, "SC source" alias, dyna_processor_metadata::SC_SOURCE_DFL, dyna_proc_sc_sources), \
             LOG_CONTROL("scr" id, "Sidechain reactivity" label, "SC react" alias, U_MSEC, dyna_processor_metadata::REACTIVITY), \
@@ -191,7 +191,7 @@ namespace lsp
             DYNA_POINT(1, 0.0f, id, label, alias, GAIN_AMP_M_24_DB), \
             DYNA_POINT(2, 0.0f, id, label, alias, GAIN_AMP_M_36_DB), \
             DYNA_POINT(3, 0.0f, id, label, alias, GAIN_AMP_M_48_DB), \
-            CONTROL("hold" id, "Hold time" label, U_MSEC, dyna_processor_metadata::HOLD_TIME), \
+            CONTROL("hold" id, "Hold time" label, "Hold time" alias, U_MSEC, dyna_processor_metadata::HOLD_TIME), \
             LOG_CONTROL("llr" id, "Low-level ratio" label, "Low ratio" alias, U_NONE, dyna_processor_metadata::RATIO), \
             LOG_CONTROL("hlr" id, "High-level ratio" label, "High ratio" alias, U_NONE, dyna_processor_metadata::RATIO), \
             LOG_CONTROL("omk" id, "Overall makeup gain" label, "Makeup" alias, U_GAIN_AMP, dyna_processor_metadata::MAKEUP), \
