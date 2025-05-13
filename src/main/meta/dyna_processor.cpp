@@ -153,7 +153,7 @@ namespace lsp
             CONTROL("sla", "Sidechain lookahead", "SC look", U_MSEC, dyna_processor_metadata::LOOKAHEAD), \
             SWITCH("scl", "Sidechain listen", "SC listen", 0.0f), \
             LOG_CONTROL("scr", "Sidechain reactivity", "SC react", U_MSEC, dyna_processor_metadata::REACTIVITY), \
-            AMP_GAIN100("scp", "Sidechain preamp", GAIN_AMP_0_DB), \
+            AMP_GAIN100("scp", "Sidechain preamp", "SC preamp", GAIN_AMP_0_DB), \
             COMBO("shpm", "High-pass filter mode", "HPF mode", 0, dyna_proc_filter_slope),      \
             LOG_CONTROL("shpf", "High-pass filter frequency", "HPF freq", U_HZ, dyna_processor_metadata::HPF),   \
             COMBO("slpm", "Low-pass filter mode", "LPF mode", 0, dyna_proc_filter_slope),      \
@@ -166,7 +166,7 @@ namespace lsp
             SWITCH("scl" id, "Sidechain listen" label, "SC listen" alias, 0.0f), \
             COMBO("scs" id, "Sidechain source" label, "SC source" alias, dyna_processor_metadata::SC_SOURCE_DFL, dyna_proc_sc_sources), \
             LOG_CONTROL("scr" id, "Sidechain reactivity" label, "SC react" alias, U_MSEC, dyna_processor_metadata::REACTIVITY), \
-            AMP_GAIN100("scp" id, "Sidechain preamp" label, GAIN_AMP_0_DB), \
+            AMP_GAIN100("scp" id, "Sidechain preamp" label, "SC preamp" alias, GAIN_AMP_0_DB), \
             COMBO("shpm" id, "High-pass filter mode" label, "HPF mode" alias, 0, dyna_proc_filter_slope),      \
             LOG_CONTROL("shpf" id, "High-pass filter frequency" label, "HPF freq" alias, U_HZ, dyna_processor_metadata::HPF),   \
             COMBO("slpm" id, "Low-pass filter mode" label, "LPF mode" alias, 0, dyna_proc_filter_slope),      \
@@ -195,9 +195,9 @@ namespace lsp
             LOG_CONTROL("llr" id, "Low-level ratio" label, "Low ratio" alias, U_NONE, dyna_processor_metadata::RATIO), \
             LOG_CONTROL("hlr" id, "High-level ratio" label, "High ratio" alias, U_NONE, dyna_processor_metadata::RATIO), \
             LOG_CONTROL("omk" id, "Overall makeup gain" label, "Makeup" alias, U_GAIN_AMP, dyna_processor_metadata::MAKEUP), \
-            AMP_GAIN10("cdr" id, "Dry gain" label, GAIN_AMP_M_INF_DB),     \
-            AMP_GAIN10("cwt" id, "Wet gain" label, GAIN_AMP_0_DB), \
-            PERCENTS("cdw" id, "Dry/Wet balance" label, 100.0f, 0.1f), \
+            AMP_GAIN10("cdr" id, "Dry gain" label, "Dry" alias, GAIN_AMP_M_INF_DB),     \
+            AMP_GAIN10("cwt" id, "Wet gain" label, "Wet" alias, GAIN_AMP_0_DB), \
+            PERCENTS("cdw" id, "Dry/Wet balance" label, "Dry/Wet" alias, 100.0f, 0.1f), \
             SWITCH("cmv" id, "Curve modelling visibility" label, "Show curve" alias, 1.0f), \
             MESH("cmg" id, "Curve modelling graph" label, 2, dyna_processor_metadata::CURVE_MESH_SIZE), \
             MESH("ccg" id, "Curve graph" label, 2, dyna_processor_metadata::CURVE_MESH_SIZE)
