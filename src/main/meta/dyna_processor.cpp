@@ -119,6 +119,18 @@ namespace lsp
             { NULL, NULL }
         };
 
+        #define DYNA_PROC_PREMIX \
+            SWITCH("showpmx", "Show pre-mix overlay", "Show premix bar", 0.0f), \
+            AMP_GAIN10("in2lk", "Input to Link mix", "In to Link mix", GAIN_AMP_M_INF_DB), \
+            AMP_GAIN10("lk2in", "Link to Input mix", "Link to In mix", GAIN_AMP_M_INF_DB), \
+            AMP_GAIN10("lk2sc", "Link to Sidechain mix", "Link to SC mix", GAIN_AMP_M_INF_DB)
+
+        #define DYNA_PROC_SC_PREMIX \
+            DYNA_PROC_PREMIX, \
+            AMP_GAIN10("in2sc", "Input to Sidechain mix", "In to SC mix", GAIN_AMP_M_INF_DB), \
+            AMP_GAIN10("sc2in", "Sidechain to Input mix", "SC to In mix", GAIN_AMP_M_INF_DB), \
+            AMP_GAIN10("sc2lk", "Sidechain to Link mix", "SC to Link mix", GAIN_AMP_M_INF_DB)
+
         #define DYNA_PROC_COMMON     \
             BYPASS,             \
             IN_GAIN,            \
@@ -224,6 +236,7 @@ namespace lsp
         {
             PORTS_MONO_PLUGIN,
             DYNA_PROC_SHM_LINK_MONO,
+            DYNA_PROC_PREMIX,
             DYNA_PROC_COMMON,
             DYNA_PROC_SC_MONO_CHANNEL(dyna_proc_sc_type, 0),
             DYNA_PROC_CHANNEL("", "", ""),
@@ -236,6 +249,7 @@ namespace lsp
         {
             PORTS_STEREO_PLUGIN,
             DYNA_PROC_SHM_LINK_STEREO,
+            DYNA_PROC_PREMIX,
             DYNA_PROC_COMMON,
             DYNA_PROC_SPLIT_COMMON,
             DYNA_PROC_SC_STEREO_CHANNEL("", "", "", dyna_proc_sc_type, 0),
@@ -250,6 +264,7 @@ namespace lsp
         {
             PORTS_STEREO_PLUGIN,
             DYNA_PROC_SHM_LINK_STEREO,
+            DYNA_PROC_PREMIX,
             DYNA_PROC_LR_COMMON,
             DYNA_PROC_SC_STEREO_CHANNEL("_l", " Left", " L", dyna_proc_sc_type, 0),
             DYNA_PROC_SC_STEREO_CHANNEL("_r", " Right", " R", dyna_proc_sc_type, 0),
@@ -265,6 +280,7 @@ namespace lsp
         {
             PORTS_STEREO_PLUGIN,
             DYNA_PROC_SHM_LINK_STEREO,
+            DYNA_PROC_PREMIX,
             DYNA_PROC_MS_COMMON,
             DYNA_PROC_SC_STEREO_CHANNEL("_m", " Mid", " M", dyna_proc_sc_type, 0),
             DYNA_PROC_SC_STEREO_CHANNEL("_s", " Side", " S", dyna_proc_sc_type, 0),
@@ -281,8 +297,9 @@ namespace lsp
             PORTS_MONO_PLUGIN,
             PORTS_MONO_SIDECHAIN,
             DYNA_PROC_SHM_LINK_MONO,
+            DYNA_PROC_SC_PREMIX,
             DYNA_PROC_COMMON,
-            DYNA_PROC_SC_MONO_CHANNEL(dyna_proc_extsc_type, 1),
+            DYNA_PROC_SC_MONO_CHANNEL(dyna_proc_extsc_type, 2),
             DYNA_PROC_CHANNEL("", "", ""),
             DYNA_PROC_AUDIO_METER("", "", ""),
 
@@ -294,9 +311,10 @@ namespace lsp
             PORTS_STEREO_PLUGIN,
             PORTS_STEREO_SIDECHAIN,
             DYNA_PROC_SHM_LINK_STEREO,
+            DYNA_PROC_SC_PREMIX,
             DYNA_PROC_COMMON,
             DYNA_PROC_SPLIT_COMMON,
-            DYNA_PROC_SC_STEREO_CHANNEL("", "", "", dyna_proc_extsc_type, 1),
+            DYNA_PROC_SC_STEREO_CHANNEL("", "", "", dyna_proc_extsc_type, 2),
             DYNA_PROC_CHANNEL("", "", ""),
             DYNA_PROC_AUDIO_METER("_l", " Left", " L"),
             DYNA_PROC_AUDIO_METER("_r", " Right", " R"),
@@ -309,9 +327,10 @@ namespace lsp
             PORTS_STEREO_PLUGIN,
             PORTS_STEREO_SIDECHAIN,
             DYNA_PROC_SHM_LINK_STEREO,
+            DYNA_PROC_SC_PREMIX,
             DYNA_PROC_LR_COMMON,
-            DYNA_PROC_SC_STEREO_CHANNEL("_l", " Left", " L", dyna_proc_extsc_type, 1),
-            DYNA_PROC_SC_STEREO_CHANNEL("_r", " Right", " R", dyna_proc_extsc_type, 1),
+            DYNA_PROC_SC_STEREO_CHANNEL("_l", " Left", " L", dyna_proc_extsc_type, 2),
+            DYNA_PROC_SC_STEREO_CHANNEL("_r", " Right", " R", dyna_proc_extsc_type, 2),
             DYNA_PROC_CHANNEL("_l", " Left", " L"),
             DYNA_PROC_CHANNEL("_r", " Right", " R"),
             DYNA_PROC_AUDIO_METER("_l", " Left", " L"),
@@ -325,9 +344,10 @@ namespace lsp
             PORTS_STEREO_PLUGIN,
             PORTS_STEREO_SIDECHAIN,
             DYNA_PROC_SHM_LINK_STEREO,
+            DYNA_PROC_SC_PREMIX,
             DYNA_PROC_MS_COMMON,
-            DYNA_PROC_SC_STEREO_CHANNEL("_m", " Mid", " M", dyna_proc_extsc_type, 1),
-            DYNA_PROC_SC_STEREO_CHANNEL("_s", " Side", " S", dyna_proc_extsc_type, 1),
+            DYNA_PROC_SC_STEREO_CHANNEL("_m", " Mid", " M", dyna_proc_extsc_type, 2),
+            DYNA_PROC_SC_STEREO_CHANNEL("_s", " Side", " S", dyna_proc_extsc_type, 2),
             DYNA_PROC_CHANNEL("_m", " Mid", " M"),
             DYNA_PROC_CHANNEL("_s", " Side", " S"),
             DYNA_PROC_AUDIO_METER("_m", " Mid", " M"),
