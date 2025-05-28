@@ -89,9 +89,9 @@ namespace lsp
 
         static const port_item_t dyna_proc_extsc_type[] =
         {
-            { "External",       "sidechain.external"        },
             { "Feed-forward",   "sidechain.feed_forward"    },
             { "Feed-back",      "sidechain.feed_back"       },
+            { "External",       "sidechain.external"        },
             { "Link",           "sidechain.link" },
             { NULL, NULL }
         };
@@ -147,8 +147,8 @@ namespace lsp
         #define DYNA_PROC_SHM_LINK_STEREO \
             OPT_RETURN_STEREO("link", "shml_", "Side-chain shared memory link")
 
-        #define DYNA_PROC_SC_MONO_CHANNEL(sct) \
-            COMBO("sct", "Sidechain type", "SC type", dyna_processor_metadata::SC_TYPE_DFL, sct), \
+        #define DYNA_PROC_SC_MONO_CHANNEL(sct, sct_dfl) \
+            COMBO("sct", "Sidechain type", "SC type", sct_dfl, sct), \
             COMBO("scm", "Sidechain mode", "SC mode", dyna_processor_metadata::SC_MODE_DFL, dyna_proc_sc_modes), \
             CONTROL("sla", "Sidechain lookahead", "SC look", U_MSEC, dyna_processor_metadata::LOOKAHEAD), \
             SWITCH("scl", "Sidechain listen", "SC listen", 0.0f), \
@@ -159,8 +159,8 @@ namespace lsp
             COMBO("slpm", "Low-pass filter mode", "LPF mode", 0, dyna_proc_filter_slope),      \
             LOG_CONTROL("slpf", "Low-pass filter frequency", "LPF freq", U_HZ, dyna_processor_metadata::LPF)
 
-        #define DYNA_PROC_SC_STEREO_CHANNEL(id, label, alias, sct) \
-            COMBO("sct" id, "Sidechain type" label, "SC type" alias, dyna_processor_metadata::SC_TYPE_DFL, sct), \
+        #define DYNA_PROC_SC_STEREO_CHANNEL(id, label, alias, sct, sct_dfl) \
+            COMBO("sct" id, "Sidechain type" label, "SC type" alias, sct_dfl, sct), \
             COMBO("scm" id, "Sidechain mode" label, "SC mode" alias, dyna_processor_metadata::SC_MODE_DFL, dyna_proc_sc_modes), \
             CONTROL("sla" id, "Sidechain lookahead" label, "SC look" alias, U_MSEC, dyna_processor_metadata::LOOKAHEAD), \
             SWITCH("scl" id, "Sidechain listen" label, "SC listen" alias, 0.0f), \
@@ -225,7 +225,7 @@ namespace lsp
             PORTS_MONO_PLUGIN,
             DYNA_PROC_SHM_LINK_MONO,
             DYNA_PROC_COMMON,
-            DYNA_PROC_SC_MONO_CHANNEL(dyna_proc_sc_type),
+            DYNA_PROC_SC_MONO_CHANNEL(dyna_proc_sc_type, 0),
             DYNA_PROC_CHANNEL("", "", ""),
             DYNA_PROC_AUDIO_METER("", "", ""),
 
@@ -238,7 +238,7 @@ namespace lsp
             DYNA_PROC_SHM_LINK_STEREO,
             DYNA_PROC_COMMON,
             DYNA_PROC_SPLIT_COMMON,
-            DYNA_PROC_SC_STEREO_CHANNEL("", "", "", dyna_proc_sc_type),
+            DYNA_PROC_SC_STEREO_CHANNEL("", "", "", dyna_proc_sc_type, 0),
             DYNA_PROC_CHANNEL("", "", ""),
             DYNA_PROC_AUDIO_METER("_l", " Left", " L"),
             DYNA_PROC_AUDIO_METER("_r", " Right", " R"),
@@ -251,8 +251,8 @@ namespace lsp
             PORTS_STEREO_PLUGIN,
             DYNA_PROC_SHM_LINK_STEREO,
             DYNA_PROC_LR_COMMON,
-            DYNA_PROC_SC_STEREO_CHANNEL("_l", " Left", " L", dyna_proc_sc_type),
-            DYNA_PROC_SC_STEREO_CHANNEL("_r", " Right", " R", dyna_proc_sc_type),
+            DYNA_PROC_SC_STEREO_CHANNEL("_l", " Left", " L", dyna_proc_sc_type, 0),
+            DYNA_PROC_SC_STEREO_CHANNEL("_r", " Right", " R", dyna_proc_sc_type, 0),
             DYNA_PROC_CHANNEL("_l", " Left", " L"),
             DYNA_PROC_CHANNEL("_r", " Right", " R"),
             DYNA_PROC_AUDIO_METER("_l", " Left", " L"),
@@ -266,8 +266,8 @@ namespace lsp
             PORTS_STEREO_PLUGIN,
             DYNA_PROC_SHM_LINK_STEREO,
             DYNA_PROC_MS_COMMON,
-            DYNA_PROC_SC_STEREO_CHANNEL("_m", " Mid", " M", dyna_proc_sc_type),
-            DYNA_PROC_SC_STEREO_CHANNEL("_s", " Side", " S", dyna_proc_sc_type),
+            DYNA_PROC_SC_STEREO_CHANNEL("_m", " Mid", " M", dyna_proc_sc_type, 0),
+            DYNA_PROC_SC_STEREO_CHANNEL("_s", " Side", " S", dyna_proc_sc_type, 0),
             DYNA_PROC_CHANNEL("_m", " Mid", " M"),
             DYNA_PROC_CHANNEL("_s", " Side", " S"),
             DYNA_PROC_AUDIO_METER("_m", " Mid", " M"),
@@ -282,7 +282,7 @@ namespace lsp
             PORTS_MONO_SIDECHAIN,
             DYNA_PROC_SHM_LINK_MONO,
             DYNA_PROC_COMMON,
-            DYNA_PROC_SC_MONO_CHANNEL(dyna_proc_extsc_type),
+            DYNA_PROC_SC_MONO_CHANNEL(dyna_proc_extsc_type, 1),
             DYNA_PROC_CHANNEL("", "", ""),
             DYNA_PROC_AUDIO_METER("", "", ""),
 
@@ -296,7 +296,7 @@ namespace lsp
             DYNA_PROC_SHM_LINK_STEREO,
             DYNA_PROC_COMMON,
             DYNA_PROC_SPLIT_COMMON,
-            DYNA_PROC_SC_STEREO_CHANNEL("", "", "", dyna_proc_extsc_type),
+            DYNA_PROC_SC_STEREO_CHANNEL("", "", "", dyna_proc_extsc_type, 1),
             DYNA_PROC_CHANNEL("", "", ""),
             DYNA_PROC_AUDIO_METER("_l", " Left", " L"),
             DYNA_PROC_AUDIO_METER("_r", " Right", " R"),
@@ -310,8 +310,8 @@ namespace lsp
             PORTS_STEREO_SIDECHAIN,
             DYNA_PROC_SHM_LINK_STEREO,
             DYNA_PROC_LR_COMMON,
-            DYNA_PROC_SC_STEREO_CHANNEL("_l", " Left", " L", dyna_proc_extsc_type),
-            DYNA_PROC_SC_STEREO_CHANNEL("_r", " Right", " R", dyna_proc_extsc_type),
+            DYNA_PROC_SC_STEREO_CHANNEL("_l", " Left", " L", dyna_proc_extsc_type, 1),
+            DYNA_PROC_SC_STEREO_CHANNEL("_r", " Right", " R", dyna_proc_extsc_type, 1),
             DYNA_PROC_CHANNEL("_l", " Left", " L"),
             DYNA_PROC_CHANNEL("_r", " Right", " R"),
             DYNA_PROC_AUDIO_METER("_l", " Left", " L"),
@@ -326,8 +326,8 @@ namespace lsp
             PORTS_STEREO_SIDECHAIN,
             DYNA_PROC_SHM_LINK_STEREO,
             DYNA_PROC_MS_COMMON,
-            DYNA_PROC_SC_STEREO_CHANNEL("_m", " Mid", " M", dyna_proc_extsc_type),
-            DYNA_PROC_SC_STEREO_CHANNEL("_s", " Side", " S", dyna_proc_extsc_type),
+            DYNA_PROC_SC_STEREO_CHANNEL("_m", " Mid", " M", dyna_proc_extsc_type, 1),
+            DYNA_PROC_SC_STEREO_CHANNEL("_s", " Side", " S", dyna_proc_extsc_type, 1),
             DYNA_PROC_CHANNEL("_m", " Mid", " M"),
             DYNA_PROC_CHANNEL("_s", " Side", " S"),
             DYNA_PROC_AUDIO_METER("_m", " Mid", " M"),
