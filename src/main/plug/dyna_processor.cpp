@@ -29,7 +29,7 @@
 #include <lsp-plug.in/shared/debug.h>
 #include <lsp-plug.in/shared/id_colors.h>
 
-#define DYNA_PROC_BUF_SIZE          0x1000
+#define DYNA_PROC_BUF_SIZE          0x200
 
 namespace lsp
 {
@@ -1550,6 +1550,7 @@ namespace lsp
                 v->write("pScToIn", sPremix.pScToIn);
                 v->write("pScToLink", sPremix.pScToLink);
             }
+            v->end_object();
 
             v->write("pBypass", pBypass);
             v->write("pInGain", pInGain);
