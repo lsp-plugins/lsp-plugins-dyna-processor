@@ -15,6 +15,22 @@
 	<ui:eval id="name_a" value="(:mid_side) ? 'M_id' : 'L_eft'"/>
 	<ui:eval id="name_b" value="(:mid_side) ? 'S_ide' : 'R_ight'"/>
 
+	<!-- Control linking -->
+	<ui:if test=":left_right or :mid_side">
+		<ui:for id="port"
+			list="'sct'; 'scm'; 'sla'; 'scl'; 'scs'; 'scr'; 'scp'; 'shpm'; 'shpf'; 'slpm'; 'slpf';
+				'pe0'; 'tl0'; 'gl0'; 'kn0'; 'ae0'; 'al0'; 'at0'; 're0'; 'rl0'; 'rt0';
+				'pe1'; 'tl1'; 'gl1'; 'kn1'; 'ae1'; 'al1'; 'at1'; 're1'; 'rl1'; 'rt1';
+				'pe2'; 'tl2'; 'gl2'; 'kn2'; 'ae2'; 'al2'; 'at2'; 're2'; 'rl2'; 'rt2';
+				'pe3'; 'tl3'; 'gl3'; 'kn3'; 'ae3'; 'al3'; 'at3'; 're3'; 'rl3'; 'rt3';
+				'atd'; 'rtd'; 'hold'; 'llr'; 'hlr'; 'omk'; 'cdr'; 'cwt'; 'cdw'; 'cmv'">
+			<ctl:link
+				id.1="${port}_${xa}" value.1=":${port}_${xb}"
+				id.2="${port}_${xb}" value.2=":${port}_${xa}"
+				activity=":clink" />
+		</ui:for>
+	</ui:if>
+
 	<vbox>
 		<!-- Top part -->
 		<grid rows="1" cols="4" hspacing="4" expand="true">
@@ -107,6 +123,12 @@
 					<ui:if test=":left_right or :mid_side">
 						<button id="cmv_${xa}" height="22" width="48" text="labels.chan.${clr_a}" pad.v="4" ui:inject="Button_${clr_a}"/>
 						<button id="cmv_${xb}" height="22" width="48" text="labels.chan.${clr_b}" pad.v="4" ui:inject="Button_${clr_b}"/>
+					</ui:if>
+					<ui:if test=":left_right">
+						<button id="clink" ui:inject="Button_green" text="labels.chan.lr_link" />
+					</ui:if>
+					<ui:if test=":mid_side">
+						<button id="clink" ui:inject="Button_green" text="labels.chan.ms_link" />
 					</ui:if>
 
 					<void hexpand="true"/>

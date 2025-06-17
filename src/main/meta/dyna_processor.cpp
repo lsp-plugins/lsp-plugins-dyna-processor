@@ -214,6 +214,9 @@ namespace lsp
             MESH("cmg" id, "Curve modelling graph" label, 2, dyna_processor_metadata::CURVE_MESH_SIZE), \
             MESH("ccg" id, "Curve graph" label, 2, dyna_processor_metadata::CURVE_MESH_SIZE)
 
+        #define DYNA_LINK(id, label, alias) \
+            SWITCH(id, label, alias, 0.0f)
+
         #define DYNA_PROC_AUDIO_METER(id, label, alias) \
             SWITCH("slv" id, "Sidechain level visibility" label, "Show SC" alias, 1.0f), \
             SWITCH("elv" id, "Envelope level visibility" label, "Show Env" alias, 1.0f), \
@@ -266,6 +269,7 @@ namespace lsp
             DYNA_PROC_SHM_LINK_STEREO,
             DYNA_PROC_PREMIX,
             DYNA_PROC_LR_COMMON,
+            DYNA_LINK("clink", "Left/Right controls link", "L/R link"),
             DYNA_PROC_SC_STEREO_CHANNEL("_l", " Left", " L", dyna_proc_sc_type, 0),
             DYNA_PROC_SC_STEREO_CHANNEL("_r", " Right", " R", dyna_proc_sc_type, 0),
             DYNA_PROC_CHANNEL("_l", " Left", " L"),
@@ -282,6 +286,7 @@ namespace lsp
             DYNA_PROC_SHM_LINK_STEREO,
             DYNA_PROC_PREMIX,
             DYNA_PROC_MS_COMMON,
+            DYNA_LINK("clink", "Mid/Side controls link", "M/S link"),
             DYNA_PROC_SC_STEREO_CHANNEL("_m", " Mid", " M", dyna_proc_sc_type, 0),
             DYNA_PROC_SC_STEREO_CHANNEL("_s", " Side", " S", dyna_proc_sc_type, 0),
             DYNA_PROC_CHANNEL("_m", " Mid", " M"),
@@ -329,6 +334,7 @@ namespace lsp
             DYNA_PROC_SHM_LINK_STEREO,
             DYNA_PROC_SC_PREMIX,
             DYNA_PROC_LR_COMMON,
+            DYNA_LINK("clink", "Left/Right controls link", "L/R link"),
             DYNA_PROC_SC_STEREO_CHANNEL("_l", " Left", " L", dyna_proc_extsc_type, 2),
             DYNA_PROC_SC_STEREO_CHANNEL("_r", " Right", " R", dyna_proc_extsc_type, 2),
             DYNA_PROC_CHANNEL("_l", " Left", " L"),
@@ -346,6 +352,7 @@ namespace lsp
             DYNA_PROC_SHM_LINK_STEREO,
             DYNA_PROC_SC_PREMIX,
             DYNA_PROC_MS_COMMON,
+            DYNA_LINK("clink", "Mid/Side controls link", "M/S link"),
             DYNA_PROC_SC_STEREO_CHANNEL("_m", " Mid", " M", dyna_proc_extsc_type, 2),
             DYNA_PROC_SC_STEREO_CHANNEL("_s", " Side", " S", dyna_proc_extsc_type, 2),
             DYNA_PROC_CHANNEL("_m", " Mid", " M"),
