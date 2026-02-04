@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2025 Linux Studio Plugins Project <https://lsp-plug.in/>
- *           (C) 2025 Vladimir Sadovnikov <sadko4u@gmail.com>
+ * Copyright (C) 2026 Linux Studio Plugins Project <https://lsp-plug.in/>
+ *           (C) 2026 Vladimir Sadovnikov <sadko4u@gmail.com>
  *
  * This file is part of lsp-plugins-dyna-processor
  * Created on: 3 авг. 2021 г.
@@ -20,6 +20,7 @@
  */
 
 #include <lsp-plug.in/plug-fw/meta/ports.h>
+#include <lsp-plug.in/plug-fw/meta/registry.h>
 #include <lsp-plug.in/shared/meta/developers.h>
 #include <private/meta/dyna_processor.h>
 
@@ -402,6 +403,7 @@ namespace lsp
             mono_plugin_port_groups,
             &dyna_processor_bundle
         };
+        LSP_REGISTER_METADATA(dyna_processor_mono);
 
         const meta::plugin_t  dyna_processor_stereo =
         {
@@ -432,6 +434,7 @@ namespace lsp
             stereo_plugin_port_groups,
             &dyna_processor_bundle
         };
+        LSP_REGISTER_METADATA(dyna_processor_stereo);
 
         const meta::plugin_t  dyna_processor_lr =
         {
@@ -462,6 +465,7 @@ namespace lsp
             stereo_plugin_port_groups,
             &dyna_processor_bundle
         };
+        LSP_REGISTER_METADATA(dyna_processor_lr);
 
         const meta::plugin_t  dyna_processor_ms =
         {
@@ -492,6 +496,7 @@ namespace lsp
             stereo_plugin_port_groups,
             &dyna_processor_bundle
         };
+        LSP_REGISTER_METADATA(dyna_processor_ms);
 
         // Sidechain compressor
         const meta::plugin_t  sc_dyna_processor_mono =
@@ -523,6 +528,7 @@ namespace lsp
             mono_plugin_sidechain_port_groups,
             &dyna_processor_bundle
         };
+        LSP_REGISTER_METADATA(sc_dyna_processor_mono);
 
         const meta::plugin_t  sc_dyna_processor_stereo =
         {
@@ -553,6 +559,7 @@ namespace lsp
             stereo_plugin_sidechain_port_groups,
             &dyna_processor_bundle
         };
+        LSP_REGISTER_METADATA(sc_dyna_processor_stereo);
 
         const meta::plugin_t  sc_dyna_processor_lr =
         {
@@ -583,6 +590,7 @@ namespace lsp
             stereo_plugin_sidechain_port_groups,
             &dyna_processor_bundle
         };
+        LSP_REGISTER_METADATA(sc_dyna_processor_lr);
 
         const meta::plugin_t  sc_dyna_processor_ms =
         {
@@ -613,5 +621,7 @@ namespace lsp
             stereo_plugin_sidechain_port_groups,
             &dyna_processor_bundle
         };
+        LSP_REGISTER_METADATA(sc_dyna_processor_ms);
+
     } /* namespace meta */
 } /* namespace lsp */
