@@ -1,7 +1,17 @@
 {
 	"dyna_processor": {
-		"name": "Dynamic Processor",
-		"description": "Dieses Plugin verarbeitet dynamisch das Eingangssignal. Die Sidechain\n kann flexibel konfiguriert werden. Verschiedene Varianten der \ndynamischen Verarbeitung sind: Kompressor, Limiter, Gate,\nExpander, eine Art Transient-Gestalter und, dank vieler \nMöglichkeiten der Kurvengestaltung, eine Menge mehr. Die dynamische\nBandbreite kann sogar in Sub-Bänder gespalten werden, die ihre jeweils eigenen \nAttack- und Releasezeiten zugewiesen bekommen können."
+		"description": "Dieses Plugin verarbeitet dynamisch das Eingangssignal. Die Sidechain\n kann flexibel konfiguriert werden. Verschiedene Varianten der \ndynamischen Verarbeitung sind: Kompressor, Limiter, Gate,\nExpander, eine Art Transient-Gestalter und, dank vieler \nMöglichkeiten der Kurvengestaltung, eine Menge mehr. Die dynamische\nBandbreite kann sogar in Sub-Bänder gespalten werden, die ihre jeweils eigenen \nAttack- und Releasezeiten zugewiesen bekommen können.",
+		"name": "Dynamics Processor"
+	},
+	s"launcher": {
+		"dyna_processor_lr": "Split LR",
+		"dyna_processor_mono": "Mono",
+		"dyna_processor_ms": "Split MS",
+		"dyna_processor_stereo": "Stereo",
+		"sc_dyna_processor_lr": "SC Split LR",
+		"sc_dyna_processor_mono": "SC Mono",
+		"sc_dyna_processor_ms": "SC Split MS",
+		"sc_dyna_processor_stereo": "SC Stereo"
 	}
 }
 
