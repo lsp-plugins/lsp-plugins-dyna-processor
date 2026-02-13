@@ -398,7 +398,7 @@ namespace lsp
             clap_features_mono,
             E_INLINE_DISPLAY | E_DUMP_STATE,
             dyna_processor_mono_ports,
-            "dynamics/processor/single.xml",
+            "plugins/dynamics/processor/single.xml",
             NULL,
             mono_plugin_port_groups,
             &dyna_processor_bundle
@@ -429,7 +429,7 @@ namespace lsp
             clap_features_stereo,
             E_INLINE_DISPLAY | E_DUMP_STATE,
             dyna_processor_stereo_ports,
-            "dynamics/processor/single.xml",
+            "plugins/dynamics/processor/single.xml",
             NULL,
             stereo_plugin_port_groups,
             &dyna_processor_bundle
@@ -460,7 +460,7 @@ namespace lsp
             clap_features_stereo,
             E_INLINE_DISPLAY | E_DUMP_STATE,
             dyna_processor_lr_ports,
-            "dynamics/processor/single.xml",
+            "plugins/dynamics/processor/single.xml",
             NULL,
             stereo_plugin_port_groups,
             &dyna_processor_bundle
@@ -491,7 +491,7 @@ namespace lsp
             clap_features_stereo,
             E_INLINE_DISPLAY | E_DUMP_STATE,
             dyna_processor_ms_ports,
-            "dynamics/processor/single.xml",
+            "plugins/dynamics/processor/single.xml",
             NULL,
             stereo_plugin_port_groups,
             &dyna_processor_bundle
@@ -523,7 +523,7 @@ namespace lsp
             clap_features_mono,
             E_INLINE_DISPLAY | E_DUMP_STATE,
             sc_dyna_processor_mono_ports,
-            "dynamics/processor/single.xml",
+            "plugins/dynamics/processor/single.xml",
             NULL,
             mono_plugin_sidechain_port_groups,
             &dyna_processor_bundle
@@ -554,7 +554,7 @@ namespace lsp
             clap_features_stereo,
             E_INLINE_DISPLAY | E_DUMP_STATE,
             sc_dyna_processor_stereo_ports,
-            "dynamics/processor/single.xml",
+            "plugins/dynamics/processor/single.xml",
             NULL,
             stereo_plugin_sidechain_port_groups,
             &dyna_processor_bundle
@@ -585,7 +585,7 @@ namespace lsp
             clap_features_stereo,
             E_INLINE_DISPLAY | E_DUMP_STATE,
             sc_dyna_processor_lr_ports,
-            "dynamics/processor/single.xml",
+            "plugins/dynamics/processor/single.xml",
             NULL,
             stereo_plugin_sidechain_port_groups,
             &dyna_processor_bundle
@@ -616,7 +616,7 @@ namespace lsp
             clap_features_stereo,
             E_INLINE_DISPLAY | E_DUMP_STATE,
             sc_dyna_processor_ms_ports,
-            "dynamics/processor/single.xml",
+            "plugins/dynamics/processor/single.xml",
             NULL,
             stereo_plugin_sidechain_port_groups,
             &dyna_processor_bundle
