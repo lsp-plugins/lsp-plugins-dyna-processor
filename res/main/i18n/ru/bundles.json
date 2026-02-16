@@ -4,14 +4,13 @@
 		"name": "Динамический процессор"
 	},
 	"launcher": {
-		"dyna_processor_lr": "Раздельный ЛП",
+		"dyna_processor_lr": "ЛП",
 		"dyna_processor_mono": "Моно",
-		"dyna_processor_ms": "Раздельный ЦС",
+		"dyna_processor_ms": "ЦС",
 		"dyna_processor_stereo": "Стерео",
-		"sc_dyna_processor_lr": "БЦ Раздельный ЛП",
+		"sc_dyna_processor_lr": "БЦ ЛП",
 		"sc_dyna_processor_mono": "БЦ Моно",
-		"sc_dyna_processor_ms": "БЦ Раздельный ЦС",
+		"sc_dyna_processor_ms": "БЦ ЦС",
 		"sc_dyna_processor_stereo": "БЦ Стерео"
 	}
 }
-

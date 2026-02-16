@@ -4,14 +4,13 @@
 		"name": "Dynamics Processor"
 	},
 	"launcher": {
-		"dyna_processor_lr": "Split LR",
+		"dyna_processor_lr": "LR",
 		"dyna_processor_mono": "Mono",
-		"dyna_processor_ms": "Split MS",
+		"dyna_processor_ms": "MS",
 		"dyna_processor_stereo": "Stereo",
-		"sc_dyna_processor_lr": "SC Split LR",
+		"sc_dyna_processor_lr": "SC LR",
 		"sc_dyna_processor_mono": "SC Mono",
-		"sc_dyna_processor_ms": "SC Split MS",
+		"sc_dyna_processor_ms": "SC MS",
 		"sc_dyna_processor_stereo": "SC Stereo"
 	}
 }
-

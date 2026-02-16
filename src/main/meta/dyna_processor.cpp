@@ -401,7 +401,8 @@ namespace lsp
             "plugins/dynamics/processor/single.xml",
             NULL,
             mono_plugin_port_groups,
-            &dyna_processor_bundle
+            &dyna_processor_bundle,
+            3
         };
         LSP_REGISTER_METADATA(dyna_processor_mono);
 
@@ -432,7 +433,8 @@ namespace lsp
             "plugins/dynamics/processor/single.xml",
             NULL,
             stereo_plugin_port_groups,
-            &dyna_processor_bundle
+            &dyna_processor_bundle,
+            1
         };
         LSP_REGISTER_METADATA(dyna_processor_stereo);
 
@@ -463,7 +465,8 @@ namespace lsp
             "plugins/dynamics/processor/single.xml",
             NULL,
             stereo_plugin_port_groups,
-            &dyna_processor_bundle
+            &dyna_processor_bundle,
+            5
         };
         LSP_REGISTER_METADATA(dyna_processor_lr);
 
@@ -494,7 +497,8 @@ namespace lsp
             "plugins/dynamics/processor/single.xml",
             NULL,
             stereo_plugin_port_groups,
-            &dyna_processor_bundle
+            &dyna_processor_bundle,
+            7
         };
         LSP_REGISTER_METADATA(dyna_processor_ms);
 
@@ -526,7 +530,8 @@ namespace lsp
             "plugins/dynamics/processor/single.xml",
             NULL,
             mono_plugin_sidechain_port_groups,
-            &dyna_processor_bundle
+            &dyna_processor_bundle,
+            4
         };
         LSP_REGISTER_METADATA(sc_dyna_processor_mono);
 
@@ -557,7 +562,8 @@ namespace lsp
             "plugins/dynamics/processor/single.xml",
             NULL,
             stereo_plugin_sidechain_port_groups,
-            &dyna_processor_bundle
+            &dyna_processor_bundle,
+            2
         };
         LSP_REGISTER_METADATA(sc_dyna_processor_stereo);
 
@@ -588,7 +594,8 @@ namespace lsp
             "plugins/dynamics/processor/single.xml",
             NULL,
             stereo_plugin_sidechain_port_groups,
-            &dyna_processor_bundle
+            &dyna_processor_bundle,
+            6
         };
         LSP_REGISTER_METADATA(sc_dyna_processor_lr);
 
@@ -619,7 +626,8 @@ namespace lsp
             "plugins/dynamics/processor/single.xml",
             NULL,
             stereo_plugin_sidechain_port_groups,
-            &dyna_processor_bundle
+            &dyna_processor_bundle,
+            8
         };
         LSP_REGISTER_METADATA(sc_dyna_processor_ms);
 
