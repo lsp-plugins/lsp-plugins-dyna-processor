@@ -66,24 +66,24 @@
 
 						<!-- Meshes -->
 						<ui:if test=":mono">
-							<mesh id="isg" width="0" color="mono_in" fcolor="mono_in" fcolor.a="0.8" fill="true" visibility=":ilv"/>
-							<mesh id="osg" width="2" color="mono" visibility=":olv"/>
-							<mesh id="scg" width="2" color="sidechain_1" visibility=":slv"/>
-							<mesh id="evg" width="2" color="envelope_1" visibility=":elv"/>
-							<mesh id="grg" width="2" color="bright_blue" fcolor="bright_blue" fcolor.a="0.8" fill="true" visibility=":grv"/>
+							<mesh id="isg" width="0" color="mono_in" fcolor="mono_in" fcolor.a="0.9" fill="true" visibility=":ilv"/>
+							<mesh id="osg" width="1" color="mono" color.a="0.7" visibility=":olv"/>
+							<mesh id="scg" width="2" color="sidechain" color.a="0.5" visibility=":slv"/>
+							<mesh id="evg" width="2" color="envelope" visibility=":elv"/>
+							<mesh id="grg" width="2" color="bright_blue" fcolor="bright_blue" fcolor.a="0.85" fill="true" visibility=":grv"/>
 						</ui:if>
 
 						<ui:if test="!(:mono)">
-							<mesh id="isg_${xa}" width="0" color="${clr_a}_in" fcolor="${clr_a}_in" fcolor.a="0.8" fill="true" visibility=":ilv_${xa}"/>
-							<mesh id="isg_${xb}" width="0" color="${clr_b}_in" fcolor="${clr_b}_in" fcolor.a="0.8" fill="true" visibility=":ilv_${xb}"/>
-							<mesh id="osg_${xa}" width="2" color="${clr_a}" visibility=":olv_${xa}"/>
-							<mesh id="osg_${xb}" width="2" color="${clr_b}" visibility=":olv_${xb}"/>
-							<mesh id="scg_${xa}" width="2" color="sidechain_1" visibility=":slv_${xa}"/>
-							<mesh id="scg_${xb}" width="2" color="sidechain_2" visibility=":slv_${xb}"/>
-							<mesh id="evg_${xa}" width="2" color="envelope_1" visibility=":elv_${xa}"/>
-							<mesh id="evg_${xb}" width="2" color="envelope_2" visibility=":elv_${xb}"/>
-							<mesh id="grg_${xa}" width="2" color="bright_blue" fcolor="bright_blue" fcolor.a="0.8" fill="true" visibility=":grv_${xa}"/>
-							<mesh id="grg_${xb}" width="2" color="bright_blue" fcolor="bright_blue" fcolor.a="0.8" fill="true" visibility=":grv_${xb}"/>
+							<mesh id="isg_${xa}" width="0" color="${clr_a}_in" fcolor="${clr_a}_in" fcolor.a="0.9" fill="true" visibility=":ilv_${xa}"/>
+							<mesh id="isg_${xb}" width="0" color="${clr_b}_in" fcolor="${clr_b}_in" fcolor.a="0.9" fill="true" visibility=":ilv_${xb}"/>
+							<mesh id="osg_${xa}" width="1" color="${clr_a}" color.a="0.5" visibility=":olv_${xa}"/>
+							<mesh id="osg_${xb}" width="1" color="${clr_b}" color.a="0.5" visibility=":olv_${xb}"/>
+							<mesh id="scg_${xa}" width="2" color="sidechain" color.a="0.7" visibility=":slv_${xa}"/>
+							<mesh id="scg_${xb}" width="2" color="sidechain" color.a="0.7" visibility=":slv_${xb}"/>
+							<mesh id="evg_${xa}" width="2" color="envelope" color.a="0.3" visibility=":elv_${xa}"/>
+							<mesh id="evg_${xb}" width="2" color="envelope" color.a="0.3" visibility=":elv_${xb}"/>
+							<mesh id="grg_${xa}" width="2" color="bright_blue" color.a="0.5" fcolor="bright_blue" fcolor.a="0.9" fill="true" visibility=":grv_${xa}"/>
+							<mesh id="grg_${xb}" width="2" color="bright_blue" color.a="0.5" fcolor="bright_blue" fcolor.a="0.9" fill="true" visibility=":grv_${xb}"/>
 						</ui:if>
 
 						<!-- Boundaries -->
@@ -719,7 +719,7 @@
 		</hbox>
 
 	</vbox>
-	
+
 	<!-- Premix overlay -->
 	<overlay id="showpmx" trigger="premix_trigger" hpos="1" vpos="1" halign="-1" valign="1" ipadding.t="4">
 		<group text="groups.premix" vexpand="false" ipadding="0">
@@ -729,29 +729,29 @@
 					<knob id="in2sc" />
 					<value id="in2sc" pad.h="6" pad.v="4" />
 				</ui:if>
-				
+
 				<label text="labels.premix.in_to_link" pad.h="6" pad.v="4" />
 				<knob id="in2lk" />
 				<value id="in2lk" />
-				
+
 				<cell rows="3"><vsep pad.h="2" bg.color="bg" reduce="true" /></cell>
-				
+
 				<ui:if test=":is_sidechain">
 					<label text="labels.premix.sc_to_in" pad.h="6" pad.v="4" />
 					<knob id="sc2in" />
 					<value id="sc2in" pad.h="6" pad.v="4" />
-					
+
 					<label text="labels.premix.sc_to_link" pad.h="6" pad.v="4" />
 					<knob id="sc2lk" />
 					<value id="sc2lk" pad.h="6" pad.v="4" />
-					
+
 					<cell rows="3"><vsep pad.h="2" bg.color="bg" reduce="true" /></cell>
 				</ui:if>
-				
+
 				<label text="labels.premix.link_to_in" pad.h="6" pad.v="4" />
 				<knob id="lk2in" />
 				<value id="lk2in" pad.h="6" pad.v="4" />
-				
+
 				<label text="labels.premix.link_to_sc" pad.h="6" pad.v="4" />
 				<knob id="lk2sc" />
 				<value id="lk2sc" pad.h="6" pad.v="4" />
