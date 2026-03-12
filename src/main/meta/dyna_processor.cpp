@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2025 Linux Studio Plugins Project <https://lsp-plug.in/>
- *           (C) 2025 Vladimir Sadovnikov <sadko4u@gmail.com>
+ * Copyright (C) 2026 Linux Studio Plugins Project <https://lsp-plug.in/>
+ *           (C) 2026 Vladimir Sadovnikov <sadko4u@gmail.com>
  *
  * This file is part of lsp-plugins-dyna-processor
  * Created on: 3 авг. 2021 г.
@@ -20,12 +20,13 @@
  */
 
 #include <lsp-plug.in/plug-fw/meta/ports.h>
+#include <lsp-plug.in/plug-fw/meta/registry.h>
 #include <lsp-plug.in/shared/meta/developers.h>
 #include <private/meta/dyna_processor.h>
 
 #define LSP_PLUGINS_DYNA_PROCESSOR_VERSION_MAJOR       1
 #define LSP_PLUGINS_DYNA_PROCESSOR_VERSION_MINOR       0
-#define LSP_PLUGINS_DYNA_PROCESSOR_VERSION_MICRO       33
+#define LSP_PLUGINS_DYNA_PROCESSOR_VERSION_MICRO       34
 
 #define LSP_PLUGINS_DYNA_PROCESSOR_VERSION  \
     LSP_MODULE_VERSION( \
@@ -397,11 +398,13 @@ namespace lsp
             clap_features_mono,
             E_INLINE_DISPLAY | E_DUMP_STATE,
             dyna_processor_mono_ports,
-            "dynamics/processor/single.xml",
+            "plugins/dynamics/processor/single.xml",
             NULL,
             mono_plugin_port_groups,
-            &dyna_processor_bundle
+            &dyna_processor_bundle,
+            3
         };
+        LSP_REGISTER_METADATA(dyna_processor_mono);
 
         const meta::plugin_t  dyna_processor_stereo =
         {
@@ -427,11 +430,13 @@ namespace lsp
             clap_features_stereo,
             E_INLINE_DISPLAY | E_DUMP_STATE,
             dyna_processor_stereo_ports,
-            "dynamics/processor/single.xml",
+            "plugins/dynamics/processor/single.xml",
             NULL,
             stereo_plugin_port_groups,
-            &dyna_processor_bundle
+            &dyna_processor_bundle,
+            1
         };
+        LSP_REGISTER_METADATA(dyna_processor_stereo);
 
         const meta::plugin_t  dyna_processor_lr =
         {
@@ -457,11 +462,13 @@ namespace lsp
             clap_features_stereo,
             E_INLINE_DISPLAY | E_DUMP_STATE,
             dyna_processor_lr_ports,
-            "dynamics/processor/single.xml",
+            "plugins/dynamics/processor/single.xml",
             NULL,
             stereo_plugin_port_groups,
-            &dyna_processor_bundle
+            &dyna_processor_bundle,
+            5
         };
+        LSP_REGISTER_METADATA(dyna_processor_lr);
 
         const meta::plugin_t  dyna_processor_ms =
         {
@@ -487,11 +494,13 @@ namespace lsp
             clap_features_stereo,
             E_INLINE_DISPLAY | E_DUMP_STATE,
             dyna_processor_ms_ports,
-            "dynamics/processor/single.xml",
+            "plugins/dynamics/processor/single.xml",
             NULL,
             stereo_plugin_port_groups,
-            &dyna_processor_bundle
+            &dyna_processor_bundle,
+            7
         };
+        LSP_REGISTER_METADATA(dyna_processor_ms);
 
         // Sidechain compressor
         const meta::plugin_t  sc_dyna_processor_mono =
@@ -518,11 +527,13 @@ namespace lsp
             clap_features_mono,
             E_INLINE_DISPLAY | E_DUMP_STATE,
             sc_dyna_processor_mono_ports,
-            "dynamics/processor/single.xml",
+            "plugins/dynamics/processor/single.xml",
             NULL,
             mono_plugin_sidechain_port_groups,
-            &dyna_processor_bundle
+            &dyna_processor_bundle,
+            4
         };
+        LSP_REGISTER_METADATA(sc_dyna_processor_mono);
 
         const meta::plugin_t  sc_dyna_processor_stereo =
         {
@@ -548,11 +559,13 @@ namespace lsp
             clap_features_stereo,
             E_INLINE_DISPLAY | E_DUMP_STATE,
             sc_dyna_processor_stereo_ports,
-            "dynamics/processor/single.xml",
+            "plugins/dynamics/processor/single.xml",
             NULL,
             stereo_plugin_sidechain_port_groups,
-            &dyna_processor_bundle
+            &dyna_processor_bundle,
+            2
         };
+        LSP_REGISTER_METADATA(sc_dyna_processor_stereo);
 
         const meta::plugin_t  sc_dyna_processor_lr =
         {
@@ -578,11 +591,13 @@ namespace lsp
             clap_features_stereo,
             E_INLINE_DISPLAY | E_DUMP_STATE,
             sc_dyna_processor_lr_ports,
-            "dynamics/processor/single.xml",
+            "plugins/dynamics/processor/single.xml",
             NULL,
             stereo_plugin_sidechain_port_groups,
-            &dyna_processor_bundle
+            &dyna_processor_bundle,
+            6
         };
+        LSP_REGISTER_METADATA(sc_dyna_processor_lr);
 
         const meta::plugin_t  sc_dyna_processor_ms =
         {
@@ -608,10 +623,13 @@ namespace lsp
             clap_features_stereo,
             E_INLINE_DISPLAY | E_DUMP_STATE,
             sc_dyna_processor_ms_ports,
-            "dynamics/processor/single.xml",
+            "plugins/dynamics/processor/single.xml",
             NULL,
             stereo_plugin_sidechain_port_groups,
-            &dyna_processor_bundle
+            &dyna_processor_bundle,
+            8
         };
+        LSP_REGISTER_METADATA(sc_dyna_processor_ms);
+
     } /* namespace meta */
 } /* namespace lsp */

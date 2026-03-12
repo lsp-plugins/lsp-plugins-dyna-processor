@@ -1,7 +1,16 @@
 {
 	"dyna_processor": {
-		"name": "Dynamic Processor",
-		"description": "This plugin performs dynamic processing of input signal. Flexible\nsidechain-control configuration provided. There are possible different\nvariants of dynamic processor to build: compressor, limiter, gate,\nexpander, some kind of transient designer and many others due to\npossibility of flexible dynamic curve configuration. Also dynamic\nrange can be split into sub-ranges that may have their individual\nattack and release timings."
+		"description": "This plugin performs dynamic processing of input signal. Flexible\nsidechain-control configuration provided. There are possible different\nvariants of dynamic processor to build: compressor, limiter, gate,\nexpander, some kind of transient designer and many others due to\npossibility of flexible dynamic curve configuration. Also dynamic\nrange can be split into sub-ranges that may have their individual\nattack and release timings.",
+		"name": "Dynamics Processor"
+	},
+	"launcher": {
+		"dyna_processor_lr": "LR",
+		"dyna_processor_mono": "Mono",
+		"dyna_processor_ms": "MS",
+		"dyna_processor_stereo": "Stereo",
+		"sc_dyna_processor_lr": "SC LR",
+		"sc_dyna_processor_mono": "SC Mono",
+		"sc_dyna_processor_ms": "SC MS",
+		"sc_dyna_processor_stereo": "SC Stereo"
 	}
 }
-
