@@ -185,25 +185,25 @@ namespace lsp
             COMBO("slpm" id, "Low-pass filter mode" label, "LPF mode" alias, 0, dyna_proc_filter_slope),      \
             LOG_CONTROL("slpf" id, "Low-pass filter frequency" label, "LPF freq" alias, U_HZ, dyna_processor_metadata::LPF)
 
-        #define DYNA_POINT(idx, on, id, label, alias, level) \
-            SWITCH("pe" #idx id, "Point enable " #idx label, "Point on" #idx alias, on), \
-            LOG_CONTROL_DFL("tl" #idx id, "Threshold " #idx label, "Thresh " #idx alias, U_GAIN_AMP, dyna_processor_metadata::THRESHOLD, level), \
-            LOG_CONTROL_DFL("gl" #idx id, "Gain " #idx label, "Gain " #idx alias, U_GAIN_AMP, dyna_processor_metadata::THRESHOLD, level), \
-            LOG_CONTROL("kn" #idx id, "Knee " #idx label, "Knee " #idx alias, U_GAIN_AMP, dyna_processor_metadata::KNEE), \
-            SWITCH("ae" #idx id, "Attack enable " #idx label, "Att on" #idx alias, 0.0f), \
-            LOG_CONTROL_DFL("al" #idx id, "Attack level " #idx label, "Att lvl " #idx alias, U_GAIN_AMP, dyna_processor_metadata::ATTACK_LVL, level), \
-            LOG_CONTROL("at" #idx id, "Attack time " #idx label, "Att time " #idx alias, U_MSEC, dyna_processor_metadata::ATTACK_TIME), \
-            SWITCH("re" #idx id, "Release enable " #idx label, "Rel on" #idx alias, 0.0f), \
-            LOG_CONTROL_DFL("rl" #idx id, "Release level " #idx label, "Rel lvl " #idx label, U_GAIN_AMP, dyna_processor_metadata::RELEASE_LVL, level), \
-            LOG_CONTROL("rt" #idx id, "Release time " #idx label, "Rel time " #idx alias, U_MSEC, dyna_processor_metadata::RELEASE_TIME)
+        #define DYNA_POINT(idx, sidx, on, id, label, alias, level) \
+            SWITCH("pe" #idx id, "Point enable " #sidx label, "Point on " #sidx alias, on), \
+            LOG_CONTROL_DFL("tl" #idx id, "Threshold " #sidx label, "Thresh " #sidx alias, U_GAIN_AMP, dyna_processor_metadata::THRESHOLD, level), \
+            LOG_CONTROL_DFL("gl" #idx id, "Gain " #sidx label, "Gain " #sidx alias, U_GAIN_AMP, dyna_processor_metadata::THRESHOLD, level), \
+            LOG_CONTROL("kn" #idx id, "Knee " #sidx label, "Knee " #sidx alias, U_GAIN_AMP, dyna_processor_metadata::KNEE), \
+            SWITCH("ae" #idx id, "Attack enable " #sidx label, "Att on " #sidx alias, 0.0f), \
+            LOG_CONTROL_DFL("al" #idx id, "Attack level " #sidx label, "Att lvl " #sidx alias, U_GAIN_AMP, dyna_processor_metadata::ATTACK_LVL, level), \
+            LOG_CONTROL("at" #idx id, "Attack time " #sidx label, "Att time " #sidx alias, U_MSEC, dyna_processor_metadata::ATTACK_TIME), \
+            SWITCH("re" #idx id, "Release enable " #sidx label, "Rel on " #sidx alias, 0.0f), \
+            LOG_CONTROL_DFL("rl" #idx id, "Release level " #sidx label, "Rel lvl " #sidx label, U_GAIN_AMP, dyna_processor_metadata::RELEASE_LVL, level), \
+            LOG_CONTROL("rt" #idx id, "Release time " #sidx label, "Rel time " #sidx alias, U_MSEC, dyna_processor_metadata::RELEASE_TIME)
 
         #define DYNA_PROC_CHANNEL(id, label, alias) \
             LOG_CONTROL("atd" id, "Attack time default" label, "Att time dfl" alias, U_MSEC, dyna_processor_metadata::ATTACK_TIME), \
             LOG_CONTROL("rtd" id, "Release time default" label, "Rel time dfl" alias, U_MSEC, dyna_processor_metadata::RELEASE_TIME), \
-            DYNA_POINT(0, 1.0f, id, label, alias, GAIN_AMP_M_12_DB), \
-            DYNA_POINT(1, 0.0f, id, label, alias, GAIN_AMP_M_24_DB), \
-            DYNA_POINT(2, 0.0f, id, label, alias, GAIN_AMP_M_36_DB), \
-            DYNA_POINT(3, 0.0f, id, label, alias, GAIN_AMP_M_48_DB), \
+            DYNA_POINT(0, 1, 1.0f, id, label, alias, GAIN_AMP_M_12_DB), \
+            DYNA_POINT(1, 2, 0.0f, id, label, alias, GAIN_AMP_M_24_DB), \
+            DYNA_POINT(2, 3, 0.0f, id, label, alias, GAIN_AMP_M_36_DB), \
+            DYNA_POINT(3, 4, 0.0f, id, label, alias, GAIN_AMP_M_48_DB), \
             CONTROL("hold" id, "Hold time" label, "Hold time" alias, U_MSEC, dyna_processor_metadata::HOLD_TIME), \
             LOG_CONTROL("llr" id, "Low-level ratio" label, "Low ratio" alias, U_NONE, dyna_processor_metadata::RATIO), \
             LOG_CONTROL("hlr" id, "High-level ratio" label, "High ratio" alias, U_NONE, dyna_processor_metadata::RATIO), \
