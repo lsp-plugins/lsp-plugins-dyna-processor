@@ -307,7 +307,7 @@
 								<dot x.id="tl${i}" y.id="gl${i}" z.id="kn${i}" x.editable="true" y.editable="true" z.editable="true" color="graph_mesh" hover.color="graph_mesh" bcolor="graph_mesh" hover.bcolor="graph_mesh" pointer="drag" visibility=":pe${i}"/>
 							</ui:for>
 							<ui:for id="i" first="0" count="4">
-								<text x=":tl${i}" y=":gl${i}" text="${i}" color="graph_mesh" halign="-1" valign="1" visibility=":pe${i}"/>
+								<text x=":tl${i}" y=":gl${i}" text="${:i + 1}" color="graph_mesh" halign="-1" valign="1" visibility=":pe${i}"/>
 							</ui:for>
 						</ui:if>
 
@@ -355,8 +355,8 @@
 									visibility=":cmv_${xb} and :pe${i}_${xb}"/>
 							</ui:for>
 							<ui:for id="i" first="0" count="4">
-								<text x=":tl${i}_${xa}" y=":gl${i}_${xa}" text="graph.values.id${name_a}" text:id="${i}" color="${clr_a}" halign="-1" valign="1" visibility=":cmv_${xa} and :pe${i}_${xa}"/>
-								<text x=":tl${i}_${xb}" y=":gl${i}_${xb}" text="graph.values.id${name_b}" text:id="${i}" color="${clr_b}" halign="1" valign="-1" visibility=":cmv_${xb} and :pe${i}_${xb}"/>
+								<text x=":tl${i}_${xa}" y=":gl${i}_${xa}" text="graph.values.id${name_a}" text:id="${:i + 1}" color="${clr_a}" halign="-1" valign="1" visibility=":cmv_${xa} and :pe${i}_${xa}"/>
+								<text x=":tl${i}_${xb}" y=":gl${i}_${xb}" text="graph.values.id${name_b}" text:id="${:i + 1}" color="${clr_b}" halign="1" valign="-1" visibility=":cmv_${xb} and :pe${i}_${xb}"/>
 							</ui:for>
 
 							<dot x.id="elm_${xa}" y.id="clm_${xa}" color="${clr_a}" hover.color="${clr_a}" bcolor="${clr_a}" hover.bcolor="${clr_a}" visibility=":cmv_${xa}"/>
@@ -485,7 +485,7 @@
 									<cell cols="2"><hsep bg.color="bg" pad.v="2" vreduce="true"/></cell>
 									<cell cols="2"><hsep bg.color="bg" pad.v="2" vreduce="true"/></cell>
 
-									<cell rows="2" pad.h="4" wmin="19"><label text="${c}"/></cell>
+									<cell rows="2" pad.h="4" wmin="19"><label text="${:c + 1}"/></cell>
 									<cell rows="2">
 										<vbox fill="false" pad="6" spacing="4">
 											<button id="pe${i}" width.min="43" fill="true" height="10" text="labels.threshold" ui:inject="Button_violet_6"/>
@@ -610,7 +610,7 @@
 										<cell cols="2"><hsep bg.color="bg" pad.v="2" vreduce="true"/></cell>
 										<cell cols="2"><hsep bg.color="bg" pad.v="2" vreduce="true"/></cell>
 
-										<cell rows="2" pad.h="4" wmin="19"><label text="${chn}" text:id="${c}"/></cell>
+										<cell rows="2" pad.h="4" wmin="19"><label text="${chn}" text:id="${:c + 1}"/></cell>
 										<cell rows="2">
 											<vbox fill="false" pad="6" spacing="4">
 												<button id="pe${i}" width.min="43" fill="true" height="10" text="labels.threshold" ui:inject="Button_violet_6"/>
