@@ -2,6 +2,10 @@
 * RECENT CHANGES
 *******************************************************************************
 
+=== 1.0.40 ===
+* Changed numbering of dynamic points to start with 1.
+* Updated build scripts and dependencies.
+
 === 1.0.39 ===
 * Updated build scripts and dependencies.
 
